@@ -1,0 +1,199 @@
+[FileInfo]
+FileName=CAN_IO.eds
+FileVersion=1.1
+Description=EDS for a CANopen I/O Board
+CreationDate=2025-01-01
+CreatedBy=Jonathan Tobias
+ModificationDate=2025-01-01
+ModifiedBy=JIT
+
+;https://canopennode.github.io/CANopenSocket/md_doc_objectDictionary.html#object-dictionary-example
+[DeviceInfo]
+VendorName=JIT
+VendorNumber=1234
+ProductName=CAN_IO_Board
+ProductNumber=1
+RevisionNumber=1
+OrderCode=IO_BOARD_001
+BaudRate_10k=NO
+BaudRate_20k=NO
+BaudRate_50k=NO
+BaudRate_125k=YES
+BaudRate_250k=YES
+BaudRate_500k=YES
+BaudRate_800k=NO
+BaudRate_1000k=YES
+
+[MandatoryObjects]
+1000=1
+1001=1
+1018=4
+
+[1000]
+ParameterName=Device Type
+ObjectType=0x7
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x00020192
+PDOMapping=0
+
+[1001]
+ParameterName=Error Register
+ObjectType=0x7
+DataType=0x0005
+AccessType=ro
+DefaultValue=0x00
+PDOMapping=0
+
+[1018]
+ParameterName=Identity Object
+ObjectType=0x8
+SubNumber=4
+PDOMapping=0
+
+[1018sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=4
+PDOMapping=0
+
+[1018sub1]
+ParameterName=Vendor ID
+ObjectType=0x5
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x000004D2  ; Replace with your Vendor ID
+PDOMapping=0
+
+[1018sub2]
+ParameterName=Product Code
+ObjectType=0x5
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x0000162E  ; Replace with your Product Code
+PDOMapping=0
+
+[1018sub3]
+ParameterName=Revision Number
+ObjectType=0x5
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x00000001  ; Replace with your Revision Number
+PDOMapping=0
+
+[DigitalIOObjects]
+6000=1
+6200=1
+
+[6000]
+ParameterName=Digital Inputs
+ObjectType=0x7
+DataType=0x0006  ; Unsigned16 for 16-bit digital input
+AccessType=ro
+DefaultValue=0x0000
+PDOMapping=1
+
+[6200]
+ParameterName=Digital Outputs
+ObjectType=0x7
+DataType=0x0006  ; Unsigned16 for 16-bit digital output
+AccessType=rw
+DefaultValue=0x0000
+PDOMapping=1
+
+[SensorObjects]
+6002=1
+6003=3
+6004=3
+
+[6002]
+ParameterName=Temperature Sensor
+ObjectType=0x7
+DataType=0x0005   ; INT16
+AccessType=ro
+DefaultValue=0.0
+PDOMapping=1
+
+[6003]
+ParameterName=Accelerometer (X, Y, Z)
+ObjectType=0x9  ; Array
+SubNumber=3
+PDOMapping=1
+
+[6003sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=3
+PDOMapping=0
+
+[6003sub1]
+ParameterName=Accelerometer X
+ObjectType=0x5
+DataType=0x0003  ; INT16
+AccessType=ro
+DefaultValue=0.0
+PDOMapping=1
+
+[6003sub2]
+ParameterName=Accelerometer Y
+ObjectType=0x5
+DataType=0x0003  ; INT16
+AccessType=ro
+DefaultValue=0.0
+PDOMapping=1
+
+[6003sub3]
+ParameterName=Accelerometer Z
+ObjectType=0x5
+DataType=0x0003  ; INT16
+AccessType=ro
+DefaultValue=0.0
+PDOMapping=1
+
+[6004]
+ParameterName=Gyroscope (X, Y, Z)
+ObjectType=0x9  ; Array
+SubNumber=3
+PDOMapping=1
+
+[6004sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=3
+PDOMapping=0
+
+[6004sub1]
+ParameterName=Gyroscope X
+ObjectType=0x5
+DataType=0x0003  ; INT16
+AccessType=ro
+DefaultValue=0.0
+PDOMapping=1
+
+[6004sub2]
+ParameterName=Gyroscope Y
+ObjectType=0x5
+DataType=0x0003  ; INT16
+AccessType=ro
+DefaultValue=0.0
+PDOMapping=1
+
+[6004sub3]
+ParameterName=Gyroscope Z
+ObjectType=0x5
+DataType=0x0003  ; INT16
+AccessType=ro
+DefaultValue=0.0
+PDOMapping=1
+
+[Mapping]
+TPDO1=6000,1,6200,1  ; Map Digital Inputs,Map Digital Outputs
+TPDO2=6002,1  ; Map Temperature 
+TPDO3=6003,3  ; Map Accelerometer X, Y, Z
+TPDO4=6004,3  ; Map Gyroscope X, Y, Z
