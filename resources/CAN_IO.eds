@@ -111,7 +111,7 @@ PDOMapping=1
 [6002]
 ParameterName=Temperature Sensor
 ObjectType=0x7
-DataType=0x0005   ; INT16
+DataType=0x0003   ; INT16
 AccessType=ro
 DefaultValue=0.0
 PDOMapping=1

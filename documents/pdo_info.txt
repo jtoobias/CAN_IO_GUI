@@ -1,0 +1,98 @@
+### **Summary of PDO Types in CANopen**
+
+Process Data Objects (PDOs) are used in CANopen to transmit real-time data efficiently. Here's an overview of the types and their use cases:
+
+---
+
+### **1. Synchronous PDOs**
+- **Triggered by**: SYNC message (sent periodically by the CANopen master).
+- **Use Case**: Devices send/receive PDOs in sync with a common clock or process cycle.
+- **Example**: Controlling actuators and reading sensors in time-sensitive applications.
+
+#### Key Parameters:
+- **Transmission Type (0x1400:02)**:
+  - Values `1-240`: Specifies after how many SYNC messages the PDO is transmitted (e.g., `2` = every second SYNC).
+  - Value `0`: All devices send their PDO immediately on each SYNC.
+
+---
+
+### **2. Event-Driven PDOs**
+- **Triggered by**: Internal or external events (e.g., data change, timer).
+- **Use Case**: Devices send data only when necessary, reducing network traffic.
+
+#### Variants:
+1. **Change of State (COS)**:
+   - Sent when the value changes beyond a specified **threshold**.
+   - Deadband can prevent frequent transmissions due to minor fluctuations.
+   - Example: A temperature sensor sends a PDO only if the temperature rises above 30°C or drops below 25°C.
+
+   **Key Configurations**:
+   - COS Threshold (manufacturer-specific objects, e.g., 0x2100).
+   - Deadband to reduce noise-triggered events.
+
+2. **Timer-Based**:
+   - Sent periodically based on a configured **event timer**.
+   - Example: A device sends its status every 500 ms regardless of changes.
+
+   **Key Parameter**:
+   - Event Timer (e.g., `0x1400:05` = time in milliseconds).
+
+3. **Combined (COS + Timer)**:
+   - Event-driven based on changes **and** periodically based on the timer.
+   - Example: A device reports changes immediately but also sends updates every second as a heartbeat.
+
+---
+
+### **3. Remote Request PDOs**
+- **Triggered by**: Explicit request from the master (Remote Transmission Request - RTR).
+- **Use Case**: Master queries the device for data when needed.
+- **Example**: A controller asks a sensor for its current value.
+
+#### Note:
+- Rarely used due to inefficiency and modern preference for Event-Driven PDOs.
+
+---
+
+### **4. Multi-Input Triggers**
+- **Triggered by**: Multiple inputs mapped to the same PDO.
+- **Use Case**: Consolidate data from several sensors or inputs into one PDO.
+- **Example**: A PDO contains multiple sensor values (e.g., temperature, pressure, humidity) and triggers if any of these values change.
+
+#### Key Parameter:
+- PDO Mapping Parameters (0x1A00:xx):
+  - Configure which inputs are included in the PDO.
+
+---
+
+### **Example Scenarios**
+
+#### **Scenario 1: Synchronous PDO**
+- A robotic arm needs motor positions synchronized to a 1 ms SYNC cycle.
+  - **Transmission Type**: Set to `1` (every SYNC).
+
+#### **Scenario 2: Event-Driven PDO with Threshold**
+- A pressure sensor reports if pressure exceeds 200 bar or drops below 150 bar.
+  - **COS Threshold**: Upper = 200, Lower = 150.
+  - **Deadband**: 5 bar.
+
+#### **Scenario 3: Combined COS + Timer**
+- A temperature sensor sends data when:
+  1. Temperature changes beyond ±1°C.
+  2. Every 10 seconds (for heartbeat).
+  - **COS**: ±1°C.
+  - **Event Timer**: 10,000 ms.
+
+---
+
+### **Key Advantages of Each Type**
+| **Type**           | **Advantage**                             | **When to Use**                           |
+|---------------------|-------------------------------------------|-------------------------------------------|
+| **Synchronous**     | Precise timing, consistent updates.       | Time-critical, synchronized applications. |
+| **COS**             | Low bandwidth, only sends on changes.    | Event-based data, reduces network load.   |
+| **Timer-Based**     | Regular updates for monitoring.           | Periodic status monitoring.               |
+| **Combined**        | Flexible, reliable updates and events.    | Applications needing both reliability and responsiveness. |
+| **Remote Request**  | Master-driven updates.                    | On-demand queries, though less common.    |
+
+---
+
+By combining these modes and parameters (e.g., mapping, thresholds, timers), CANopen PDOs can be tailored to meet a variety of real-time communication needs.

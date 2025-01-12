@@ -59,15 +59,15 @@ class MainWindow(QMainWindow):
        self.ui.AccelLcdY.display(accel_data[1])
        self.ui.AccelLcdZ.display(accel_data[2])
 
-       gyro_data = self.can_handler.sdo_read_gyro_data()
-       if (gyro_data == None): return
-       self.ui.GyroLcdX.display(gyro_data[0])
-       self.ui.GyroLcdY.display(gyro_data[1])
-       self.ui.GyroLcdZ.display(gyro_data[2])
+      #  gyro_data = self.can_handler.sdo_read_gyro_data()
+      #  if (gyro_data == None): return
+      #  self.ui.GyroLcdX.display(gyro_data[0])
+      #  self.ui.GyroLcdY.display(gyro_data[1])
+      #  self.ui.GyroLcdZ.display(gyro_data[2])
 
-       temperature = self.can_handler.sdo_read_temperature()
-       if (temperature == None): return
-       self.ui.TempLcd.display(temperature)
+      #  temperature = self.can_handler.sdo_read_temperature()
+      #  if (temperature == None): return
+      #  self.ui.TempLcd.display(temperature)
 
     def connect_existing_checkboxes(self):
         # Iterate through the existing layout items

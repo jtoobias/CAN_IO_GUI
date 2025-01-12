@@ -3,6 +3,7 @@ import canopen
 import os
 import time
 import numpy as np
+import struct
 
 class CANBusHandler:
 
@@ -127,40 +128,74 @@ class CANBusHandler:
     def sdo_read_temperature(self) -> float:
         if (self.node == None): 
             return None
-        return self.node.sdo[0x6002].raw/10
+        tmp_val = self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6002].raw,2))/10
+        time.sleep(0.01)
+        # print (f"{tmp_val:X} {tmp_val}")
+        return tmp_val
     
     def sdo_read_accelerometer_data(self) -> list[float]:
         if (self.node == None): 
             return None
-        x_accel = self.node.sdo[0x6003][0x00].raw/100
-        y_accel = self.node.sdo[0x6003][0x01].raw/100
-        z_accel = self.node.sdo[0x6003][0x02].raw/100
+        tmp_val = self.node.sdo[0x6003][0x01].raw
+        print (f"{tmp_val:X} {self.little_endian_to_big_endian(tmp_val,2):X}")
+        x_accel = self.to_int16(self.little_endian_to_big_endian(tmp_val,2))/100
+        time.sleep(0.01)
+        y_accel = self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6003][0x02].raw,2))/100
+        time.sleep(0.01)
+        z_accel = self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6003][0x03].raw,2))/100
+        time.sleep(0.01)
+        
         return [x_accel,y_accel,z_accel]
     
     def sdo_read_gyro_data(self) -> list[float]:
         if (self.node == None): 
             return None
-        x_gyro = self.node.sdo[0x6004][0x00].raw/100
-        y_gyro = self.node.sdo[0x6004][0x01].raw/100
-        z_gyro = self.node.sdo[0x6004][0x02].raw/100
+        x_gyro = self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6004][0x01].raw,2))/100
+        time.sleep(0.01)
+        y_gyro = self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6004][0x02].raw,2))/100
+        time.sleep(0.01)
+        z_gyro = self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6004][0x03].raw,2))/100
+        time.sleep(0.01)
+        
         return [x_gyro,y_gyro,z_gyro]
+
+    def to_int16(self,value):
+        # Ensure the value is within the 16-bit signed integer range
+        if value < -32768 or value > 32767:
+            # Use modulo and mask to wrap the value within the int16 range
+            value = (value + 32768) % 65536 - 32768  # Wrap using modulo
+        
+        return value
 
     def read_message(self):
         """Read a CAN message."""
-        message = self.bus.recv(timeout=1)  # Timeout in seconds
+        message = self.network.bus.recv(timeout=1)  # Timeout in seconds
         if message:
             return message.arbitration_id, message.data
         return None, None
     
+    def little_endian_to_big_endian(self,value,byte_len) -> int:
 
-    def _send_message(self,func_code,data:list[int]) -> bool:
+        # Swap the byte order
+        if (byte_len == 1): big_endian_value = value
+        elif (byte_len == 2): big_endian_value = ((value & 0x00FF) << 8) | ((value & 0xFF00) >> 8)
+        elif (byte_len == 3): big_endian_value = ((value & 0x0000FF) << 16) | ((value & 0xFF0000) >> 16)
+        elif (byte_len == 4): big_endian_value = (((value & 0x000000FF) << 24) | ((value & 0xFF000000) >> 24) | (value & 0x0000FF00) << 8) | ((value & 0x00FF0000) >> 8)
+        else: big_endian_value = -100000000
+        return big_endian_value
+    
+
+    def _send_message(self,func_code,operation,num_bytes,data:list[int]) -> bool:
         cob_id = func_code | self.node_id
         print (f"{cob_id:X}")
-        if (len(data) == 1): cmd = self.__WR_CLIENT_REQUEST_CMD_1_BYTE.to_bytes(1, byteorder='little')
-        elif (len(data) == 2): cmd = self.__WR_CLIENT_REQUEST_CMD_2_BYTE.to_bytes(1, byteorder='little')
-        elif (len(data) == 3): cmd = self.__WR_CLIENT_REQUEST_CMD_3_BYTE.to_bytes(1, byteorder='little')
-        elif (len(data) == 4): cmd = self.__WR_CLIENT_REQUEST_CMD_4_BYTE.to_bytes(1, byteorder='little')
-        else: return False
+        if (operation == 1):
+            if (num_bytes == 1): cmd = self.__WR_CLIENT_REQUEST_CMD_1_BYTE.to_bytes(1, byteorder='little')
+            elif (num_bytes == 2): cmd = self.__WR_CLIENT_REQUEST_CMD_2_BYTE.to_bytes(1, byteorder='little')
+            elif (num_bytes == 3): cmd = self.__WR_CLIENT_REQUEST_CMD_3_BYTE.to_bytes(1, byteorder='little')
+            elif (num_bytes == 4): cmd = self.__WR_CLIENT_REQUEST_CMD_4_BYTE.to_bytes(1, byteorder='little')
+            else: return False
+        else:
+            cmd = self.__RD_CLIENT_REQUEST_CMD_BYTE.to_bytes(1, byteorder='little')
         print (cmd)
         index = self.__OUTPUT_INDEX_OD.to_bytes(2, byteorder='little')
         print (index)
