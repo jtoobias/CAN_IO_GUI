@@ -96,3 +96,83 @@ Process Data Objects (PDOs) are used in CANopen to transmit real-time data effic
 ---
 
 By combining these modes and parameters (e.g., mapping, thresholds, timers), CANopen PDOs can be tailored to meet a variety of real-time communication needs.
+
+
+
+To configure 4 RPDOs (Receive PDOs) and 4 TPDOs (Transmit PDOs) in CANopen, the following registers (or entries in the Object Dictionary) are typically used. These registers control key aspects like communication parameters, mapping parameters, and trigger settings.
+
+Registers for RPDOs and TPDOs Configuration
+For each PDO (both RPDO and TPDO), two main categories of registers are configured:
+
+Communication Parameters (0x1400-0x1403 for RPDOs and 0x1800-0x1803 for TPDOs):
+
+These define how the PDO communicates over the CAN bus.
+Register	Description
+0x1400-0x1403:00	Number of entries in this communication parameter object (read-only).
+0x1400-0x1403:01	COB-ID (Communication Object Identifier) for the RPDO.
+0x1400-0x1403:02	Transmission Type:
+- 0: Synchronous (transmits on every SYNC).
+- 1-240: Transmits after N SYNC messages.
+- 254: Event-driven.
+- 255: Manufacturer-specific.
+0x1400-0x1403:03	Inhibit Time: Minimum delay between two PDO transmissions (for TPDOs, optional for RPDOs).
+0x1400-0x1403:05	Event Timer: Time interval (ms) for periodic transmissions (used for TPDOs).
+Similarly, the TPDO communication parameters are configured using 0x1800-0x1803.
+
+Mapping Parameters (0x1600-0x1603 for RPDOs and 0x1A00-0x1A03 for TPDOs):
+
+These define which application objects are mapped to the PDO data.
+Register	Description
+0x1600-0x1603:00	Number of mapped objects in the RPDO (read/write).
+0x1600-0x1603:01-xx	Mapping entries, specifying which application objects are included and their bit lengths.
+- Format: 0xiiiiSSSS, where iiii is the index, and SSSS is the subindex and bit length.
+- Example: Mapping input object at index 0x6000 subindex 0x01, 16 bits = 0x60000110.
+Similarly, for TPDOs, mapping parameters are configured using 0x1A00-0x1A03.
+
+Complete Register Set for 4 RPDOs and 4 TPDOs
+To configure 4 RPDOs and 4 TPDOs, the following object dictionary entries are used:
+
+1. RPDO Communication Parameters (0x1400-0x1403):
+0x1400: RPDO1
+0x1401: RPDO2
+0x1402: RPDO3
+0x1403: RPDO4
+2. RPDO Mapping Parameters (0x1600-0x1603):
+0x1600: Mapping for RPDO1
+0x1601: Mapping for RPDO2
+0x1602: Mapping for RPDO3
+0x1603: Mapping for RPDO4
+3. TPDO Communication Parameters (0x1800-0x1803):
+0x1800: TPDO1
+0x1801: TPDO2
+0x1802: TPDO3
+0x1803: TPDO4
+4. TPDO Mapping Parameters (0x1A00-0x1A03):
+0x1A00: Mapping for TPDO1
+0x1A01: Mapping for TPDO2
+0x1A02: Mapping for TPDO3
+0x1A03: Mapping for TPDO4
+Additional Manufacturer-Specific Registers
+Some PDO configurations, especially for Change of State (COS), may involve manufacturer-specific registers. Examples include:
+
+COS Thresholds: Usually manufacturer-specific entries like 0x2100, defining when to trigger a PDO.
+Deadband Settings: Registers to prevent small fluctuations from triggering events.
+Synchronization Parameters: Configuration for handling SYNC signals or synchronization time windows.
+Steps to Configure 4 RPDOs and 4 TPDOs
+Set the COB-IDs (0x1400:01, 0x1800:01):
+
+Assign unique identifiers for each PDO.
+For RPDOs, ensure COB-IDs match those transmitted by the master.
+Define Transmission Types (0x1400:02, 0x1800:02):
+
+Choose synchronous (e.g., 0 or 1-240), event-driven (254), or timer-based transmission.
+Set Event Timers/Inhibit Times (0x1400:05, 0x1800:03, 0x1800:05):
+
+Configure periodic transmission intervals for TPDOs.
+Map Application Objects (0x1600-0x1603, 0x1A00-0x1A03):
+
+Define which variables or data are included in each PDO.
+Enable PDOs:
+
+Set appropriate control bits in the COB-ID (e.g., enable/disable PDO or make it valid).
+Let me know if you'd like an example configuration!

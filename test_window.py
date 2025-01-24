@@ -50,24 +50,25 @@ class MainWindow(QMainWindow):
         # Set up the timer to call update_label every 100ms
       self.timer = QTimer(self)
       self.timer.timeout.connect(self.update_periodic_data)
-      self.timer.start(1000)  # 100 ms interval
+      self.timer.start(100)  # 100 ms interval
 
     def update_periodic_data(self):
+      #  pass
        accel_data = self.can_handler.sdo_read_accelerometer_data()
        if (accel_data == None): return
        self.ui.AccelLcdX.display(accel_data[0])
        self.ui.AccelLcdY.display(accel_data[1])
        self.ui.AccelLcdZ.display(accel_data[2])
 
-      #  gyro_data = self.can_handler.sdo_read_gyro_data()
-      #  if (gyro_data == None): return
-      #  self.ui.GyroLcdX.display(gyro_data[0])
-      #  self.ui.GyroLcdY.display(gyro_data[1])
-      #  self.ui.GyroLcdZ.display(gyro_data[2])
+       gyro_data = self.can_handler.sdo_read_gyro_data()
+       if (gyro_data == None): return
+       self.ui.GyroLcdX.display(gyro_data[0])
+       self.ui.GyroLcdY.display(gyro_data[1])
+       self.ui.GyroLcdZ.display(gyro_data[2])
 
-      #  temperature = self.can_handler.sdo_read_temperature()
-      #  if (temperature == None): return
-      #  self.ui.TempLcd.display(temperature)
+       temperature = self.can_handler.sdo_read_temperature()
+       if (temperature == None): return
+       self.ui.TempLcd.display(temperature)
 
     def connect_existing_checkboxes(self):
         # Iterate through the existing layout items

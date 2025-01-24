@@ -88,6 +88,8 @@ class CANBusHandler:
             return
         print ("Start")
         self.node.nmt.state = 'OPERATIONAL'
+        self.network.sync.start(2)
+
 
     def stop_can_node(self):
         if (self.node == None): 
@@ -95,6 +97,7 @@ class CANBusHandler:
             return
         print ("Stop")
         self.node.nmt.state = 'STOPPED'
+        self.network.sync.stop()
 
     def reset_comms_can_node(self):
         if (self.node == None): 
@@ -158,6 +161,21 @@ class CANBusHandler:
         time.sleep(0.01)
         
         return [x_gyro,y_gyro,z_gyro]
+    
+
+    def pdo_read_accelerometer_data(self) -> list[float]:
+        if (self.node == None): 
+            return None
+        tmp_val = self.node.tpdo
+        print (f"{tmp_val:X} {self.little_endian_to_big_endian(tmp_val,2):X}")
+        x_accel = self.to_int16(self.little_endian_to_big_endian(tmp_val,2))/100
+        time.sleep(0.01)
+        y_accel = self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6003][0x02].raw,2))/100
+        time.sleep(0.01)
+        z_accel = self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6003][0x03].raw,2))/100
+        time.sleep(0.01)
+        
+        return [x_accel,y_accel,z_accel]
 
     def to_int16(self,value):
         # Ensure the value is within the 16-bit signed integer range
