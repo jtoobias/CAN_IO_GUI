@@ -89,11 +89,9 @@ PDOMapping=0
 
 [6000]
 ParameterName=Digital Inputs
-ObjectType=0x8         ; Array
-DataType=0x0006        ; Unsigned16
-AccessType=ro
-CompactSubObj=0        ; Compact SubObject disabled
-PDOMapping=1           ; Allow entire word to be PDO-mapped
+ObjectType=0x9  ; Array
+SubNumber=8
+PDOMapping=1
 
 [6000sub0]
 SubNumber=9            ; Total number of subindices (including 0)
@@ -106,49 +104,49 @@ PDOMapping=1           ; Map the entire 16-bit word to a PDO
 
 [6000sub1]
 ParameterName=Input 1
-DataType=0x0001        ; Boolean (1 bit)
+DataType=0x0005        ; uint8
 AccessType=ro
 PDOMapping=1           ; Can be mapped to PDOs
 
 [6000sub2]
 ParameterName=Input 2
-DataType=0x0001        ; Boolean (1 bit)
+DataType=0x0005        ; uint8
 AccessType=ro
 PDOMapping=1
 
 [6000sub3]
 ParameterName=Input 3
-DataType=0x0001
+DataType=0x0005        ; uint8
 AccessType=ro
 PDOMapping=1
 
 [6000sub4]
 ParameterName=Input 4
-DataType=0x0001
+DataType=0x0005        ; uint8
 AccessType=ro
 PDOMapping=1
 
 [6000sub5]
 ParameterName=Input 5
-DataType=0x0001
+DataType=0x0005        ; uint8
 AccessType=ro
 PDOMapping=1
 
 [6000sub6]
 ParameterName=Input 6
-DataType=0x0001
+DataType=0x0005        ; uint8
 AccessType=ro
 PDOMapping=1
 
 [6000sub7]
 ParameterName=Input 7
-DataType=0x0001
+DataType=0x0005        ; uint8
 AccessType=ro
 PDOMapping=1
 
 [6000sub8]
 ParameterName=Input 8
-DataType=0x0001
+DataType=0x0005        ; uint8
 AccessType=ro
 PDOMapping=1
 

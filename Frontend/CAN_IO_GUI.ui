@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Home_widget">
      <attribute name="title">
@@ -759,7 +759,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="COB_ID_box_2">
+          <widget class="QLineEdit" name="COB_ID_box_TPDO1">
            <property name="statusTip">
             <string>Choose the COB ID that is sent with this PDO</string>
            </property>
@@ -773,7 +773,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QSpinBox" name="spinBox_2">
+          <widget class="QSpinBox" name="spinBox_TPDO1">
            <property name="statusTip">
             <string>Min of 0 and Max of 255. 0 = every sync, 255 = Sync Mode off</string>
            </property>
@@ -790,7 +790,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QLineEdit" name="Inhibit_time_box_2">
+          <widget class="QLineEdit" name="Inhibit_time_box_TPDO1">
            <property name="statusTip">
             <string>sets the minimum time between PDO sends (ms)</string>
            </property>
@@ -804,7 +804,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="4" column="1">
-          <widget class="QLineEdit" name="Transmit_period_box_2">
+          <widget class="QLineEdit" name="Transmit_period_box_TPDO1">
            <property name="statusTip">
             <string>Sets the send time (ms) in async mode</string>
            </property>
@@ -838,7 +838,7 @@ border-radius: 50%;</string>
          </item>
         </layout>
        </widget>
-       <widget class="QTableWidget" name="tableWidget_3">
+       <widget class="QTableWidget" name="tableWidget_TPDO1">
         <property name="geometry">
          <rect>
           <x>290</x>
@@ -921,7 +921,7 @@ border-radius: 50%;</string>
         </property>
         <layout class="QGridLayout" name="gridLayout">
          <item row="2" column="1">
-          <widget class="QComboBox" name="comboBox_2">
+          <widget class="QComboBox" name="comboBox_TPDO1_IN2">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -959,7 +959,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QComboBox" name="comboBox_4">
+          <widget class="QComboBox" name="comboBox_TPDO1_IN3">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -983,7 +983,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="7" column="1">
-          <widget class="QComboBox" name="comboBox_7">
+          <widget class="QComboBox" name="comboBox_TPDO1_IN7">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1014,7 +1014,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="4" column="1">
-          <widget class="QComboBox" name="comboBox_5">
+          <widget class="QComboBox" name="comboBox_TPDO1_IN4">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1052,7 +1052,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="5" column="1">
-          <widget class="QComboBox" name="comboBox_3">
+          <widget class="QComboBox" name="comboBox_TPDO1_IN5">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1076,7 +1076,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="8" column="1">
-          <widget class="QComboBox" name="comboBox_6">
+          <widget class="QComboBox" name="comboBox_TPDO1_IN8">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1100,7 +1100,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="6" column="1">
-          <widget class="QComboBox" name="comboBox_8">
+          <widget class="QComboBox" name="comboBox_TPDO1_IN6">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1145,7 +1145,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QComboBox" name="comboBox">
+          <widget class="QComboBox" name="comboBox_TPDO1_IN1">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1193,7 +1193,7 @@ border-radius: 50%;</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="1" column="1">
-          <widget class="QComboBox" name="comboBox_17">
+          <widget class="QComboBox" name="comboBox_TPDO1_GYROX">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1217,7 +1217,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QComboBox" name="comboBox_14">
+          <widget class="QComboBox" name="comboBox_TPDO1_GYROZ">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1241,7 +1241,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="5" column="1">
-          <widget class="QComboBox" name="comboBox_13">
+          <widget class="QComboBox" name="comboBox_TPDO1_ACCELY">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1265,7 +1265,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="6" column="1">
-          <widget class="QComboBox" name="comboBox_9">
+          <widget class="QComboBox" name="comboBox_TPDO1_ACCELZ">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1298,7 +1298,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_5">
+            <widget class="QLineEdit" name="TPDO1_Accel_X_threshold">
              <property name="statusTip">
               <string>Set the threshold value in meters/second^2 to be triggered on</string>
              </property>
@@ -1316,7 +1316,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_6">
+            <widget class="QLineEdit" name="TPDO1_Accel_Y_threshold">
              <property name="statusTip">
               <string>Set the threshold value in meters/second^2 to be triggered on</string>
              </property>
@@ -1334,7 +1334,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_3">
+            <widget class="QLineEdit" name="TPDO1_Gyro_Y_threshold">
              <property name="statusTip">
               <string>Set the threshold value in degrees/second to be triggered on</string>
              </property>
@@ -1343,7 +1343,7 @@ border-radius: 50%;</string>
           </layout>
          </item>
          <item row="4" column="1">
-          <widget class="QComboBox" name="comboBox_12">
+          <widget class="QComboBox" name="comboBox_TPDO1_ACCELX">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1376,7 +1376,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_4">
+            <widget class="QLineEdit" name="TPDO1_Gyro_Z_threshold">
              <property name="statusTip">
               <string>Set the threshold value in degrees/second to be triggered on</string>
              </property>
@@ -1394,7 +1394,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_7">
+            <widget class="QLineEdit" name="TPDO1_Accel_Z_threshold">
              <property name="statusTip">
               <string>Set the threshold value in meters/second^2 to be triggered on</string>
              </property>
@@ -1412,7 +1412,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold">
+            <widget class="QLineEdit" name="TPDO1_Gyro_X_threshold">
              <property name="statusTip">
               <string>Set the threshold value in degrees/second to be triggered on</string>
              </property>
@@ -1421,7 +1421,7 @@ border-radius: 50%;</string>
           </layout>
          </item>
          <item row="2" column="1">
-          <widget class="QComboBox" name="comboBox_18">
+          <widget class="QComboBox" name="comboBox_TPDO1_GYROY">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1474,7 +1474,7 @@ border-radius: 50%;</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_9">
          <item row="2" column="1">
-          <widget class="QComboBox" name="comboBox_57">
+          <widget class="QComboBox" name="comboBox_TPDO2_IN2">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1512,7 +1512,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QComboBox" name="comboBox_58">
+          <widget class="QComboBox" name="comboBox_TPDO2_IN3">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1536,7 +1536,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="7" column="1">
-          <widget class="QComboBox" name="comboBox_59">
+          <widget class="QComboBox" name="comboBox_TPDO2_IN7">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1567,7 +1567,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="4" column="1">
-          <widget class="QComboBox" name="comboBox_60">
+          <widget class="QComboBox" name="comboBox_TPDO2_IN4">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1605,7 +1605,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="5" column="1">
-          <widget class="QComboBox" name="comboBox_61">
+          <widget class="QComboBox" name="comboBox_TPDO2_IN5">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1629,7 +1629,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="8" column="1">
-          <widget class="QComboBox" name="comboBox_62">
+          <widget class="QComboBox" name="comboBox_TPDO2_IN8">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1653,7 +1653,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="6" column="1">
-          <widget class="QComboBox" name="comboBox_63">
+          <widget class="QComboBox" name="comboBox_TPDO2_IN6">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1698,7 +1698,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QComboBox" name="comboBox_64">
+          <widget class="QComboBox" name="comboBox_TPDO2_IN1">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1753,7 +1753,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="COB_ID_box_6">
+          <widget class="QLineEdit" name="COB_ID_box_TPDO2">
            <property name="statusTip">
             <string>Choose the COB ID that is sent with this PDO</string>
            </property>
@@ -1767,7 +1767,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QSpinBox" name="spinBox_6">
+          <widget class="QSpinBox" name="spinBox_TPDO2">
            <property name="statusTip">
             <string>Min of 0 and Max of 255. 0 = every sync, 255 = Sync Mode off</string>
            </property>
@@ -1784,7 +1784,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QLineEdit" name="Inhibit_time_box_6">
+          <widget class="QLineEdit" name="Inhibit_time_box_TPDO2">
            <property name="statusTip">
             <string>sets the minimum time between PDO sends (ms)</string>
            </property>
@@ -1798,7 +1798,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="4" column="1">
-          <widget class="QLineEdit" name="Transmit_period_box_6">
+          <widget class="QLineEdit" name="Transmit_period_box_TPDO2">
            <property name="statusTip">
             <string>Sets the send time (ms) in async mode</string>
            </property>
@@ -1832,7 +1832,7 @@ border-radius: 50%;</string>
          </item>
         </layout>
        </widget>
-       <widget class="QTableWidget" name="tableWidget_4">
+       <widget class="QTableWidget" name="tableWidget_TPDO2">
         <property name="geometry">
          <rect>
           <x>290</x>
@@ -1915,7 +1915,7 @@ border-radius: 50%;</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_10">
          <item row="1" column="1">
-          <widget class="QComboBox" name="comboBox_65">
+          <widget class="QComboBox" name="comboBox_TPDO2_GYROX">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1939,7 +1939,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QComboBox" name="comboBox_66">
+          <widget class="QComboBox" name="comboBox_TPDO2_GYROZ">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1963,7 +1963,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="5" column="1">
-          <widget class="QComboBox" name="comboBox_67">
+          <widget class="QComboBox" name="comboBox_TPDO2_ACCELY">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -1987,7 +1987,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="6" column="1">
-          <widget class="QComboBox" name="comboBox_68">
+          <widget class="QComboBox" name="comboBox_TPDO2_ACCELZ">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -2020,7 +2020,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_25">
+            <widget class="QLineEdit" name="TPDO2_Accel_X_threshold">
              <property name="statusTip">
               <string>Set the threshold value in meters/second^2 to be triggered on</string>
              </property>
@@ -2038,7 +2038,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_26">
+            <widget class="QLineEdit" name="TPDO2_Accel_Y_threshold">
              <property name="statusTip">
               <string>Set the threshold value in meters/second^2 to be triggered on</string>
              </property>
@@ -2056,7 +2056,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_27">
+            <widget class="QLineEdit" name="TPDO2_Gyro_Y_threshold">
              <property name="statusTip">
               <string>Set the threshold value in degrees/second to be triggered on</string>
              </property>
@@ -2065,7 +2065,7 @@ border-radius: 50%;</string>
           </layout>
          </item>
          <item row="4" column="1">
-          <widget class="QComboBox" name="comboBox_69">
+          <widget class="QComboBox" name="comboBox_TPDO2_ACCELX">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -2098,7 +2098,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_28">
+            <widget class="QLineEdit" name="TPDO2_Gyro_Z_threshold">
              <property name="statusTip">
               <string>Set the threshold value in degrees/second to be triggered on</string>
              </property>
@@ -2116,7 +2116,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_29">
+            <widget class="QLineEdit" name="TPDO2_Accel_Z_threshold">
              <property name="statusTip">
               <string>Set the threshold value in meters/second^2 to be triggered on</string>
              </property>
@@ -2134,7 +2134,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_30">
+            <widget class="QLineEdit" name="TPDO2_Gyro_X_threshold">
              <property name="statusTip">
               <string>Set the threshold value in degrees/second to be triggered on</string>
              </property>
@@ -2143,7 +2143,7 @@ border-radius: 50%;</string>
           </layout>
          </item>
          <item row="2" column="1">
-          <widget class="QComboBox" name="comboBox_70">
+          <widget class="QComboBox" name="comboBox_TPDO2_GYROY">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -2196,7 +2196,7 @@ border-radius: 50%;</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_11">
          <item row="2" column="1">
-          <widget class="QComboBox" name="comboBox_71">
+          <widget class="QComboBox" name="comboBox_TPDO3_IN2">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -2234,7 +2234,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QComboBox" name="comboBox_72">
+          <widget class="QComboBox" name="comboBox_TPDO3_IN3">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -2258,7 +2258,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="7" column="1">
-          <widget class="QComboBox" name="comboBox_73">
+          <widget class="QComboBox" name="comboBox_TPDO3_IN7">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -2289,7 +2289,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="4" column="1">
-          <widget class="QComboBox" name="comboBox_74">
+          <widget class="QComboBox" name="comboBox_TPDO3_IN4">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -2327,7 +2327,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="5" column="1">
-          <widget class="QComboBox" name="comboBox_75">
+          <widget class="QComboBox" name="comboBox_TPDO3_IN5">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -2351,7 +2351,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="8" column="1">
-          <widget class="QComboBox" name="comboBox_76">
+          <widget class="QComboBox" name="comboBox_TPDO3_IN8">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -2375,7 +2375,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="6" column="1">
-          <widget class="QComboBox" name="comboBox_77">
+          <widget class="QComboBox" name="comboBox_TPDO3_IN6">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -2420,7 +2420,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QComboBox" name="comboBox_78">
+          <widget class="QComboBox" name="comboBox_TPDO3_IN1">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -2475,7 +2475,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="COB_ID_box_7">
+          <widget class="QLineEdit" name="COB_ID_box_TPDO3">
            <property name="statusTip">
             <string>Choose the COB ID that is sent with this PDO</string>
            </property>
@@ -2489,7 +2489,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QSpinBox" name="spinBox_7">
+          <widget class="QSpinBox" name="spinBox_TPDO3">
            <property name="statusTip">
             <string>Min of 0 and Max of 255. 0 = every sync, 255 = Sync Mode off</string>
            </property>
@@ -2506,7 +2506,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QLineEdit" name="Inhibit_time_box_7">
+          <widget class="QLineEdit" name="Inhibit_time_box_TPDO3">
            <property name="statusTip">
             <string>sets the minimum time between PDO sends (ms)</string>
            </property>
@@ -2520,7 +2520,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="4" column="1">
-          <widget class="QLineEdit" name="Transmit_period_box_7">
+          <widget class="QLineEdit" name="Transmit_period_box_TPDO3">
            <property name="statusTip">
             <string>Sets the send time (ms) in async mode</string>
            </property>
@@ -2554,7 +2554,7 @@ border-radius: 50%;</string>
          </item>
         </layout>
        </widget>
-       <widget class="QTableWidget" name="tableWidget_5">
+       <widget class="QTableWidget" name="tableWidget_TPDO3">
         <property name="geometry">
          <rect>
           <x>290</x>
@@ -2637,7 +2637,7 @@ border-radius: 50%;</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_12">
          <item row="1" column="1">
-          <widget class="QComboBox" name="comboBox_79">
+          <widget class="QComboBox" name="comboBox_TPDO3_GYROX">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -2661,7 +2661,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QComboBox" name="comboBox_80">
+          <widget class="QComboBox" name="comboBox_TPDO3_GYROZ">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -2685,7 +2685,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="5" column="1">
-          <widget class="QComboBox" name="comboBox_81">
+          <widget class="QComboBox" name="comboBox_TPDO3_ACCELY">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -2709,7 +2709,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="6" column="1">
-          <widget class="QComboBox" name="comboBox_82">
+          <widget class="QComboBox" name="comboBox_TPDO3_ACCELZ">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -2742,7 +2742,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_31">
+            <widget class="QLineEdit" name="TPDO3_Accel_X_threshold">
              <property name="statusTip">
               <string>Set the threshold value in meters/second^2 to be triggered on</string>
              </property>
@@ -2760,7 +2760,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_32">
+            <widget class="QLineEdit" name="TPDO3_Accel_Y_threshold">
              <property name="statusTip">
               <string>Set the threshold value in meters/second^2 to be triggered on</string>
              </property>
@@ -2778,7 +2778,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_33">
+            <widget class="QLineEdit" name="TPDO3_Gyro_Y_threshold">
              <property name="statusTip">
               <string>Set the threshold value in degrees/second to be triggered on</string>
              </property>
@@ -2787,7 +2787,7 @@ border-radius: 50%;</string>
           </layout>
          </item>
          <item row="4" column="1">
-          <widget class="QComboBox" name="comboBox_83">
+          <widget class="QComboBox" name="comboBox_TPDO3_ACCELX">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -2820,7 +2820,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_34">
+            <widget class="QLineEdit" name="TPDO3_Gyro_Z_threshold">
              <property name="statusTip">
               <string>Set the threshold value in degrees/second to be triggered on</string>
              </property>
@@ -2838,7 +2838,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_35">
+            <widget class="QLineEdit" name="TPDO3_Accel_Z_threshold">
              <property name="statusTip">
               <string>Set the threshold value in meters/second^2 to be triggered on</string>
              </property>
@@ -2856,7 +2856,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_36">
+            <widget class="QLineEdit" name="TPDO3_Gyro_X_threshold">
              <property name="statusTip">
               <string>Set the threshold value in degrees/second to be triggered on</string>
              </property>
@@ -2865,7 +2865,7 @@ border-radius: 50%;</string>
           </layout>
          </item>
          <item row="2" column="1">
-          <widget class="QComboBox" name="comboBox_84">
+          <widget class="QComboBox" name="comboBox_TPDO3_GYROY">
            <item>
             <property name="text">
              <string>OFF</string>
@@ -2918,7 +2918,7 @@ border-radius: 50%;</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_13">
          <item row="2" column="1">
-          <widget class="QComboBox" name="comboBox_85">
+          <widget class="QComboBox" name="comboBox_TPDO4_IN2">
            <property name="statusTip">
             <string>Choose input to be enabled as a trigger for PDO</string>
            </property>
@@ -2959,7 +2959,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QComboBox" name="comboBox_86">
+          <widget class="QComboBox" name="comboBox_TPDO4_IN3">
            <property name="statusTip">
             <string>Choose input to be enabled as a trigger for PDO</string>
            </property>
@@ -2986,7 +2986,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="7" column="1">
-          <widget class="QComboBox" name="comboBox_87">
+          <widget class="QComboBox" name="comboBox_TPDO4_IN7">
            <property name="statusTip">
             <string>Choose input to be enabled as a trigger for PDO</string>
            </property>
@@ -3020,7 +3020,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="4" column="1">
-          <widget class="QComboBox" name="comboBox_88">
+          <widget class="QComboBox" name="comboBox_TPDO4_IN4">
            <property name="statusTip">
             <string>Choose input to be enabled as a trigger for PDO</string>
            </property>
@@ -3061,7 +3061,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="5" column="1">
-          <widget class="QComboBox" name="comboBox_89">
+          <widget class="QComboBox" name="comboBox_TPDO4_IN5">
            <property name="statusTip">
             <string>Choose input to be enabled as a trigger for PDO</string>
            </property>
@@ -3088,7 +3088,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="8" column="1">
-          <widget class="QComboBox" name="comboBox_90">
+          <widget class="QComboBox" name="comboBox_TPDO4_IN8">
            <property name="statusTip">
             <string>Choose input to be enabled as a trigger for PDO</string>
            </property>
@@ -3115,7 +3115,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="6" column="1">
-          <widget class="QComboBox" name="comboBox_91">
+          <widget class="QComboBox" name="comboBox_TPDO4_IN6">
            <property name="statusTip">
             <string>Choose input to be enabled as a trigger for PDO</string>
            </property>
@@ -3163,7 +3163,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QComboBox" name="comboBox_92">
+          <widget class="QComboBox" name="comboBox_TPDO4_IN1">
            <property name="statusTip">
             <string>Choose input to be enabled as a trigger for PDO</string>
            </property>
@@ -3221,7 +3221,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="COB_ID_box_8">
+          <widget class="QLineEdit" name="COB_ID_box_TPDO4">
            <property name="statusTip">
             <string>Choose the COB ID that is sent with this PDO</string>
            </property>
@@ -3235,7 +3235,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QSpinBox" name="spinBox_8">
+          <widget class="QSpinBox" name="spinBox_TPDO4">
            <property name="statusTip">
             <string>Min of 0 and Max of 255. 0 = every sync, 255 = Sync Mode off</string>
            </property>
@@ -3252,7 +3252,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QLineEdit" name="Inhibit_time_box_8">
+          <widget class="QLineEdit" name="Inhibit_time_box_TPDO4">
            <property name="statusTip">
             <string>sets the minimum time between PDO sends (ms)</string>
            </property>
@@ -3266,7 +3266,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="4" column="1">
-          <widget class="QLineEdit" name="Transmit_period_box_8">
+          <widget class="QLineEdit" name="Transmit_period_box_TPDO4">
            <property name="statusTip">
             <string>Sets the send time (ms) in async mode</string>
            </property>
@@ -3300,7 +3300,7 @@ border-radius: 50%;</string>
          </item>
         </layout>
        </widget>
-       <widget class="QTableWidget" name="tableWidget_6">
+       <widget class="QTableWidget" name="tableWidget_TPDO4">
         <property name="geometry">
          <rect>
           <x>290</x>
@@ -3383,7 +3383,7 @@ border-radius: 50%;</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_14">
          <item row="1" column="1">
-          <widget class="QComboBox" name="comboBox_93">
+          <widget class="QComboBox" name="comboBox_TPDO4_GYROX">
            <property name="statusTip">
             <string>Choose input to be enabled as a trigger for PDO</string>
            </property>
@@ -3410,7 +3410,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QComboBox" name="comboBox_94">
+          <widget class="QComboBox" name="comboBox_TPDO4_GYROZ">
            <property name="statusTip">
             <string>Choose input to be enabled as a trigger for PDO</string>
            </property>
@@ -3437,7 +3437,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="5" column="1">
-          <widget class="QComboBox" name="comboBox_95">
+          <widget class="QComboBox" name="comboBox_TPDO4_ACCELY">
            <property name="statusTip">
             <string>Choose input to be enabled as a trigger for PDO</string>
            </property>
@@ -3464,7 +3464,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="6" column="1">
-          <widget class="QComboBox" name="comboBox_96">
+          <widget class="QComboBox" name="comboBox_TPDO4_ACCELZ">
            <property name="statusTip">
             <string>Choose input to be enabled as a trigger for PDO</string>
            </property>
@@ -3500,7 +3500,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_37">
+            <widget class="QLineEdit" name="TPDO4_Accel_X_threshold">
              <property name="statusTip">
               <string>Set the threshold value in meters/second^2 to be triggered on</string>
              </property>
@@ -3518,7 +3518,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_38">
+            <widget class="QLineEdit" name="TPDO4_Accel_Y_threshold">
              <property name="statusTip">
               <string>Set the threshold value in meters/second^2 to be triggered on</string>
              </property>
@@ -3536,7 +3536,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_39">
+            <widget class="QLineEdit" name="TPDO4_Gyro_Y_threshold">
              <property name="statusTip">
               <string>Set the threshold value in degrees/second to be triggered on</string>
              </property>
@@ -3545,7 +3545,7 @@ border-radius: 50%;</string>
           </layout>
          </item>
          <item row="4" column="1">
-          <widget class="QComboBox" name="comboBox_97">
+          <widget class="QComboBox" name="comboBox_TPDO4_ACCELX">
            <property name="statusTip">
             <string>Choose input to be enabled as a trigger for PDO</string>
            </property>
@@ -3581,7 +3581,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_40">
+            <widget class="QLineEdit" name="TPDO4_Gyro_Z_threshold">
              <property name="statusTip">
               <string>Set the threshold value in degrees/second to be triggered on</string>
              </property>
@@ -3599,7 +3599,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_41">
+            <widget class="QLineEdit" name="TPDO4_Accel_Z_threshold">
              <property name="statusTip">
               <string>Set the threshold value in meters/second^2 to be triggered on</string>
              </property>
@@ -3617,7 +3617,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="Gyro_X_threshold_42">
+            <widget class="QLineEdit" name="TPDO4_Gyro_X_threshold">
              <property name="statusTip">
               <string>Set the threshold value in degrees/second to be triggered on</string>
              </property>
@@ -3626,7 +3626,7 @@ border-radius: 50%;</string>
           </layout>
          </item>
          <item row="2" column="1">
-          <widget class="QComboBox" name="comboBox_98">
+          <widget class="QComboBox" name="comboBox_TPDO4_GYROY">
            <property name="statusTip">
             <string>Choose input to be enabled as a trigger for PDO</string>
            </property>
@@ -3702,7 +3702,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="COB_ID_box_11">
+          <widget class="QLineEdit" name="COB_ID_box_RPDO1">
            <property name="statusTip">
             <string>Choose the COB ID that is sent with this PDO</string>
            </property>
@@ -3716,7 +3716,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QSpinBox" name="spinBox_11">
+          <widget class="QSpinBox" name="spinBox_RPDO1">
            <property name="statusTip">
             <string>Min of 0 and Max of 255. 0 = every sync, 255 = Sync Mode off</string>
            </property>
@@ -3733,7 +3733,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QLineEdit" name="Inhibit_time_box_11">
+          <widget class="QLineEdit" name="Inhibit_time_box_RPDO1">
            <property name="statusTip">
             <string>sets the minimum time between PDO sends (ms)</string>
            </property>
@@ -3747,7 +3747,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QLineEdit" name="Transmit_period_box_11">
+          <widget class="QLineEdit" name="Transmit_period_box_RPDO1">
            <property name="statusTip">
             <string>Sets the send time (ms) in async mode</string>
            </property>
@@ -3755,7 +3755,7 @@ border-radius: 50%;</string>
          </item>
         </layout>
        </widget>
-       <widget class="QTableWidget" name="tableWidget_11">
+       <widget class="QTableWidget" name="tableWidget_RPDO1">
         <property name="geometry">
          <rect>
           <x>290</x>
@@ -3844,7 +3844,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="COB_ID_box_12">
+          <widget class="QLineEdit" name="COB_ID_box_RPDO2">
            <property name="statusTip">
             <string>Choose the COB ID that is sent with this PDO</string>
            </property>
@@ -3858,7 +3858,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QSpinBox" name="spinBox_12">
+          <widget class="QSpinBox" name="spinBox_RPDO2">
            <property name="statusTip">
             <string>Min of 0 and Max of 255. 0 = every sync, 255 = Sync Mode off</string>
            </property>
@@ -3875,7 +3875,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QLineEdit" name="Inhibit_time_box_12">
+          <widget class="QLineEdit" name="Inhibit_time_box_RPDO2">
            <property name="statusTip">
             <string>sets the minimum time between PDO sends (ms)</string>
            </property>
@@ -3889,7 +3889,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QLineEdit" name="Transmit_period_box_12">
+          <widget class="QLineEdit" name="Transmit_period_box_RPDO2">
            <property name="statusTip">
             <string>Sets the send time (ms) in async mode</string>
            </property>
@@ -3897,7 +3897,7 @@ border-radius: 50%;</string>
          </item>
         </layout>
        </widget>
-       <widget class="QTableWidget" name="tableWidget_12">
+       <widget class="QTableWidget" name="tableWidget_RPDO2">
         <property name="geometry">
          <rect>
           <x>290</x>
@@ -3968,7 +3968,7 @@ border-radius: 50%;</string>
        <attribute name="title">
         <string>RPDO3</string>
        </attribute>
-       <widget class="QTableWidget" name="tableWidget_13">
+       <widget class="QTableWidget" name="tableWidget_RPDO3">
         <property name="geometry">
          <rect>
           <x>290</x>
@@ -4052,7 +4052,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="COB_ID_box_13">
+          <widget class="QLineEdit" name="COB_ID_box_RPDO3">
            <property name="statusTip">
             <string>Choose the COB ID that is sent with this PDO</string>
            </property>
@@ -4066,7 +4066,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QSpinBox" name="spinBox_13">
+          <widget class="QSpinBox" name="spinBox_RPDO3">
            <property name="statusTip">
             <string>Min of 0 and Max of 255. 0 = every sync, 255 = Sync Mode off</string>
            </property>
@@ -4083,7 +4083,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QLineEdit" name="Inhibit_time_box_13">
+          <widget class="QLineEdit" name="Inhibit_time_box_RPDO3">
            <property name="statusTip">
             <string>sets the minimum time between PDO sends (ms)</string>
            </property>
@@ -4097,7 +4097,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QLineEdit" name="Transmit_period_box_13">
+          <widget class="QLineEdit" name="Transmit_period_box_RPDO3">
            <property name="statusTip">
             <string>Sets the send time (ms) in async mode</string>
            </property>
@@ -4128,7 +4128,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="COB_ID_box_14">
+          <widget class="QLineEdit" name="COB_ID_box_RPDO4">
            <property name="statusTip">
             <string>Choose the COB ID that is sent with this PDO</string>
            </property>
@@ -4142,7 +4142,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QSpinBox" name="spinBox_14">
+          <widget class="QSpinBox" name="spinBox_RPDO4">
            <property name="statusTip">
             <string>Min of 0 and Max of 255. 0 = every sync, 255 = Sync Mode off</string>
            </property>
@@ -4159,7 +4159,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QLineEdit" name="Inhibit_time_box_14">
+          <widget class="QLineEdit" name="Inhibit_time_box_RPDO4">
            <property name="statusTip">
             <string>sets the minimum time between PDO sends (ms)</string>
            </property>
@@ -4173,7 +4173,7 @@ border-radius: 50%;</string>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QLineEdit" name="Transmit_period_box_14">
+          <widget class="QLineEdit" name="Transmit_period_box_RPDO4">
            <property name="statusTip">
             <string>Sets the send time (ms) in async mode</string>
            </property>
@@ -4181,7 +4181,7 @@ border-radius: 50%;</string>
          </item>
         </layout>
        </widget>
-       <widget class="QTableWidget" name="tableWidget_14">
+       <widget class="QTableWidget" name="tableWidget_RPDO4">
         <property name="geometry">
          <rect>
           <x>290</x>
@@ -4283,7 +4283,7 @@ border-radius: 50%;</string>
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="PDO_apply_button_2">
+        <widget class="QPushButton" name="PDO_burn_button">
          <property name="statusTip">
           <string>This button will burn the current PDO configuration to long term storage</string>
          </property>
