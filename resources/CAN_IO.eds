@@ -83,6 +83,486 @@ AccessType=ro
 DefaultValue=0x00000001  ; Replace with your Revision Number
 PDOMapping=0
 
+[1018sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=4
+PDOMapping=0
+
+[1018sub1]
+ParameterName=Vendor ID
+ObjectType=0x5
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x000004D2  ; Replace with your Vendor ID
+PDOMapping=0
+
+[1018sub2]
+ParameterName=Product Code
+ObjectType=0x5
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x0000162E  ; Replace with your Product Code
+PDOMapping=0
+
+[1018sub3]
+ParameterName=Revision Number
+ObjectType=0x5
+DataType=0x0007
+AccessType=ro
+DefaultValue=0x00000001  ; Replace with your Revision Number
+PDOMapping=0
+
+[RPDOMappingObjects]
+1400=5
+1401=5
+1402=5
+1403=5
+
+[1400]
+ParameterName=RPDO1 COMM PARAM
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[1400sub1]
+ParameterName=COB ID
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1400sub2]
+ParameterName=TRANSMISSION TYPE
+ObjectType=0x7  
+DataType=0x0006         ; UINT8_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1400sub3]
+ParameterName=INHIBIT TIME
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1400sub4]
+ParameterName=RESERVED
+ObjectType=0x7  
+DataType=0x0006         ; UINT8_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1400sub5]
+ParameterName=TRANMIT PERIOD
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1401]
+ParameterName=RPDO2 COMM PARAM
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[1401sub1]
+ParameterName=COB ID
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1401sub2]
+ParameterName=TRANSMISSION TYPE
+ObjectType=0x7  
+DataType=0x0006         ; UINT8_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1401sub3]
+ParameterName=INHIBIT TIME
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1401sub4]
+ParameterName=RESERVED
+ObjectType=0x7  
+DataType=0x0006         ; UINT8_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1401sub5]
+ParameterName=TRANMIT PERIOD
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1402]
+ParameterName=RPDO3 COMM PARAM
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[1402sub1]
+ParameterName=COB ID
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1402sub2]
+ParameterName=TRANSMISSION TYPE
+ObjectType=0x7  
+DataType=0x0006         ; UINT8_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1402sub3]
+ParameterName=INHIBIT TIME
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1402sub4]
+ParameterName=RESERVED
+ObjectType=0x7  
+DataType=0x0006         ; UINT8_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1402sub5]
+ParameterName=TRANMIT PERIOD
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1403]
+ParameterName=RPDO4 COMM PARAM
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[1403sub1]
+ParameterName=COB ID
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1403sub2]
+ParameterName=TRANSMISSION TYPE
+ObjectType=0x7  
+DataType=0x0006         ; UINT8_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1403sub3]
+ParameterName=INHIBIT TIME
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1403sub4]
+ParameterName=RESERVED
+ObjectType=0x7  
+DataType=0x0006         ; UINT8_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1403sub5]
+ParameterName=TRANMIT PERIOD
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[TPDOMappingObjects]
+1800=5
+1801=5
+1802=5
+1803=5
+
+[1800]
+ParameterName=TPDO1 COMM PARAM
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[1800sub1]
+ParameterName=COB ID
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1800sub2]
+ParameterName=TRANSMISSION TYPE
+ObjectType=0x7  
+DataType=0x0006         ; UINT8_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1800sub3]
+ParameterName=INHIBIT TIME
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1800sub4]
+ParameterName=RESERVED
+ObjectType=0x7  
+DataType=0x0006         ; UINT8_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1800sub5]
+ParameterName=TRANMIT PERIOD
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1801]
+ParameterName=TPDO2 COMM PARAM
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[1801sub1]
+ParameterName=COB ID
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1801sub2]
+ParameterName=TRANSMISSION TYPE
+ObjectType=0x7  
+DataType=0x0006         ; UINT8_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1801sub3]
+ParameterName=INHIBIT TIME
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1801sub4]
+ParameterName=RESERVED
+ObjectType=0x7  
+DataType=0x0006         ; UINT8_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1801sub5]
+ParameterName=TRANMIT PERIOD
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1802]
+ParameterName=TPDO3 COMM PARAM
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[1802sub1]
+ParameterName=COB ID
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1802sub2]
+ParameterName=TRANSMISSION TYPE
+ObjectType=0x7  
+DataType=0x0006         ; UINT8_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1802sub3]
+ParameterName=INHIBIT TIME
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1802sub4]
+ParameterName=RESERVED
+ObjectType=0x7  
+DataType=0x0006         ; UINT8_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1802sub5]
+ParameterName=TRANMIT PERIOD
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1803]
+ParameterName=TPDO4 COMM PARAM
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[1803sub1]
+ParameterName=COB ID
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1803sub2]
+ParameterName=TRANSMISSION TYPE
+ObjectType=0x7  
+DataType=0x0006         ; UINT8_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1803sub3]
+ParameterName=INHIBIT TIME
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1803sub4]
+ParameterName=RESERVED
+ObjectType=0x7  
+DataType=0x0006         ; UINT8_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1803sub5]
+ParameterName=TRANMIT PERIOD
+ObjectType=0x7  
+DataType=0x0006         ; UINT16_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+
+// RPDO Mapping Parameters
+#define RPDO1_MAPPING_PARAM_OD   0x1600
+#define RPDO2_MAPPING_PARAM_OD   0x1601
+#define RPDO3_MAPPING_PARAM_OD   0x1602
+#define RPDO4_MAPPING_PARAM_OD   0x1603
+
+// TPDO Mapping Parameters
+#define TPDO1_MAPPING_PARAM_OD   0x1A00
+#define TPDO2_MAPPING_PARAM_OD   0x1A01
+#define TPDO3_MAPPING_PARAM_OD   0x1A02
+#define TPDO4_MAPPING_PARAM_OD   0x1A03
+
+#define PDO_MAPPING_SUBINDEX_NUM_ENTRIES_OD 0x00 // Subindex for number of entries
+#define PDO_MAPPING_SUBINDEX_ENTRY_1_OD     0x01 // Subindex for first entry
+#define PDO_MAPPING_SUBINDEX_ENTRY_2_OD     0x02 // Subindex for second entry
+#define PDO_MAPPING_SUBINDEX_ENTRY_3_OD     0x03 // Subindex for third entry
+#define PDO_MAPPING_SUBINDEX_ENTRY_4_OD     0x04 // Subindex for fourth entry
+#define PDO_MAPPING_SUBINDEX_ENTRY_5_OD     0x05 // Subindex for fifth entry
+#define PDO_MAPPING_SUBINDEX_ENTRY_6_OD     0x06 // Subindex for sixth entry
+#define PDO_MAPPING_SUBINDEX_ENTRY_7_OD     0x07 // Subindex for seventh entry
+#define PDO_MAPPING_SUBINDEX_ENTRY_8_OD     0x08 // Subindex for eighth entry
+
+
+// TPDO1 Analog Thresholds and Trigger Directions
+#define TPDO1_ANALOG_THRESHOLDS_OD    	0x2000
+#define TPDO1_TRIGGER_DIRS_OD  			0x2001
+
+// TPDO2 Analog Thresholds and Trigger Directions
+#define TPDO2_ANALOG_THRESHOLDS_OD    	0x2010
+#define TPDO2_TRIGGER_DIRS_OD  			0x2011
+
+// TPDO3 Analog Thresholds and Trigger Directions
+#define TPDO3_ANALOG_THRESHOLDS_OD   	0x2020
+#define TPDO3_TRIGGER_DIRS_OD  			0x2021
+
+// TPDO4 Analog Thresholds and Trigger Directions
+#define TPDO4_ANALOG_THRESHOLDS_OD    	0x2030
+#define TPDO4_TRIGGER_DIRS_OD  			0x2031
+
+// Trigger sub_indices
+#define TRIGGER_IN_1_SUBINDEX_OD		0x01
+#define TRIGGER_IN_2_SUBINDEX_OD		0x02
+#define TRIGGER_IN_3_SUBINDEX_OD		0x03
+#define TRIGGER_IN_4_SUBINDEX_OD		0x04
+#define TRIGGER_IN_5_SUBINDEX_OD		0x05
+#define TRIGGER_IN_6_SUBINDEX_OD		0x06
+#define TRIGGER_IN_7_SUBINDEX_OD		0x07
+#define TRIGGER_IN_8_SUBINDEX_OD		0x08
+#define TRIGGER_GYRO_X_SUBINDEX_OD		0x09
+#define TRIGGER_GYRO_Y_SUBINDEX_OD		0x0A
+#define TRIGGER_GYRO_Z_SUBINDEX_OD		0x0B
+#define TRIGGER_ACCEL_X_SUBINDEX_OD		0x0C
+#define TRIGGER_ACCEL_Y_SUBINDEX_OD		0x0D
+#define TRIGGER_ACCEL_Z_SUBINDEX_OD		0x0E
+
+//#define ANALOG_NUMBER_SUBINDEX_OD     0x00
+//#define ANALOG_INPUT_1_SUBINDEX_OD    0x01
+//#define ANALOG_INPUT_2_SUBINDEX_OD    0x02
+//#define ANALOG_INPUT_3_SUBINDEX_OD    0x03
+//#define ANALOG_INPUT_4_SUBINDEX_OD    0x04
+//#define ANALOG_INPUT_5_SUBINDEX_OD    0x05
+//#define ANALOG_INPUT_6_SUBINDEX_OD    0x06
+
+
+
+
+
 [DigitalIOObjects]
 6000=1
 6200=1
@@ -90,7 +570,7 @@ PDOMapping=0
 [6000]
 ParameterName=Digital Inputs
 ObjectType=0x9  ; Array
-SubNumber=8
+SubNumber=9
 PDOMapping=1
 
 [6000sub0]
@@ -106,49 +586,49 @@ PDOMapping=1           ; Map the entire 16-bit word to a PDO
 ParameterName=Input 1
 DataType=0x0005        ; uint8
 AccessType=ro
-PDOMapping=1           ; Can be mapped to PDOs
+PDOMapping=0           ; Cant be mapped to PDOs
 
 [6000sub2]
 ParameterName=Input 2
 DataType=0x0005        ; uint8
 AccessType=ro
-PDOMapping=1
+PDOMapping=0
 
 [6000sub3]
 ParameterName=Input 3
 DataType=0x0005        ; uint8
 AccessType=ro
-PDOMapping=1
+PDOMapping=0
 
 [6000sub4]
 ParameterName=Input 4
 DataType=0x0005        ; uint8
 AccessType=ro
-PDOMapping=1
+PDOMapping=0
 
 [6000sub5]
 ParameterName=Input 5
 DataType=0x0005        ; uint8
 AccessType=ro
-PDOMapping=1
+PDOMapping=0
 
 [6000sub6]
 ParameterName=Input 6
 DataType=0x0005        ; uint8
 AccessType=ro
-PDOMapping=1
+PDOMapping=0
 
 [6000sub7]
 ParameterName=Input 7
 DataType=0x0005        ; uint8
 AccessType=ro
-PDOMapping=1
+PDOMapping=0
 
 [6000sub8]
 ParameterName=Input 8
 DataType=0x0005        ; uint8
 AccessType=ro
-PDOMapping=1
+PDOMapping=0
 
 [6200]
 ParameterName=Digital Outputs

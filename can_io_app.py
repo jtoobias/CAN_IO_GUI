@@ -60,8 +60,8 @@ class MainWindow(QMainWindow):
 
         # Set up the timer to call update_label every 100ms
       self.timer = QTimer(self)
-      self.timer.timeout.connect(self.update_periodic_data)
-      self.timer.start(100)  # 100 ms interval
+      # self.timer.timeout.connect(self.update_periodic_data)
+      # self.timer.start(100)  # 100 ms interval
 
     def update_periodic_data(self):
       #  pass
@@ -126,16 +126,18 @@ class MainWindow(QMainWindow):
       self.rpdo3.update_general_pdo_config()
       self.rpdo4.update_general_pdo_config()
 
+      print (self.tpdo1.mapped_indices)
+      self.can_handler.update_pdo_mapped_indices(self.tpdo1)
+
+      # self.can_handler.update_tpdo_config(self.tpdo1)
+      # self.can_handler.update_tpdo_config(self.tpdo2)
+      # self.can_handler.update_tpdo_config(self.tpdo3)
+      # self.can_handler.update_tpdo_config(self.tpdo4)
       
-      self.can_handler.update_tpdo_config(self.tpdo1)
-      self.can_handler.update_tpdo_config(self.tpdo2)
-      self.can_handler.update_tpdo_config(self.tpdo3)
-      self.can_handler.update_tpdo_config(self.tpdo4)
-      
-      self.can_handler.update_rpdo_config(self.rpdo1)
-      self.can_handler.update_rpdo_config(self.rpdo2)
-      self.can_handler.update_rpdo_config(self.rpdo3)
-      self.can_handler.update_rpdo_config(self.rpdo4)
+      # self.can_handler.update_rpdo_config(self.rpdo1)
+      # self.can_handler.update_rpdo_config(self.rpdo2)
+      # self.can_handler.update_rpdo_config(self.rpdo3)
+      # self.can_handler.update_rpdo_config(self.rpdo4)
       
         # Send output update to the device
       # self.can_handler.upate_pdo_registers()
@@ -144,7 +146,7 @@ class MainWindow(QMainWindow):
       print("Button clicked!")
       device = self.ui.comboBoxConnections.currentText()
       # need to handle only numbers
-      self.can_handler.node_id = int(self.ui.TextId.toPlainText())
+      self.can_handler.node_id = int(self.ui.spinBox_CAN_ID.value())
       
       self.can_handler.baud_rate = float(self.ui.comboBoxBaudRates.currentText())*1000
       print("Connect to ",device)

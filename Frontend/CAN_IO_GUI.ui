@@ -153,7 +153,14 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QComboBox" name="comboBoxBaudRates"/>
+         <widget class="QComboBox" name="comboBoxBaudRates">
+          <property name="currentText">
+           <string/>
+          </property>
+          <property name="placeholderText">
+           <string/>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="label_130">
@@ -163,9 +170,12 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QSpinBox" name="spinBox">
+         <widget class="QSpinBox" name="spinBox_CAN_ID">
           <property name="maximum">
            <number>2031</number>
+          </property>
+          <property name="value">
+           <number>3</number>
           </property>
          </widget>
         </item>
@@ -763,6 +773,9 @@ border-radius: 50%;</string>
            <property name="statusTip">
             <string>Choose the COB ID that is sent with this PDO</string>
            </property>
+           <property name="text">
+            <string>183</string>
+           </property>
           </widget>
          </item>
          <item row="2" column="0">
@@ -780,6 +793,9 @@ border-radius: 50%;</string>
            <property name="maximum">
             <number>255</number>
            </property>
+           <property name="value">
+            <number>255</number>
+           </property>
           </widget>
          </item>
          <item row="3" column="0">
@@ -794,6 +810,9 @@ border-radius: 50%;</string>
            <property name="statusTip">
             <string>sets the minimum time between PDO sends (ms)</string>
            </property>
+           <property name="text">
+            <string>0</string>
+           </property>
           </widget>
          </item>
          <item row="4" column="0">
@@ -807,6 +826,9 @@ border-radius: 50%;</string>
           <widget class="QLineEdit" name="Transmit_period_box_TPDO1">
            <property name="statusTip">
             <string>Sets the send time (ms) in async mode</string>
+           </property>
+           <property name="text">
+            <string>1000</string>
            </property>
           </widget>
          </item>
@@ -898,7 +920,7 @@ border-radius: 50%;</string>
         </column>
         <item row="0" column="0">
          <property name="text">
-          <string>0x60000108</string>
+          <string>0x60000010</string>
          </property>
          <property name="toolTip">
           <string extracomment="0x[Index - subindex - size in bits]"/>
@@ -3678,7 +3700,7 @@ border-radius: 50%;</string>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="RPDO1_tab">
        <attribute name="title">
