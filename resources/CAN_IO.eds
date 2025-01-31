@@ -1,6 +1,6 @@
 [FileInfo]
 FileName=CAN_IO.eds
-FileVersion=1.2
+FileVersion=1.3
 Description=EDS for a CANopen I/O Board
 CreationDate=2025-01-01
 CreatedBy=Jonathan Tobias
@@ -115,7 +115,7 @@ AccessType=ro
 DefaultValue=0x00000001  ; Replace with your Revision Number
 PDOMapping=0
 
-[RPDOMappingObjects]
+[RPDOParamsObjects]
 1400=5
 1401=5
 1402=5
@@ -125,6 +125,14 @@ PDOMapping=0
 ParameterName=RPDO1 COMM PARAM
 ObjectType=0x9
 SubNumber=5
+PDOMapping=0
+
+[1400sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=6
 PDOMapping=0
 
 [1400sub1]
@@ -173,6 +181,14 @@ ObjectType=0x9
 SubNumber=5
 PDOMapping=0
 
+[1401sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=4
+PDOMapping=0
+
 [1401sub1]
 ParameterName=COB ID
 ObjectType=0x7  
@@ -217,6 +233,14 @@ PDOMapping=0
 ParameterName=RPDO3 COMM PARAM
 ObjectType=0x9
 SubNumber=5
+PDOMapping=0
+
+[1402sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=4
 PDOMapping=0
 
 [1402sub1]
@@ -265,6 +289,14 @@ ObjectType=0x9
 SubNumber=5
 PDOMapping=0
 
+[1403sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=4
+PDOMapping=0
+
 [1403sub1]
 ParameterName=COB ID
 ObjectType=0x7  
@@ -305,7 +337,7 @@ AccessType=rw
 DefaultValue=0x00000000 ;
 PDOMapping=0
 
-[TPDOMappingObjects]
+[TPDOParamsObjects]
 1800=5
 1801=5
 1802=5
@@ -315,6 +347,14 @@ PDOMapping=0
 ParameterName=TPDO1 COMM PARAM
 ObjectType=0x9
 SubNumber=5
+PDOMapping=0
+
+[1800sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=4
 PDOMapping=0
 
 [1800sub1]
@@ -363,6 +403,14 @@ ObjectType=0x9
 SubNumber=5
 PDOMapping=0
 
+[1801sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=4
+PDOMapping=0
+
 [1801sub1]
 ParameterName=COB ID
 ObjectType=0x7  
@@ -407,6 +455,14 @@ PDOMapping=0
 ParameterName=TPDO3 COMM PARAM
 ObjectType=0x9
 SubNumber=5
+PDOMapping=0
+
+[1802sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=4
 PDOMapping=0
 
 [1802sub1]
@@ -455,6 +511,14 @@ ObjectType=0x9
 SubNumber=5
 PDOMapping=0
 
+[1803sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=5
+PDOMapping=0
+
 [1803sub1]
 ParameterName=COB ID
 ObjectType=0x7  
@@ -495,73 +559,1406 @@ AccessType=rw
 DefaultValue=0x00000000 ;
 PDOMapping=0
 
+[TPDOMappingObjects]
+1600=9
+1601=9
+1602=9
+1603=9
 
-// RPDO Mapping Parameters
-#define RPDO1_MAPPING_PARAM_OD   0x1600
-#define RPDO2_MAPPING_PARAM_OD   0x1601
-#define RPDO3_MAPPING_PARAM_OD   0x1602
-#define RPDO4_MAPPING_PARAM_OD   0x1603
+[1600]
+ParameterName=RPDO1 MAPPING INDICES
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
 
-// TPDO Mapping Parameters
-#define TPDO1_MAPPING_PARAM_OD   0x1A00
-#define TPDO2_MAPPING_PARAM_OD   0x1A01
-#define TPDO3_MAPPING_PARAM_OD   0x1A02
-#define TPDO4_MAPPING_PARAM_OD   0x1A03
+[1600sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=9
+PDOMapping=0
 
-#define PDO_MAPPING_SUBINDEX_NUM_ENTRIES_OD 0x00 // Subindex for number of entries
-#define PDO_MAPPING_SUBINDEX_ENTRY_1_OD     0x01 // Subindex for first entry
-#define PDO_MAPPING_SUBINDEX_ENTRY_2_OD     0x02 // Subindex for second entry
-#define PDO_MAPPING_SUBINDEX_ENTRY_3_OD     0x03 // Subindex for third entry
-#define PDO_MAPPING_SUBINDEX_ENTRY_4_OD     0x04 // Subindex for fourth entry
-#define PDO_MAPPING_SUBINDEX_ENTRY_5_OD     0x05 // Subindex for fifth entry
-#define PDO_MAPPING_SUBINDEX_ENTRY_6_OD     0x06 // Subindex for sixth entry
-#define PDO_MAPPING_SUBINDEX_ENTRY_7_OD     0x07 // Subindex for seventh entry
-#define PDO_MAPPING_SUBINDEX_ENTRY_8_OD     0x08 // Subindex for eighth entry
+[1600sub1]
+ParameterName=INDEX1
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1600sub2]
+ParameterName=INDEX2
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1600sub3]
+ParameterName=INDEX3
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1600sub4]
+ParameterName=INDEX4
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1600sub5]
+ParameterName=INDEX5
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1600sub6]
+ParameterName=INDEX6
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1600sub7]
+ParameterName=INDEX7
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1600sub8]
+ParameterName=INDEX8
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1601]
+ParameterName=RPDO2 MAPPING INDICES
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[1601sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=9
+PDOMapping=0
+
+[1601sub1]
+ParameterName=INDEX1
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1601sub2]
+ParameterName=INDEX2
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1601sub3]
+ParameterName=INDEX3
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1601sub4]
+ParameterName=INDEX4
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1601sub5]
+ParameterName=INDEX5
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1601sub6]
+ParameterName=INDEX6
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1601sub7]
+ParameterName=INDEX7
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1601sub8]
+ParameterName=INDEX8
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1602]
+ParameterName=RPDO3 MAPPING INDICES
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[1602sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=9
+PDOMapping=0
+
+[1602sub1]
+ParameterName=INDEX1
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1602sub2]
+ParameterName=INDEX2
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1602sub3]
+ParameterName=INDEX3
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1602sub4]
+ParameterName=INDEX4
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1602sub5]
+ParameterName=INDEX5
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1602sub6]
+ParameterName=INDEX6
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1602sub7]
+ParameterName=INDEX7
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1602sub8]
+ParameterName=INDEX8
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1603]
+ParameterName=RPDO4 MAPPING INDICES
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[1603sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=9
+PDOMapping=0
+
+[1603sub1]
+ParameterName=INDEX1
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1603sub2]
+ParameterName=INDEX2
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1603sub3]
+ParameterName=INDEX3
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1603sub4]
+ParameterName=INDEX4
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1603sub5]
+ParameterName=INDEX5
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1603sub6]
+ParameterName=INDEX6
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1603sub7]
+ParameterName=INDEX7
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1603sub8]
+ParameterName=INDEX8
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[RPDOMappingObjects]
+1A00=9
+1A01=9
+1A02=9
+1A03=9
+
+[1A00]
+ParameterName=RPDO1 MAPPING INDICES
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[1A00sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=9
+PDOMapping=0
+
+[1A00sub1]
+ParameterName=INDEX1
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1A00sub2]
+ParameterName=INDEX2
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1A00sub3]
+ParameterName=INDEX3
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1A00sub4]
+ParameterName=INDEX4
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1A00sub5]
+ParameterName=INDEX5
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1A00sub6]
+ParameterName=INDEX6
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1A00sub7]
+ParameterName=INDEX7
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1A00sub8]
+ParameterName=INDEX8
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1A01]
+ParameterName=RPDO2 MAPPING INDICES
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[1A01sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=9
+PDOMapping=0
+
+[1A01sub1]
+ParameterName=INDEX1
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1A01sub2]
+ParameterName=INDEX2
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1A01sub3]
+ParameterName=INDEX3
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1A01sub4]
+ParameterName=INDEX4
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1A01sub5]
+ParameterName=INDEX5
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1A01sub6]
+ParameterName=INDEX6
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1A01sub7]
+ParameterName=INDEX7
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1A01sub8]
+ParameterName=INDEX8
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1A02]
+ParameterName=RPDO3 MAPPING INDICES
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[1A02sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=9
+PDOMapping=0
+
+[1A02sub1]
+ParameterName=INDEX1
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1A02sub2]
+ParameterName=INDEX2
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1A02sub3]
+ParameterName=INDEX3
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1A02sub4]
+ParameterName=INDEX4
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1A02sub5]
+ParameterName=INDEX5
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1A02sub6]
+ParameterName=INDEX6
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1A02sub7]
+ParameterName=INDEX7
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1A02sub8]
+ParameterName=INDEX8
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1A03]
+ParameterName=RPDO4 MAPPING INDICES
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[1A03sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=9
+PDOMapping=0
+
+[1A03sub1]
+ParameterName=INDEX1
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1A03sub2]
+ParameterName=INDEX2
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1A03sub3]
+ParameterName=INDEX3
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1A03sub4]
+ParameterName=INDEX4
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ; 
+PDOMapping=0
+
+[1A03sub5]
+ParameterName=INDEX5
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1A03sub6]
+ParameterName=INDEX6
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1A03sub7]
+ParameterName=INDEX7
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
+
+[1A03sub8]
+ParameterName=INDEX8
+ObjectType=0x7  
+DataType=0x0007         ; UINT32_t
+AccessType=rw
+DefaultValue=0x00000000 ;
+PDOMapping=0
 
 
-// TPDO1 Analog Thresholds and Trigger Directions
-#define TPDO1_ANALOG_THRESHOLDS_OD    	0x2000
-#define TPDO1_TRIGGER_DIRS_OD  			0x2001
+[PDOTriggerDirection]
+0x2001=15
+0x2011=15
+0x2021=15
+0x2031=15
 
-// TPDO2 Analog Thresholds and Trigger Directions
-#define TPDO2_ANALOG_THRESHOLDS_OD    	0x2010
-#define TPDO2_TRIGGER_DIRS_OD  			0x2011
+[2001]
+ParameterName=TPDO1 MAPPING INDICES
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
 
-// TPDO3 Analog Thresholds and Trigger Directions
-#define TPDO3_ANALOG_THRESHOLDS_OD   	0x2020
-#define TPDO3_TRIGGER_DIRS_OD  			0x2021
+[2001sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=15
+PDOMapping=0
 
-// TPDO4 Analog Thresholds and Trigger Directions
-#define TPDO4_ANALOG_THRESHOLDS_OD    	0x2030
-#define TPDO4_TRIGGER_DIRS_OD  			0x2031
+[2001sub1]
+ParameterName=DIGITAL INPUT1
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
 
-// Trigger sub_indices
-#define TRIGGER_IN_1_SUBINDEX_OD		0x01
-#define TRIGGER_IN_2_SUBINDEX_OD		0x02
-#define TRIGGER_IN_3_SUBINDEX_OD		0x03
-#define TRIGGER_IN_4_SUBINDEX_OD		0x04
-#define TRIGGER_IN_5_SUBINDEX_OD		0x05
-#define TRIGGER_IN_6_SUBINDEX_OD		0x06
-#define TRIGGER_IN_7_SUBINDEX_OD		0x07
-#define TRIGGER_IN_8_SUBINDEX_OD		0x08
-#define TRIGGER_GYRO_X_SUBINDEX_OD		0x09
-#define TRIGGER_GYRO_Y_SUBINDEX_OD		0x0A
-#define TRIGGER_GYRO_Z_SUBINDEX_OD		0x0B
-#define TRIGGER_ACCEL_X_SUBINDEX_OD		0x0C
-#define TRIGGER_ACCEL_Y_SUBINDEX_OD		0x0D
-#define TRIGGER_ACCEL_Z_SUBINDEX_OD		0x0E
+[2001sub2]
+ParameterName=DIGITAL INPUT2
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
 
-//#define ANALOG_NUMBER_SUBINDEX_OD     0x00
-//#define ANALOG_INPUT_1_SUBINDEX_OD    0x01
-//#define ANALOG_INPUT_2_SUBINDEX_OD    0x02
-//#define ANALOG_INPUT_3_SUBINDEX_OD    0x03
-//#define ANALOG_INPUT_4_SUBINDEX_OD    0x04
-//#define ANALOG_INPUT_5_SUBINDEX_OD    0x05
-//#define ANALOG_INPUT_6_SUBINDEX_OD    0x06
+[2001sub3]
+ParameterName=DIGITAL INPUT3
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
 
+[2001sub4]
+ParameterName=DIGITAL INPUT4
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
 
+[2001sub5]
+ParameterName=DIGITAL INPUT5
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
 
+[2001sub6]
+ParameterName=DIGITAL INPUT6
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
 
+[2001sub7]
+ParameterName=DIGITAL INPUT7
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2001sub8]
+ParameterName=DIGITAL INPUT8
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2001sub9]
+ParameterName=GYRO X
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2001sub10]
+ParameterName=GYRO Y
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2001sub11]
+ParameterName=GYRO Z
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2001sub12]
+ParameterName=ACCEL X
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2001sub13]
+ParameterName=ACCEL Y
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2001sub14]
+ParameterName=ACCEL Z
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2011]
+ParameterName=TPDO2 MAPPING INDICES
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[2011sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=15
+PDOMapping=0
+
+[2011sub1]
+ParameterName=DIGITAL INPUT1
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2011sub2]
+ParameterName=DIGITAL INPUT2
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2011sub3]
+ParameterName=DIGITAL INPUT3
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2011sub4]
+ParameterName=DIGITAL INPUT4
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2011sub5]
+ParameterName=DIGITAL INPUT5
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2011sub6]
+ParameterName=DIGITAL INPUT6
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2011sub7]
+ParameterName=DIGITAL INPUT7
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2011sub8]
+ParameterName=DIGITAL INPUT8
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2011sub9]
+ParameterName=GYRO X
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2011sub10]
+ParameterName=GYRO Y
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2011sub11]
+ParameterName=GYRO Z
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2011sub12]
+ParameterName=ACCEL X
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2011sub13]
+ParameterName=ACCEL Y
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2011sub14]
+ParameterName=ACCEL Z
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2021]
+ParameterName=TPDO3 MAPPING INDICES
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[2021sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=15
+PDOMapping=0
+
+[2021sub1]
+ParameterName=DIGITAL INPUT1
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2021sub2]
+ParameterName=DIGITAL INPUT2
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2021sub3]
+ParameterName=DIGITAL INPUT3
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2021sub4]
+ParameterName=DIGITAL INPUT4
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2021sub5]
+ParameterName=DIGITAL INPUT5
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2021sub6]
+ParameterName=DIGITAL INPUT6
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2021sub7]
+ParameterName=DIGITAL INPUT7
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2021sub8]
+ParameterName=DIGITAL INPUT8
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2021sub9]
+ParameterName=GYRO X
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2021sub10]
+ParameterName=GYRO Y
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2021sub11]
+ParameterName=GYRO Z
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2021sub12]
+ParameterName=ACCEL X
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2021sub13]
+ParameterName=ACCEL Y
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2021sub14]
+ParameterName=ACCEL Z
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2031]
+ParameterName=TPDO4 MAPPING INDICES
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[2031sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=15
+PDOMapping=0
+
+[2031sub1]
+ParameterName=DIGITAL INPUT1
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2031sub2]
+ParameterName=DIGITAL INPUT2
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2031sub3]
+ParameterName=DIGITAL INPUT3
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2031sub4]
+ParameterName=DIGITAL INPUT4
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2031sub5]
+ParameterName=DIGITAL INPUT5
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2031sub6]
+ParameterName=DIGITAL INPUT6
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2031sub7]
+ParameterName=DIGITAL INPUT7
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2031sub8]
+ParameterName=DIGITAL INPUT8
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2031sub9]
+ParameterName=GYRO X
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2031sub10]
+ParameterName=GYRO Y
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2031sub11]
+ParameterName=GYRO Z
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2031sub12]
+ParameterName=ACCEL X
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2031sub13]
+ParameterName=ACCEL Y
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2031sub14]
+ParameterName=ACCEL Z
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[PDOAnalogThreshold]
+0x2000=15
+0x2010=15
+0x2020=15
+0x2030=15
+
+[2000]
+ParameterName=TPDO1 ANALOG THRESHOLDS
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[2000sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=7
+PDOMapping=0
+
+[2000sub1]
+ParameterName=GYRO X
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2000sub2]
+ParameterName=GYRO Y
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2000sub3]
+ParameterName=GYRO Z
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2000sub4]
+ParameterName=ACCEL X
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2000sub5]
+ParameterName=ACCEL Y
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2000sub6]
+ParameterName=ACCEL Z
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2010]
+ParameterName=TPDO2 ANALOG THRESHOLDS
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[2010sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=7
+PDOMapping=0
+
+[2010sub1]
+ParameterName=GYRO X
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2010sub2]
+ParameterName=GYRO Y
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2010sub3]
+ParameterName=GYRO Z
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2010sub4]
+ParameterName=ACCEL X
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2010sub5]
+ParameterName=ACCEL Y
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2010sub6]
+ParameterName=ACCEL Z
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2020]
+ParameterName=TPDO3 ANALOG THRESHOLDS
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[2020sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=7
+PDOMapping=0
+
+[2020sub1]
+ParameterName=GYRO X
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2020sub2]
+ParameterName=GYRO Y
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2020sub3]
+ParameterName=GYRO Z
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2020sub4]
+ParameterName=ACCEL X
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2020sub5]
+ParameterName=ACCEL Y
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2020sub6]
+ParameterName=ACCEL Z
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2030]
+ParameterName=TPDO4 ANALOG THRESHOLDS
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[2030sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=7
+PDOMapping=0
+
+[2030sub1]
+ParameterName=GYRO X
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2030sub2]
+ParameterName=GYRO Y
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2030sub3]
+ParameterName=GYRO Z
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2030sub4]
+ParameterName=ACCEL X
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2030sub5]
+ParameterName=ACCEL Y
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2030sub6]
+ParameterName=ACCEL Z
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
 
 [DigitalIOObjects]
 6000=1
