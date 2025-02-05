@@ -83,38 +83,6 @@ AccessType=ro
 DefaultValue=0x00000001  ; Replace with your Revision Number
 PDOMapping=0
 
-[1018sub0]
-ParameterName=Number of Entries
-ObjectType=0x5
-DataType=0x0005
-AccessType=ro
-DefaultValue=4
-PDOMapping=0
-
-[1018sub1]
-ParameterName=Vendor ID
-ObjectType=0x5
-DataType=0x0007
-AccessType=ro
-DefaultValue=0x000004D2  ; Replace with your Vendor ID
-PDOMapping=0
-
-[1018sub2]
-ParameterName=Product Code
-ObjectType=0x5
-DataType=0x0007
-AccessType=ro
-DefaultValue=0x0000162E  ; Replace with your Product Code
-PDOMapping=0
-
-[1018sub3]
-ParameterName=Revision Number
-ObjectType=0x5
-DataType=0x0007
-AccessType=ro
-DefaultValue=0x00000001  ; Replace with your Revision Number
-PDOMapping=0
-
 [RPDOParamsObjects]
 1400=5
 1401=5
@@ -559,7 +527,7 @@ AccessType=rw
 DefaultValue=0x00000000 ;
 PDOMapping=0
 
-[TPDOMappingObjects]
+[RPDOMappingObjects]
 1600=9
 1601=9
 1602=9
@@ -877,14 +845,14 @@ AccessType=rw
 DefaultValue=0x00000000 ;
 PDOMapping=0
 
-[RPDOMappingObjects]
+[TPDOMappingObjects]
 1A00=9
 1A01=9
 1A02=9
 1A03=9
 
 [1A00]
-ParameterName=RPDO1 MAPPING INDICES
+ParameterName=TPDO1 MAPPING INDICES
 ObjectType=0x9
 SubNumber=5
 PDOMapping=0
@@ -962,7 +930,7 @@ DefaultValue=0x00000000 ;
 PDOMapping=0
 
 [1A01]
-ParameterName=RPDO2 MAPPING INDICES
+ParameterName=TPDO2 MAPPING INDICES
 ObjectType=0x9
 SubNumber=5
 PDOMapping=0
@@ -1040,7 +1008,7 @@ DefaultValue=0x00000000 ;
 PDOMapping=0
 
 [1A02]
-ParameterName=RPDO3 MAPPING INDICES
+ParameterName=TPDO3 MAPPING INDICES
 ObjectType=0x9
 SubNumber=5
 PDOMapping=0
@@ -1118,7 +1086,7 @@ DefaultValue=0x00000000 ;
 PDOMapping=0
 
 [1A03]
-ParameterName=RPDO4 MAPPING INDICES
+ParameterName=TPDO4 MAPPING INDICES
 ObjectType=0x9
 SubNumber=5
 PDOMapping=0
@@ -1203,7 +1171,7 @@ PDOMapping=0
 0x2031=15
 
 [2001]
-ParameterName=TPDO1 MAPPING INDICES
+ParameterName=TPDO1 TRIGGERS DIRECTION
 ObjectType=0x9
 SubNumber=5
 PDOMapping=0
@@ -1329,7 +1297,7 @@ DefaultValue=0x00 ;
 PDOMapping=0
 
 [2011]
-ParameterName=TPDO2 MAPPING INDICES
+ParameterName=TPDO2 TRIGGERS DIRECTION
 ObjectType=0x9
 SubNumber=5
 PDOMapping=0
@@ -1455,7 +1423,7 @@ DefaultValue=0x00 ;
 PDOMapping=0
 
 [2021]
-ParameterName=TPDO3 MAPPING INDICES
+ParameterName=TPDO3 TRIGGERS DIRECTION
 ObjectType=0x9
 SubNumber=5
 PDOMapping=0
@@ -1581,7 +1549,7 @@ DefaultValue=0x00 ;
 PDOMapping=0
 
 [2031]
-ParameterName=TPDO4 MAPPING INDICES
+ParameterName=TPDO4 TRIGGERS DIRECTION
 ObjectType=0x9
 SubNumber=5
 PDOMapping=0

@@ -3,7 +3,7 @@ from PyQt6.QtCore import Qt,QTimer
 from PyQt6.QtWidgets import QApplication, QMainWindow,QWidget,QCheckBox
 from Frontend.src.CAN_IO_GUI import Ui_MainWindow
 from Backend.can_handler import CANBusHandler
-from Frontend.src.pdo_config import PDOconfig, TPDOconfig
+from Frontend.src.pdo_config import PDOconfig, TPDOconfig, get_value_from_text_box
 import sys
 import os
 
@@ -57,11 +57,16 @@ class MainWindow(QMainWindow):
       self.rpdo3 = PDOconfig(self.ui.RPDO_tab_widget,3,"R")
       self.rpdo4 = PDOconfig(self.ui.RPDO_tab_widget,4,"R")
 
+      self.sync_period = 0
 
+
+      # self.can_handler.node.tpdo[1].enabled = True   
         # Set up the timer to call update_label every 100ms
       self.timer = QTimer(self)
       # self.timer.timeout.connect(self.update_periodic_data)
-      # self.timer.start(100)  # 100 ms interval
+
+    def tpdo1_cb(self,message):
+      print(f"Received TPDO {message.cob_id:#04X}: {message.data.hex()}")
 
     def update_periodic_data(self):
       #  pass
@@ -111,9 +116,26 @@ class MainWindow(QMainWindow):
       self.ui.ButtonNMTResetComms.clicked.connect(self.can_handler.reset_comms_can_node)
 
       self.ui.PDO_apply_button.clicked.connect(self.handle_pdo_apply_button_click)
-      
       # Example: Connect a checkbox to a method
       self.ui.checkBoxOut1.stateChanged.connect(self.handle_checkbox_state_change)
+
+      self.ui.lineEdit_sync_period.returnPressed.connect(self.sync_on_enter_pressed)
+      self.ui.checkBox_sync_enable.stateChanged.connect(self.sync_checkbox_toggled)
+
+    def sync_on_enter_pressed(self):
+      self.sync_period = get_value_from_text_box(self.ui.lineEdit_sync_period.text())
+    
+    def sync_checkbox_toggled(self):
+      try:
+        if self.ui.checkBox_sync_enable.isChecked():
+          if (self.sync_period == None): 
+            print ("Sync period is incorrect: \"None\"")
+            return
+          self.can_handler.network.sync.start((self.sync_period/1000))
+        else:
+          self.can_handler.network.sync.stop()
+      except:
+        print ("Make sure the network is setup")
 
     def handle_pdo_apply_button_click(self):
       self.tpdo1.update_tpdo_config()
@@ -126,18 +148,27 @@ class MainWindow(QMainWindow):
       self.rpdo3.update_general_pdo_config()
       self.rpdo4.update_general_pdo_config()
 
-      print (self.tpdo1.mapped_indices)
-      self.can_handler.update_pdo_mapped_indices(self.tpdo1)
+      # self.can_handler.update_pdo_mapped_indices(self.tpdo1)
 
       # self.can_handler.update_tpdo_config(self.tpdo1)
-      # self.can_handler.update_tpdo_config(self.tpdo2)
-      # self.can_handler.update_tpdo_config(self.tpdo3)
-      # self.can_handler.update_tpdo_config(self.tpdo4)
+
+      self.can_handler.update_tpdo_config(self.tpdo1)
+      print ("TPDO1 Complete")
+      self.can_handler.update_tpdo_config(self.tpdo2)
+      print ("TPDO2 Complete")
+      self.can_handler.update_tpdo_config(self.tpdo3)
+      print ("TPDO3 Complete")
+      self.can_handler.update_tpdo_config(self.tpdo4)
+      print ("TPDO4 Complete")
       
-      # self.can_handler.update_rpdo_config(self.rpdo1)
-      # self.can_handler.update_rpdo_config(self.rpdo2)
-      # self.can_handler.update_rpdo_config(self.rpdo3)
-      # self.can_handler.update_rpdo_config(self.rpdo4)
+      self.can_handler.update_rpdo_config(self.rpdo1)
+      print ("RPDO1 Complete")
+      self.can_handler.update_rpdo_config(self.rpdo2)
+      print ("RPDO2 Complete")
+      self.can_handler.update_rpdo_config(self.rpdo3)
+      print ("RPDO3 Complete")
+      self.can_handler.update_rpdo_config(self.rpdo4)
+      print ("RPDO4 Complete")
       
         # Send output update to the device
       # self.can_handler.upate_pdo_registers()
@@ -151,6 +182,9 @@ class MainWindow(QMainWindow):
       self.can_handler.baud_rate = float(self.ui.comboBoxBaudRates.currentText())*1000
       print("Connect to ",device)
       print(self.can_handler.connect_device(device,self.can_handler.baud_rate))
+      # Configure the PDO's
+      self.can_handler.node.tpdo[1].add_callback(self.tpdo1_cb)
+
       # Update the status bar
       self.ui.statusbar.showMessage("Button was clicked!", 3000)
       
