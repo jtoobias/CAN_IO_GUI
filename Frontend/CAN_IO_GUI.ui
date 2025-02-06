@@ -21,13 +21,13 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
+      <y>20</y>
       <width>1021</width>
       <height>751</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Home_widget">
      <attribute name="title">
@@ -476,16 +476,178 @@ p, li { white-space: pre-wrap; }
       <property name="title">
        <string>Digital</string>
       </property>
-      <widget class="QWidget" name="formLayoutWidget_2">
+      <widget class="QWidget" name="gridLayoutWidget_10">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>40</y>
+         <width>121</width>
+         <height>282</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="OutputLayout">
+        <item row="6" column="0">
+         <widget class="QCheckBox" name="checkBoxOut6">
+          <property name="text">
+           <string>6</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" colspan="2">
+         <widget class="QLabel" name="labelOutputs">
+          <property name="text">
+           <string>Outputs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="0" colspan="2">
+         <widget class="QPushButton" name="ButtonOutput">
+          <property name="text">
+           <string>Set Outputs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QCheckBox" name="checkBoxOut5">
+          <property name="text">
+           <string>5</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QCheckBox" name="checkBoxOut1">
+          <property name="text">
+           <string>1</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Preferred</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>10</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="8" column="0">
+         <widget class="QCheckBox" name="checkBoxOut8">
+          <property name="text">
+           <string>8</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="0">
+         <widget class="QCheckBox" name="checkBoxOut7">
+          <property name="text">
+           <string>7</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QWidget" name="D0_LED_widget_1" native="true">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(192, 192, 192);
+border-radius: 100%;</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QCheckBox" name="checkBoxOut3">
+          <property name="text">
+           <string>3</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QCheckBox" name="checkBoxOut2">
+          <property name="text">
+           <string>2</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QCheckBox" name="checkBoxOut4">
+          <property name="text">
+           <string>4</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QWidget" name="D0_LED_widget_2" native="true">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(192, 192, 192);
+border-radius: 100%;</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QWidget" name="D0_LED_widget_3" native="true">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(192, 192, 192);
+border-radius: 100%;</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="2">
+         <widget class="QWidget" name="D0_LED_widget_4" native="true">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(192, 192, 192);
+border-radius: 100%;</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="2">
+         <widget class="QWidget" name="D0_LED_widget_5" native="true">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(192, 192, 192);
+border-radius: 100%;</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="2">
+         <widget class="QWidget" name="D0_LED_widget_6" native="true">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(192, 192, 192);
+border-radius: 100%;</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="2">
+         <widget class="QWidget" name="D0_LED_widget_7" native="true">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(192, 192, 192);
+border-radius: 100%;</string>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="2">
+         <widget class="QWidget" name="D0_LED_widget_8" native="true">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(192, 192, 192);
+border-radius: 100%;</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="gridLayoutWidget_11">
        <property name="geometry">
         <rect>
          <x>10</x>
          <y>40</y>
          <width>71</width>
-         <height>203</height>
+         <height>251</height>
         </rect>
        </property>
-       <layout class="QFormLayout" name="formLayout_12">
+       <layout class="QGridLayout" name="InputLayout">
         <item row="1" column="0">
          <widget class="QLabel" name="DI1_LED_label">
           <property name="text">
@@ -493,13 +655,21 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="1" column="1">
-         <widget class="QWidget" name="DI1_LED_widget" native="true">
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(85, 255, 0);
-border-radius: 50%;</string>
+        <item row="0" column="1">
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
           </property>
-         </widget>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>10</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="DI2_LED_label">
@@ -508,66 +678,17 @@ border-radius: 50%;</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="1">
-         <widget class="QWidget" name="DI2_LED_widget" native="true">
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(85, 255, 0);
-border-radius: 50%;</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1">
-         <widget class="QWidget" name="DI3_LED_widget" native="true">
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(85, 255, 0);
-border-radius: 50%;</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="QWidget" name="DI4_LED_widget" native="true">
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(85, 255, 0);
-border-radius: 50%;</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="1">
-         <widget class="QWidget" name="DI5_LED_widget" native="true">
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(85, 255, 0);
-border-radius: 50%;</string>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="1">
-         <widget class="QWidget" name="DI6_LED_widget" native="true">
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(85, 255, 0);
-border-radius: 50%;</string>
-          </property>
-         </widget>
-        </item>
-        <item row="7" column="1">
-         <widget class="QWidget" name="DI7_LED_widget" native="true">
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(85, 255, 0);
-border-radius: 50%;</string>
-          </property>
-         </widget>
-        </item>
-        <item row="8" column="1">
-         <widget class="QWidget" name="DI8_LED_widget" native="true">
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(85, 255, 0);
-border-radius: 50%;</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLabel" name="labelOutputs_11">
+        <item row="5" column="0">
+         <widget class="QLabel" name="DI5_LED_label">
           <property name="text">
-           <string>Inputs</string>
+           <string>5</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="0">
+         <widget class="QLabel" name="DI7_LED_label">
+          <property name="text">
+           <string>7</string>
           </property>
          </widget>
         </item>
@@ -585,10 +706,10 @@ border-radius: 50%;</string>
           </property>
          </widget>
         </item>
-        <item row="5" column="0">
-         <widget class="QLabel" name="DI5_LED_label">
+        <item row="0" column="0">
+         <widget class="QLabel" name="labelOutputs_11">
           <property name="text">
-           <string>5</string>
+           <string>Inputs</string>
           </property>
          </widget>
         </item>
@@ -599,13 +720,6 @@ border-radius: 50%;</string>
           </property>
          </widget>
         </item>
-        <item row="7" column="0">
-         <widget class="QLabel" name="DI7_LED_label">
-          <property name="text">
-           <string>7</string>
-          </property>
-         </widget>
-        </item>
         <item row="8" column="0">
          <widget class="QLabel" name="DI8_LED_label">
           <property name="text">
@@ -613,85 +727,67 @@ border-radius: 50%;</string>
           </property>
          </widget>
         </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="verticalLayoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>120</x>
-         <y>40</y>
-         <width>93</width>
-         <height>282</height>
-        </rect>
-       </property>
-       <layout class="QVBoxLayout" name="OutputLayout">
-        <item>
-         <widget class="QLabel" name="labelOutputs">
-          <property name="text">
-           <string>Outputs</string>
+        <item row="3" column="1">
+         <widget class="QWidget" name="DI_LED_widget_3" native="true">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(192, 192, 192);
+border-radius: 50%;</string>
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QCheckBox" name="checkBoxOut1">
-          <property name="text">
-           <string>1</string>
+        <item row="2" column="1">
+         <widget class="QWidget" name="DI_LED_widget_2" native="true">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(192, 192, 192);
+border-radius: 50%;</string>
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QCheckBox" name="checkBoxOut2">
-          <property name="text">
-           <string>2</string>
+        <item row="1" column="1">
+         <widget class="QWidget" name="DI_LED_widget_1" native="true">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(192, 192, 192);
+border-radius: 50%;</string>
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QCheckBox" name="checkBoxOut3">
-          <property name="text">
-           <string>3</string>
+        <item row="4" column="1">
+         <widget class="QWidget" name="DI_LED_widget_4" native="true">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(192, 192, 192);
+border-radius: 50%;</string>
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QCheckBox" name="checkBoxOut4">
-          <property name="text">
-           <string>4</string>
+        <item row="5" column="1">
+         <widget class="QWidget" name="DI_LED_widget_5" native="true">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(192, 192, 192);
+border-radius: 50%;</string>
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QCheckBox" name="checkBoxOut5">
-          <property name="text">
-           <string>5</string>
+        <item row="6" column="1">
+         <widget class="QWidget" name="DI_LED_widget_6" native="true">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(192, 192, 192);
+border-radius: 50%;</string>
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QCheckBox" name="checkBoxOut6">
-          <property name="text">
-           <string>6</string>
+        <item row="7" column="1">
+         <widget class="QWidget" name="DI_LED_widget_7" native="true">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(192, 192, 192);
+border-radius: 50%;</string>
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QCheckBox" name="checkBoxOut7">
-          <property name="text">
-           <string>7</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="checkBoxOut8">
-          <property name="text">
-           <string>8</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="ButtonOutput">
-          <property name="text">
-           <string>Set Outputs</string>
+        <item row="8" column="1">
+         <widget class="QWidget" name="DI_LED_widget_8" native="true">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(192, 192, 192);
+border-radius: 50%;</string>
           </property>
          </widget>
         </item>
@@ -755,7 +851,11 @@ border-radius: 50%;</string>
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QLineEdit" name="lineEdit_sync_period"/>
+        <widget class="QLineEdit" name="lineEdit_sync_period">
+         <property name="text">
+          <string>1000</string>
+         </property>
+        </widget>
        </item>
        <item row="1" column="0">
         <widget class="QCheckBox" name="checkBox_sync_enable">
@@ -781,7 +881,7 @@ border-radius: 50%;</string>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="TPDO1_tab">
        <attribute name="title">
@@ -800,7 +900,7 @@ border-radius: 50%;</string>
          <item row="1" column="0">
           <widget class="QLabel" name="COB_ID_label_2">
            <property name="text">
-            <string>COB ID</string>
+            <string>COB ID (Hex)</string>
            </property>
           </widget>
          </item>
@@ -837,7 +937,7 @@ border-radius: 50%;</string>
          <item row="3" column="0">
           <widget class="QLabel" name="Inhibit_time_label_2">
            <property name="text">
-            <string>Inhibit Time</string>
+            <string>Inhibit Time (ms)</string>
            </property>
           </widget>
          </item>
@@ -847,14 +947,14 @@ border-radius: 50%;</string>
             <string>sets the minimum time between PDO sends (ms)</string>
            </property>
            <property name="text">
-            <string>0</string>
+            <string>50</string>
            </property>
           </widget>
          </item>
          <item row="4" column="0">
           <widget class="QLabel" name="Transmit_period_label_2">
            <property name="text">
-            <string>Transmit Period</string>
+            <string>Transmit Period (ms)</string>
            </property>
           </widget>
          </item>
@@ -864,7 +964,7 @@ border-radius: 50%;</string>
             <string>Sets the send time (ms) in async mode</string>
            </property>
            <property name="text">
-            <string>1000</string>
+            <string>200</string>
            </property>
           </widget>
          </item>
@@ -902,7 +1002,7 @@ border-radius: 50%;</string>
           <x>290</x>
           <y>20</y>
           <width>191</width>
-          <height>241</height>
+          <height>271</height>
          </rect>
         </property>
         <property name="statusTip">
@@ -940,6 +1040,11 @@ border-radius: 50%;</string>
         </row>
         <row>
          <property name="text">
+          <string>Mapped 7</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
           <string>Mapped 8</string>
          </property>
         </row>
@@ -956,13 +1061,23 @@ border-radius: 50%;</string>
         </column>
         <item row="0" column="0">
          <property name="text">
-          <string>0x60000010</string>
+          <string>0x60030110</string>
          </property>
          <property name="toolTip">
           <string extracomment="0x[Index - subindex - size in bits]"/>
          </property>
         </item>
         <item row="1" column="0">
+         <property name="text">
+          <string>0x60030210</string>
+         </property>
+        </item>
+        <item row="2" column="0">
+         <property name="text">
+          <string>0x60030310</string>
+         </property>
+        </item>
+        <item row="3" column="0">
          <property name="text">
           <string>0x60020010</string>
          </property>
@@ -1806,7 +1921,7 @@ border-radius: 50%;</string>
          <item row="1" column="0">
           <widget class="QLabel" name="COB_ID_label_6">
            <property name="text">
-            <string>COB ID</string>
+            <string>COB ID (Hex)</string>
            </property>
           </widget>
          </item>
@@ -1814,6 +1929,9 @@ border-radius: 50%;</string>
           <widget class="QLineEdit" name="COB_ID_box_TPDO2">
            <property name="statusTip">
             <string>Choose the COB ID that is sent with this PDO</string>
+           </property>
+           <property name="text">
+            <string>283</string>
            </property>
           </widget>
          </item>
@@ -1832,12 +1950,15 @@ border-radius: 50%;</string>
            <property name="maximum">
             <number>255</number>
            </property>
+           <property name="value">
+            <number>255</number>
+           </property>
           </widget>
          </item>
          <item row="3" column="0">
           <widget class="QLabel" name="Inhibit_time_label_6">
            <property name="text">
-            <string>Inhibit Time</string>
+            <string>Inhibit Time (ms)</string>
            </property>
           </widget>
          </item>
@@ -1846,12 +1967,15 @@ border-radius: 50%;</string>
            <property name="statusTip">
             <string>sets the minimum time between PDO sends (ms)</string>
            </property>
+           <property name="text">
+            <string>50</string>
+           </property>
           </widget>
          </item>
          <item row="4" column="0">
           <widget class="QLabel" name="Transmit_period_label_6">
            <property name="text">
-            <string>Transmit Period</string>
+            <string>Transmit Period (ms)</string>
            </property>
           </widget>
          </item>
@@ -1859,6 +1983,9 @@ border-radius: 50%;</string>
           <widget class="QLineEdit" name="Transmit_period_box_TPDO2">
            <property name="statusTip">
             <string>Sets the send time (ms) in async mode</string>
+           </property>
+           <property name="text">
+            <string>200</string>
            </property>
           </widget>
          </item>
@@ -1896,7 +2023,7 @@ border-radius: 50%;</string>
           <x>290</x>
           <y>20</y>
           <width>191</width>
-          <height>241</height>
+          <height>271</height>
          </rect>
         </property>
         <property name="statusTip">
@@ -1934,6 +2061,11 @@ border-radius: 50%;</string>
         </row>
         <row>
          <property name="text">
+          <string>Mapped 7</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
           <string>Mapped 8</string>
          </property>
         </row>
@@ -1950,7 +2082,7 @@ border-radius: 50%;</string>
         </column>
         <item row="0" column="0">
          <property name="text">
-          <string/>
+          <string>0x60040110</string>
          </property>
          <property name="toolTip">
           <string extracomment="0x[Index - subindex - size in bits]"/>
@@ -1958,7 +2090,12 @@ border-radius: 50%;</string>
         </item>
         <item row="1" column="0">
          <property name="text">
-          <string/>
+          <string>0x60040210</string>
+         </property>
+        </item>
+        <item row="2" column="0">
+         <property name="text">
+          <string>0x60040310</string>
          </property>
         </item>
        </widget>
@@ -2528,7 +2665,7 @@ border-radius: 50%;</string>
          <item row="1" column="0">
           <widget class="QLabel" name="COB_ID_label_7">
            <property name="text">
-            <string>COB ID</string>
+            <string>COB ID (Hex)</string>
            </property>
           </widget>
          </item>
@@ -2536,6 +2673,9 @@ border-radius: 50%;</string>
           <widget class="QLineEdit" name="COB_ID_box_TPDO3">
            <property name="statusTip">
             <string>Choose the COB ID that is sent with this PDO</string>
+           </property>
+           <property name="text">
+            <string>383</string>
            </property>
           </widget>
          </item>
@@ -2554,12 +2694,15 @@ border-radius: 50%;</string>
            <property name="maximum">
             <number>255</number>
            </property>
+           <property name="value">
+            <number>255</number>
+           </property>
           </widget>
          </item>
          <item row="3" column="0">
           <widget class="QLabel" name="Inhibit_time_label_7">
            <property name="text">
-            <string>Inhibit Time</string>
+            <string>Inhibit Time (ms)</string>
            </property>
           </widget>
          </item>
@@ -2568,12 +2711,15 @@ border-radius: 50%;</string>
            <property name="statusTip">
             <string>sets the minimum time between PDO sends (ms)</string>
            </property>
+           <property name="text">
+            <string>10</string>
+           </property>
           </widget>
          </item>
          <item row="4" column="0">
           <widget class="QLabel" name="Transmit_period_label_7">
            <property name="text">
-            <string>Transmit Period</string>
+            <string>Transmit Period (ms)</string>
            </property>
           </widget>
          </item>
@@ -2581,6 +2727,9 @@ border-radius: 50%;</string>
           <widget class="QLineEdit" name="Transmit_period_box_TPDO3">
            <property name="statusTip">
             <string>Sets the send time (ms) in async mode</string>
+           </property>
+           <property name="text">
+            <string>3000</string>
            </property>
           </widget>
          </item>
@@ -2618,7 +2767,7 @@ border-radius: 50%;</string>
           <x>290</x>
           <y>20</y>
           <width>191</width>
-          <height>241</height>
+          <height>271</height>
          </rect>
         </property>
         <property name="statusTip">
@@ -2656,6 +2805,11 @@ border-radius: 50%;</string>
         </row>
         <row>
          <property name="text">
+          <string>Mapped 7</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
           <string>Mapped 8</string>
          </property>
         </row>
@@ -2672,13 +2826,43 @@ border-radius: 50%;</string>
         </column>
         <item row="0" column="0">
          <property name="text">
-          <string/>
+          <string>0x60000010</string>
          </property>
          <property name="toolTip">
           <string extracomment="0x[Index - subindex - size in bits]"/>
          </property>
         </item>
         <item row="1" column="0">
+         <property name="text">
+          <string>0x62000010</string>
+         </property>
+        </item>
+        <item row="2" column="0">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="3" column="0">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="4" column="0">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="5" column="0">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="6" column="0">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item row="7" column="0">
          <property name="text">
           <string/>
          </property>
@@ -3274,7 +3458,7 @@ border-radius: 50%;</string>
          <item row="1" column="0">
           <widget class="QLabel" name="COB_ID_label_8">
            <property name="text">
-            <string>COB ID</string>
+            <string>COB ID (Hex)</string>
            </property>
           </widget>
          </item>
@@ -3282,6 +3466,9 @@ border-radius: 50%;</string>
           <widget class="QLineEdit" name="COB_ID_box_TPDO4">
            <property name="statusTip">
             <string>Choose the COB ID that is sent with this PDO</string>
+           </property>
+           <property name="text">
+            <string/>
            </property>
           </widget>
          </item>
@@ -3305,7 +3492,7 @@ border-radius: 50%;</string>
          <item row="3" column="0">
           <widget class="QLabel" name="Inhibit_time_label_8">
            <property name="text">
-            <string>Inhibit Time</string>
+            <string>Inhibit Time (ms)</string>
            </property>
           </widget>
          </item>
@@ -3319,7 +3506,7 @@ border-radius: 50%;</string>
          <item row="4" column="0">
           <widget class="QLabel" name="Transmit_period_label_8">
            <property name="text">
-            <string>Transmit Period</string>
+            <string>Transmit Period (ms)</string>
            </property>
           </widget>
          </item>
@@ -3357,78 +3544,6 @@ border-radius: 50%;</string>
           </widget>
          </item>
         </layout>
-       </widget>
-       <widget class="QTableWidget" name="tableWidget_TPDO4">
-        <property name="geometry">
-         <rect>
-          <x>290</x>
-          <y>20</y>
-          <width>191</width>
-          <height>241</height>
-         </rect>
-        </property>
-        <property name="statusTip">
-         <string>Indices =&gt; 0x[Index][Sub Index][Size in bits]</string>
-        </property>
-        <row>
-         <property name="text">
-          <string>Mapped 1</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>Mapped 2</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>Mapped 3</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>Mapped 4</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>Mapped 5</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>Mapped 6</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>Mapped 8</string>
-         </property>
-        </row>
-        <column>
-         <property name="text">
-          <string>Mapped Indices</string>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-           <underline>true</underline>
-          </font>
-         </property>
-        </column>
-        <item row="0" column="0">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="toolTip">
-          <string extracomment="0x[Index - subindex - size in bits]"/>
-         </property>
-        </item>
-        <item row="1" column="0">
-         <property name="text">
-          <string/>
-         </property>
-        </item>
        </widget>
        <widget class="QWidget" name="gridLayoutWidget_8">
         <property name="geometry">
@@ -3724,6 +3839,77 @@ border-radius: 50%;</string>
          </item>
         </layout>
        </widget>
+       <widget class="QTableWidget" name="tableWidget_RPDO1_5">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>20</y>
+          <width>191</width>
+          <height>271</height>
+         </rect>
+        </property>
+        <property name="statusTip">
+         <string>Indices =&gt; 0x[Index][Sub Index][Size in bits]</string>
+        </property>
+        <row>
+         <property name="text">
+          <string>Mapped 1</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Mapped 2</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Mapped 3</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Mapped 4</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Mapped 5</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Mapped 6</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Mapped 7</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Mapped 8</string>
+         </property>
+        </row>
+        <column>
+         <property name="text">
+          <string>Indices</string>
+         </property>
+        </column>
+        <item row="0" column="0">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="toolTip">
+          <string extracomment="0x[Index - subindex - size in bits]"/>
+         </property>
+        </item>
+        <item row="1" column="0">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+       </widget>
       </widget>
      </widget>
      <widget class="QTabWidget" name="RPDO_tab_widget">
@@ -3732,11 +3918,11 @@ border-radius: 50%;</string>
         <x>10</x>
         <y>370</y>
         <width>501</width>
-        <height>291</height>
+        <height>321</height>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="RPDO1_tab">
        <attribute name="title">
@@ -3755,7 +3941,7 @@ border-radius: 50%;</string>
          <item row="0" column="0">
           <widget class="QLabel" name="COB_ID_label_11">
            <property name="text">
-            <string>COB ID</string>
+            <string>COB ID (Hex)</string>
            </property>
           </widget>
          </item>
@@ -3786,7 +3972,7 @@ border-radius: 50%;</string>
          <item row="2" column="0">
           <widget class="QLabel" name="Inhibit_time_label_11">
            <property name="text">
-            <string>Inhibit Time</string>
+            <string>Inhibit Time (ms)</string>
            </property>
           </widget>
          </item>
@@ -3800,7 +3986,7 @@ border-radius: 50%;</string>
          <item row="3" column="0">
           <widget class="QLabel" name="Transmit_period_label_11">
            <property name="text">
-            <string>Transmit Period</string>
+            <string>Transmit Period (ms)</string>
            </property>
           </widget>
          </item>
@@ -3819,7 +4005,7 @@ border-radius: 50%;</string>
           <x>290</x>
           <y>10</y>
           <width>191</width>
-          <height>241</height>
+          <height>271</height>
          </rect>
         </property>
         <property name="statusTip">
@@ -3857,6 +4043,11 @@ border-radius: 50%;</string>
         </row>
         <row>
          <property name="text">
+          <string>Mapped 7</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
           <string>Mapped 8</string>
          </property>
         </row>
@@ -3867,7 +4058,7 @@ border-radius: 50%;</string>
         </column>
         <item row="0" column="0">
          <property name="text">
-          <string>0x60000010</string>
+          <string/>
          </property>
          <property name="toolTip">
           <string extracomment="0x[Index - subindex - size in bits]"/>
@@ -3875,7 +4066,7 @@ border-radius: 50%;</string>
         </item>
         <item row="1" column="0">
          <property name="text">
-          <string>0x60020010</string>
+          <string/>
          </property>
         </item>
        </widget>
@@ -3897,7 +4088,7 @@ border-radius: 50%;</string>
          <item row="0" column="0">
           <widget class="QLabel" name="COB_ID_label_12">
            <property name="text">
-            <string>COB ID</string>
+            <string>COB ID (Hex)</string>
            </property>
           </widget>
          </item>
@@ -3928,7 +4119,7 @@ border-radius: 50%;</string>
          <item row="2" column="0">
           <widget class="QLabel" name="Inhibit_time_label_12">
            <property name="text">
-            <string>Inhibit Time</string>
+            <string>Inhibit Time (ms)</string>
            </property>
           </widget>
          </item>
@@ -3942,7 +4133,7 @@ border-radius: 50%;</string>
          <item row="3" column="0">
           <widget class="QLabel" name="Transmit_period_label_12">
            <property name="text">
-            <string>Transmit Period</string>
+            <string>Transmit Period (ms)</string>
            </property>
           </widget>
          </item>
@@ -3955,13 +4146,13 @@ border-radius: 50%;</string>
          </item>
         </layout>
        </widget>
-       <widget class="QTableWidget" name="tableWidget_RPDO2">
+       <widget class="QTableWidget" name="tableWidget_RPDO1_2">
         <property name="geometry">
          <rect>
           <x>290</x>
           <y>10</y>
           <width>191</width>
-          <height>241</height>
+          <height>271</height>
          </rect>
         </property>
         <property name="statusTip">
@@ -3995,6 +4186,11 @@ border-radius: 50%;</string>
         <row>
          <property name="text">
           <string>Mapped 6</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Mapped 7</string>
          </property>
         </row>
         <row>
@@ -4026,72 +4222,6 @@ border-radius: 50%;</string>
        <attribute name="title">
         <string>RPDO3</string>
        </attribute>
-       <widget class="QTableWidget" name="tableWidget_RPDO3">
-        <property name="geometry">
-         <rect>
-          <x>290</x>
-          <y>10</y>
-          <width>191</width>
-          <height>241</height>
-         </rect>
-        </property>
-        <property name="statusTip">
-         <string>Indices =&gt; 0x[Index][Sub Index][Size in bits]</string>
-        </property>
-        <row>
-         <property name="text">
-          <string>Mapped 1</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>Mapped 2</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>Mapped 3</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>Mapped 4</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>Mapped 5</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>Mapped 6</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>Mapped 8</string>
-         </property>
-        </row>
-        <column>
-         <property name="text">
-          <string>Indices</string>
-         </property>
-        </column>
-        <item row="0" column="0">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="toolTip">
-          <string extracomment="0x[Index - subindex - size in bits]"/>
-         </property>
-        </item>
-        <item row="1" column="0">
-         <property name="text">
-          <string/>
-         </property>
-        </item>
-       </widget>
        <widget class="QWidget" name="layoutWidget_6">
         <property name="geometry">
          <rect>
@@ -4105,7 +4235,7 @@ border-radius: 50%;</string>
          <item row="0" column="0">
           <widget class="QLabel" name="COB_ID_label_13">
            <property name="text">
-            <string>COB ID</string>
+            <string>COB ID (Hex)</string>
            </property>
           </widget>
          </item>
@@ -4136,7 +4266,7 @@ border-radius: 50%;</string>
          <item row="2" column="0">
           <widget class="QLabel" name="Inhibit_time_label_13">
            <property name="text">
-            <string>Inhibit Time</string>
+            <string>Inhibit Time (ms)</string>
            </property>
           </widget>
          </item>
@@ -4150,7 +4280,7 @@ border-radius: 50%;</string>
          <item row="3" column="0">
           <widget class="QLabel" name="Transmit_period_label_13">
            <property name="text">
-            <string>Transmit Period</string>
+            <string>Transmit Period (ms)</string>
            </property>
           </widget>
          </item>
@@ -4163,89 +4293,13 @@ border-radius: 50%;</string>
          </item>
         </layout>
        </widget>
-      </widget>
-      <widget class="QWidget" name="RPDO4_tab">
-       <attribute name="title">
-        <string>RPDO4</string>
-       </attribute>
-       <widget class="QWidget" name="layoutWidget_7">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>10</y>
-          <width>258</width>
-          <height>131</height>
-         </rect>
-        </property>
-        <layout class="QFormLayout" name="formLayout_18">
-         <item row="0" column="0">
-          <widget class="QLabel" name="COB_ID_label_14">
-           <property name="text">
-            <string>COB ID</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLineEdit" name="COB_ID_box_RPDO4">
-           <property name="statusTip">
-            <string>Choose the COB ID that is sent with this PDO</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="TxType_label_14">
-           <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Transmission&lt;br/&gt;Type&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QSpinBox" name="spinBox_RPDO4">
-           <property name="statusTip">
-            <string>Min of 0 and Max of 255. 0 = every sync, 255 = Sync Mode off</string>
-           </property>
-           <property name="maximum">
-            <number>255</number>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="Inhibit_time_label_14">
-           <property name="text">
-            <string>Inhibit Time</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLineEdit" name="Inhibit_time_box_RPDO4">
-           <property name="statusTip">
-            <string>sets the minimum time between PDO sends (ms)</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="Transmit_period_label_14">
-           <property name="text">
-            <string>Transmit Period</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QLineEdit" name="Transmit_period_box_RPDO4">
-           <property name="statusTip">
-            <string>Sets the send time (ms) in async mode</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QTableWidget" name="tableWidget_RPDO4">
+       <widget class="QTableWidget" name="tableWidget_RPDO1_3">
         <property name="geometry">
          <rect>
           <x>290</x>
           <y>10</y>
           <width>191</width>
-          <height>241</height>
+          <height>271</height>
          </rect>
         </property>
         <property name="statusTip">
@@ -4279,6 +4333,158 @@ border-radius: 50%;</string>
         <row>
          <property name="text">
           <string>Mapped 6</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Mapped 7</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Mapped 8</string>
+         </property>
+        </row>
+        <column>
+         <property name="text">
+          <string>Indices</string>
+         </property>
+        </column>
+        <item row="0" column="0">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="toolTip">
+          <string extracomment="0x[Index - subindex - size in bits]"/>
+         </property>
+        </item>
+        <item row="1" column="0">
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="RPDO4_tab">
+       <attribute name="title">
+        <string>RPDO4</string>
+       </attribute>
+       <widget class="QWidget" name="layoutWidget_7">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>10</y>
+          <width>258</width>
+          <height>131</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="formLayout_18">
+         <item row="0" column="0">
+          <widget class="QLabel" name="COB_ID_label_14">
+           <property name="text">
+            <string>COB ID (Hex)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="COB_ID_box_RPDO4">
+           <property name="statusTip">
+            <string>Choose the COB ID that is sent with this PDO</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="TxType_label_14">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Transmission&lt;br/&gt;Type&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QSpinBox" name="spinBox_RPDO4">
+           <property name="statusTip">
+            <string>Min of 0 and Max of 255. 0 = every sync, 255 = Sync Mode off</string>
+           </property>
+           <property name="maximum">
+            <number>255</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="Inhibit_time_label_14">
+           <property name="text">
+            <string>Inhibit Time (ms)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="Inhibit_time_box_RPDO4">
+           <property name="statusTip">
+            <string>sets the minimum time between PDO sends (ms)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="Transmit_period_label_14">
+           <property name="text">
+            <string>Transmit Period (ms)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLineEdit" name="Transmit_period_box_RPDO4">
+           <property name="statusTip">
+            <string>Sets the send time (ms) in async mode</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QTableWidget" name="tableWidget_RPDO1_4">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>10</y>
+          <width>191</width>
+          <height>271</height>
+         </rect>
+        </property>
+        <property name="statusTip">
+         <string>Indices =&gt; 0x[Index][Sub Index][Size in bits]</string>
+        </property>
+        <row>
+         <property name="text">
+          <string>Mapped 1</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Mapped 2</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Mapped 3</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Mapped 4</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Mapped 5</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Mapped 6</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Mapped 7</string>
          </property>
         </row>
         <row>

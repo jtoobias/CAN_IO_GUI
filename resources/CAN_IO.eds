@@ -106,7 +106,7 @@ PDOMapping=0
 [1400sub1]
 ParameterName=COB ID
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -122,7 +122,7 @@ PDOMapping=0
 [1400sub3]
 ParameterName=INHIBIT TIME
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -138,7 +138,7 @@ PDOMapping=0
 [1400sub5]
 ParameterName=TRANMIT PERIOD
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ;
 PDOMapping=0
@@ -160,7 +160,7 @@ PDOMapping=0
 [1401sub1]
 ParameterName=COB ID
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -176,7 +176,7 @@ PDOMapping=0
 [1401sub3]
 ParameterName=INHIBIT TIME
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -192,7 +192,7 @@ PDOMapping=0
 [1401sub5]
 ParameterName=TRANMIT PERIOD
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ;
 PDOMapping=0
@@ -214,7 +214,7 @@ PDOMapping=0
 [1402sub1]
 ParameterName=COB ID
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -230,7 +230,7 @@ PDOMapping=0
 [1402sub3]
 ParameterName=INHIBIT TIME
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -246,7 +246,7 @@ PDOMapping=0
 [1402sub5]
 ParameterName=TRANMIT PERIOD
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ;
 PDOMapping=0
@@ -268,7 +268,7 @@ PDOMapping=0
 [1403sub1]
 ParameterName=COB ID
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -284,7 +284,7 @@ PDOMapping=0
 [1403sub3]
 ParameterName=INHIBIT TIME
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -300,7 +300,7 @@ PDOMapping=0
 [1403sub5]
 ParameterName=TRANMIT PERIOD
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ;
 PDOMapping=0
@@ -328,7 +328,7 @@ PDOMapping=0
 [1800sub1]
 ParameterName=COB ID
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -344,7 +344,7 @@ PDOMapping=0
 [1800sub3]
 ParameterName=INHIBIT TIME
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -360,7 +360,7 @@ PDOMapping=0
 [1800sub5]
 ParameterName=TRANMIT PERIOD
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ;
 PDOMapping=0
@@ -382,7 +382,7 @@ PDOMapping=0
 [1801sub1]
 ParameterName=COB ID
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -398,7 +398,7 @@ PDOMapping=0
 [1801sub3]
 ParameterName=INHIBIT TIME
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -414,7 +414,7 @@ PDOMapping=0
 [1801sub5]
 ParameterName=TRANMIT PERIOD
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ;
 PDOMapping=0
@@ -436,7 +436,7 @@ PDOMapping=0
 [1802sub1]
 ParameterName=COB ID
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -452,7 +452,7 @@ PDOMapping=0
 [1802sub3]
 ParameterName=INHIBIT TIME
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -468,7 +468,7 @@ PDOMapping=0
 [1802sub5]
 ParameterName=TRANMIT PERIOD
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ;
 PDOMapping=0
@@ -490,7 +490,7 @@ PDOMapping=0
 [1803sub1]
 ParameterName=COB ID
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -506,7 +506,7 @@ PDOMapping=0
 [1803sub3]
 ParameterName=INHIBIT TIME
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -522,7 +522,7 @@ PDOMapping=0
 [1803sub5]
 ParameterName=TRANMIT PERIOD
 ObjectType=0x7  
-DataType=0x0006         ; UINT16_t
+DataType=0x0007         ; UINT32_t
 AccessType=rw
 DefaultValue=0x00000000 ;
 PDOMapping=0
@@ -2093,7 +2093,6 @@ DefaultValue=0.0
 PDOMapping=1
 
 [Mapping]
-TPDO1=6000,1,6200,1  ; Map Digital Inputs,Map Digital Outputs
-TPDO2=6002,1  ; Map Temperature 
-TPDO3=6003,3  ; Map Accelerometer X, Y, Z
-TPDO4=6004,3  ; Map Gyroscope X, Y, Z
+TPDO1=6003,3  ; Map Accelerometer X, Y, Z, Temperature
+TPDO2=6004,3  ; Map Gyroscope X, Y, Z
+TPDO3=6000,1,6200,1  ; Map Digital Inputs,Map Digital Outputs

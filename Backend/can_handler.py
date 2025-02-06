@@ -164,13 +164,13 @@ class CANBusHandler:
         return True
 
     
-    def start_can_node(self):
+    def start_can_node(self,sync_enabled,sync_period):
         if (self.node == None): 
             print ("Node not connected")
             return
         print ("Start")
         self.node.nmt.state = 'OPERATIONAL'
-        self.network.sync.start(2)
+        if (sync_enabled):self.network.sync.start(sync_period)
 
 
     def stop_can_node(self):
@@ -277,17 +277,18 @@ class CANBusHandler:
             print ("PDO type not correct: ",pdo.pdo_type) 
 
         if (pdo.cob_id > -1): 
+            print (f"Sending COB id: {pdo.cob_id:X}")
             self.send_sdo(index,self.__PDO_COMM_PARAM_COB_ID_SUBINDEX_OD,pdo.cob_id)
-            time.sleep(0.01)
+            time.sleep(0.05)
         if (pdo.transmission_type_value > -1): 
             self.send_sdo(index,self.__PDO_COMM_PARAM_TRANS_TYPE_SUBINDEX_OD,pdo.transmission_type_value)
-            time.sleep(0.01)
+            time.sleep(0.05)
         if (pdo.inhibit_time > -1): 
             self.send_sdo(index,self.__PDO_COMM_PARAM_INHIBIT_TIME_SUBINDEX_OD,pdo.inhibit_time)
-            time.sleep(0.01)
+            time.sleep(0.05)
         if (pdo.transmit_period > -1): 
             self.send_sdo(index,self.__PDO_COMM_PARAM_EVENT_TIMER_SUBINDEX_OD,pdo.transmit_period)
-            time.sleep(0.01)
+            time.sleep(0.05)
 
     def update_pdo_mapped_indices(self,pdo:PDOconfig|TPDOconfig):
         if (pdo.pdo_type == "T"):
@@ -309,12 +310,11 @@ class CANBusHandler:
         else:
             print ("PDO type not correct: ",pdo.pdo_type) 
 
-        print (pdo.mapped_indices)
         for offset,mapped_index in enumerate(pdo.mapped_indices):
             if (mapped_index == -1): break
             print (mapped_index)
             self.send_sdo(index,(self.__PDO_MAPPING_SUBINDEX_ENTRY_1_OD+offset),mapped_index)
-            time.sleep(0.01)
+            time.sleep(0.05)
 
     def update_tpdo_triggers(self,tpdo:TPDOconfig):
         if (tpdo.pdo_num == 1): index = self.__TPDO1_TRIGGER_DIRS_OD
@@ -327,7 +327,7 @@ class CANBusHandler:
             # self.send_sdo(index,(self.__TRIGGER_IN_1_SUBINDEX_OD+offset),tValue)
 
             self._send_message(self.__RSDO,1,index,(self.__TRIGGER_IN_1_SUBINDEX_OD+offset),1,[tValue])
-            time.sleep(0.01)
+            time.sleep(0.05)
 
     def update_tpdo_analog_thresholds(self,tpdo:TPDOconfig):
         if (tpdo.pdo_num == 1): index = self.__TPDO1_ANALOG_THRESHOLDS_OD
@@ -338,7 +338,7 @@ class CANBusHandler:
         for offset,aValue in enumerate(tpdo.analog_thresholds):
             if (aValue == None): continue
             self.send_sdo(index,(self.__ANALOG_INPUT_1_SUBINDEX_OD+offset),aValue)
-            time.sleep(0.01)
+            time.sleep(0.05)
     
     def update_tpdo_config(self,tpdo:TPDOconfig):
         self.update_pdo_comms_parameters(tpdo)

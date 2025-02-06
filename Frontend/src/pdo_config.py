@@ -15,7 +15,7 @@ def get_value_from_text_box(text:str):
 			return None 
 
 class PDOconfig():
-   
+	__PDO_DISABLED_ID = 0x80000000
 	def __init__(self,tab:QWidget,pdo_num:int,pdo_type:str):
 		# self.canh = canh
 		self.tab = tab
@@ -53,9 +53,10 @@ class PDOconfig():
 
 	def update_pdo_comms_parameters(self):
 		try:
-			value = get_value_from_text_box(self.tab.findChild(QLineEdit, f"COB_ID_box_{self.pdo_type}PDO{self.pdo_num}").text())
-			if (value != None): self.cob_id = int(value)
-			else: self.cob_id = -1
+			value = self.tab.findChild(QLineEdit, f"COB_ID_box_{self.pdo_type}PDO{self.pdo_num}")
+			  # Check if item is not empty
+			if value and value.text(): self.cob_id = int(value.text(), 16)
+			else: self.cob_id = self.__PDO_DISABLED_ID
 			value = get_value_from_text_box(self.tab.findChild(QLineEdit, f"Inhibit_time_box_{self.pdo_type}PDO{self.pdo_num}").text())
 			if (value != None): self.inhibit_time = int(value)
 			else: self.inhibit_time = -1

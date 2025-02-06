@@ -6,6 +6,9 @@ from Backend.can_handler import CANBusHandler
 from Frontend.src.pdo_config import PDOconfig, TPDOconfig, get_value_from_text_box
 import sys
 import os
+from functools import partial
+import struct
+
 
 class CustomComboBox(QtWidgets.QComboBox):
   def showPopup(self):
@@ -39,6 +42,9 @@ class MainWindow(QMainWindow):
       self.ui = Ui_MainWindow()
       self.ui.setupUi(self)
       self.can_handler = CANBusHandler()
+      
+      self.sync_period = 0
+      self.sync_enabled = False
         # Use the custom ComboBox
       self.ui.comboBoxConnections = CustomComboBox(self.ui.comboBoxConnections)
       self.ui.comboBoxBaudRates.addItems(["1000","500","250","125","62.5"])
@@ -57,8 +63,8 @@ class MainWindow(QMainWindow):
       self.rpdo3 = PDOconfig(self.ui.RPDO_tab_widget,3,"R")
       self.rpdo4 = PDOconfig(self.ui.RPDO_tab_widget,4,"R")
 
-      self.sync_period = 0
-
+      self.known_output_state = 0
+      self.known_input_state = 0
 
       # self.can_handler.node.tpdo[1].enabled = True   
         # Set up the timer to call update_label every 100ms
@@ -66,7 +72,82 @@ class MainWindow(QMainWindow):
       # self.timer.timeout.connect(self.update_periodic_data)
 
     def tpdo1_cb(self,message):
-      print(f"Received TPDO {message.cob_id:#04X}: {message.data.hex()}")
+      # Handle Acceleration data
+      # print(f"Received TPDO {message.cob_id:#04X}: {message.data.hex()}")
+      # Extract values
+      if not message.data:  
+        print("Error: TPDO1 message.data is empty!")
+        return
+      tmp_val = struct.unpack('<h', message.data[0:2])[0]  # First 2 bytes
+      accel_x = self.can_handler.to_int16(tmp_val)/100
+      tmp_val = struct.unpack('<h', message.data[2:4])[0]  # Next 2 bytes
+      accel_y = self.can_handler.to_int16(tmp_val)/100
+      tmp_val = struct.unpack('<h', message.data[4:6])[0]  # Next 2 bytes
+      accel_z = self.can_handler.to_int16(tmp_val)/100
+      tmp_val = struct.unpack('<h', message.data[6:8])[0]  # Next 2 bytes
+      temp = self.can_handler.to_int16(tmp_val)/10
+      self.ui.AccelLcdX.display(accel_x)
+      self.ui.AccelLcdY.display(accel_y)
+      self.ui.AccelLcdZ.display(accel_z)
+      self.ui.TempLcd.display(temp)
+      
+    def tpdo2_cb(self,message):
+      if not message.data:  
+        print("Error: TPDO2 message.data is empty!")
+        return
+      # Handle Acceleration data
+      # print(f"Received TPDO {message.cob_id:#04X}: {message.data.hex()}")
+      # Extract values
+      tmp_val = struct.unpack('<h', message.data[0:2])[0]  # First 2 bytes
+      gyro_x = self.can_handler.to_int16(tmp_val)/100
+      tmp_val = struct.unpack('<h', message.data[2:4])[0]  # Next 2 bytes
+      gyro_y = self.can_handler.to_int16(tmp_val)/100
+      tmp_val = struct.unpack('<h', message.data[4:6])[0]  # Next 2 bytes
+      gyro_z = self.can_handler.to_int16(tmp_val)/100
+      self.ui.GyroLcdX.display(gyro_x)
+      self.ui.GyroLcdY.display(gyro_y)
+      self.ui.GyroLcdZ.display(gyro_z)
+    
+    def tpdo3_cb(self,message):
+      # Handle IO data
+      if not message.data:  
+        print("Error: TPDO3 message.data is empty!")
+        return
+      # print(f"Received TPDO {message.cob_id:#04X}: {message.data.hex()}")
+
+      # Extract values
+      tmp_val = struct.unpack('<h', message.data[0:2])[0]  # First 2 bytes
+      current_input_states = self.can_handler.to_int16(tmp_val)
+      tmp_val = struct.unpack('<h', message.data[2:4])[0]  # Next 2 bytes
+      current_output_states = self.can_handler.to_int16(tmp_val)
+      self.change_io_indicator_background(self.ui.DI_LED_widget_1,current_input_states,self.known_input_state,0x01)
+      self.change_io_indicator_background(self.ui.DI_LED_widget_2,current_input_states,self.known_input_state,0x02)
+      self.change_io_indicator_background(self.ui.DI_LED_widget_3,current_input_states,self.known_input_state,0x04)
+      self.change_io_indicator_background(self.ui.DI_LED_widget_4,current_input_states,self.known_input_state,0x08)
+      self.change_io_indicator_background(self.ui.DI_LED_widget_5,current_input_states,self.known_input_state,0x10)
+      self.change_io_indicator_background(self.ui.DI_LED_widget_6,current_input_states,self.known_input_state,0x20)
+      self.change_io_indicator_background(self.ui.DI_LED_widget_7,current_input_states,self.known_input_state,0x40)
+      self.change_io_indicator_background(self.ui.DI_LED_widget_8,current_input_states,self.known_input_state,0x80)
+      
+      self.change_io_indicator_background(self.ui.D0_LED_widget_1,current_output_states,self.known_output_state,0x01)
+      self.change_io_indicator_background(self.ui.D0_LED_widget_2,current_output_states,self.known_output_state,0x02)
+      self.change_io_indicator_background(self.ui.D0_LED_widget_3,current_output_states,self.known_output_state,0x04)
+      self.change_io_indicator_background(self.ui.D0_LED_widget_4,current_output_states,self.known_output_state,0x08)
+      self.change_io_indicator_background(self.ui.D0_LED_widget_5,current_output_states,self.known_output_state,0x10)
+      self.change_io_indicator_background(self.ui.D0_LED_widget_6,current_output_states,self.known_output_state,0x20)
+      self.change_io_indicator_background(self.ui.D0_LED_widget_7,current_output_states,self.known_output_state,0x40)
+      self.change_io_indicator_background(self.ui.D0_LED_widget_8,current_output_states,self.known_output_state,0x80)
+      self.known_input_state = current_input_states
+      self.known_output_state = current_output_states
+      # print (f"OUT: {current_output_states}, IN {current_input_states}")
+
+    def change_io_indicator_background(self,widget:QWidget,io_state:int,known_io_state:int,bit_mask:int):
+        # Is there a Change on that bit? 
+      if ((io_state & bit_mask) != (known_io_state & bit_mask)):
+        if (io_state & bit_mask): widget.setStyleSheet("background-color: rgb(46, 204, 113);")  # Green
+        else:widget.setStyleSheet("background-color: rgb(192, 192, 192);")  # Green
+
+
 
     def update_periodic_data(self):
       #  pass
@@ -98,6 +179,7 @@ class MainWindow(QMainWindow):
         checkbox = self.sender()
         if isinstance(checkbox, QCheckBox):
           position = int(checkbox.text())-1
+          print ("Pos: ",position)
           if (state == 2):
             self.check_boxes_states |= 1 << position
           else:
@@ -110,7 +192,7 @@ class MainWindow(QMainWindow):
       # Example: Connect a button to a method
       self.ui.ButtonConnect.clicked.connect(self.handle_connect_button_click)
       self.ui.ButtonOutput.clicked.connect(self.handle_set_outputs_button_click)
-      self.ui.ButtonNMTStart.clicked.connect(self.can_handler.start_can_node)
+      self.ui.ButtonNMTStart.clicked.connect(partial(self.can_handler.start_can_node, self.sync_enabled, self.sync_period))
       self.ui.ButtonNMTStop.clicked.connect(self.can_handler.stop_can_node)
       self.ui.ButtonNMTRestart.clicked.connect(self.can_handler.restart_can_node)
       self.ui.ButtonNMTResetComms.clicked.connect(self.can_handler.reset_comms_can_node)
@@ -132,8 +214,10 @@ class MainWindow(QMainWindow):
             print ("Sync period is incorrect: \"None\"")
             return
           self.can_handler.network.sync.start((self.sync_period/1000))
+          self.sync_enabled = True
         else:
           self.can_handler.network.sync.stop()
+          self.sync_enabled = False
       except:
         print ("Make sure the network is setup")
 
@@ -182,8 +266,23 @@ class MainWindow(QMainWindow):
       self.can_handler.baud_rate = float(self.ui.comboBoxBaudRates.currentText())*1000
       print("Connect to ",device)
       print(self.can_handler.connect_device(device,self.can_handler.baud_rate))
+
       # Configure the PDO's
       self.can_handler.node.tpdo[1].add_callback(self.tpdo1_cb)
+      self.can_handler.node.tpdo[1].cob_id = 0x183  # Set custom COB-ID
+      self.can_handler.node.tpdo[1].enabled = True   # Ensure TPDO is enabled
+
+      self.can_handler.node.tpdo[2].add_callback(self.tpdo2_cb)
+      self.can_handler.node.tpdo[2].cob_id = 0x283  # Set custom COB-ID
+      self.can_handler.node.tpdo[2].enabled = True   # Ensure TPDO is enabled
+      
+      self.can_handler.node.tpdo[3].add_callback(self.tpdo3_cb)
+      self.can_handler.node.tpdo[3].cob_id = 0x383  # Set custom COB-ID
+      self.can_handler.node.tpdo[3].enabled = True   # Ensure TPDO is enabled
+      self.can_handler.node.tpdo.subscribe()
+
+      # self.can_handler.node.tpdo.save()              # Save settings
+      # print(f"Mapped objects: {self.can_handler.node.tpdo[1].map}")
 
       # Update the status bar
       self.ui.statusbar.showMessage("Button was clicked!", 3000)
