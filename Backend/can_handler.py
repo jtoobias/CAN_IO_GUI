@@ -205,6 +205,22 @@ class CANBusHandler:
         self.node.sdo[0x6200].raw = output_value
         # self._send_message(self.__RSDO,[output_value])
 
+    def sdo_set_temperature_offset(self,temperature_offset:int):
+        if (self.node == None): 
+            print ("Node not connected")
+            return
+        self.node.sdo[0x3002].raw = temperature_offset*10
+    
+    def sdo_set_imu_offsets(self,accel_offset,gyro_offset:int):
+        if (self.node == None): 
+            print ("Node not connected")
+            return
+        for i in range(len(accel_offset)):
+            self.node.sdo[0x3000][i+1].raw = accel_offset[i]*100
+            time.sleep(0.05)
+            self.node.sdo[0x3001][i+1].raw = gyro_offset[i]*100
+            time.sleep(0.05)
+
     def sdo_read_inputs(self) -> int:
         if (self.node == None): 
             return
@@ -419,7 +435,7 @@ class CANBusHandler:
 
     def send_rpdo_message(self,cob_id:int,num_bits:list[int],data:list[int]) -> bool:
         byte_format = []
-        print (f"Post: cid: {cob_id} ,Data: {data} bits: {num_bits}")
+        # print (f"Post: cid: {cob_id} ,Data: {data} bits: {num_bits}")
         # print (data)
         for d in num_bits:
             tmp_val = int(d/8)

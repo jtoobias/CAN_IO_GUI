@@ -9,7 +9,28 @@ import os
 from functools import partial
 import struct
 
+G_ACCEL = 9.80665
 
+class RunningAvg():
+  def __init__(self,buffer_size):
+    self.running_avg_size = buffer_size
+    self.buffer = [0.0]*self.running_avg_size
+    self.index = 0
+    self.count = 0
+    self.value = 0.0
+
+  def update_running_avg(self,new_value):
+      """Add a new value and return the running average."""
+      # Replace the oldest value with the new one
+      self.buffer[self.index] = new_value
+      # Move index forward cyclically
+      self.index = (self.index + 1) % self.running_avg_size
+      # Increase count until the buffer is full
+      if self.count < self.running_avg_size:
+        self.count += 1
+      # Compute and return the average
+      self.value = sum(self.buffer[:self.count]) / self.count
+  
 class CustomComboBox(QtWidgets.QComboBox):
   def showPopup(self):
     """Override showPopup to update the items before showing."""
@@ -67,6 +88,15 @@ class MainWindow(QMainWindow):
       self.known_output_state = 0
       self.known_input_state = 0
 
+      self.accel_x_avg = RunningAvg(3)
+      self.accel_y_avg = RunningAvg(3)
+      self.accel_z_avg = RunningAvg(3)
+      self.gyro_x_avg = RunningAvg(3)
+      self.gyro_y_avg = RunningAvg(3)
+      self.gyro_z_avg = RunningAvg(3)
+
+
+
       # self.can_handler.node.tpdo[1].enabled = True   
         # Set up the timer to call update_label every 100ms
       self.timer = QTimer(self)
@@ -102,18 +132,24 @@ class MainWindow(QMainWindow):
         elif (index == self.can_handler.ACCEL_INDEX_OD):
           tmp_val /= 100
           if (sub_index == self.can_handler.ACCEL_X_SUBINDEX_OD):
+            self.accel_x_avg.update_running_avg(tmp_val)
             self.ui.AccelLcdX.display(tmp_val)
           elif (sub_index == self.can_handler.ACCEL_Y_SUBINDEX_OD):
+            self.accel_y_avg.update_running_avg(tmp_val)
             self.ui.AccelLcdY.display(tmp_val)
           elif (sub_index == self.can_handler.ACCEL_Z_SUBINDEX_OD):
+            self.accel_z_avg.update_running_avg(tmp_val)
             self.ui.AccelLcdZ.display(tmp_val)
         elif (index == self.can_handler.GYRO_INDEX_OD):
           tmp_val /= 100
           if (sub_index == self.can_handler.GYRO_X_SUBINDEX_OD):
+            self.gyro_x_avg.update_running_avg(tmp_val)
             self.ui.GyroLcdX.display(tmp_val)
           elif (sub_index == self.can_handler.GYRO_Y_SUBINDEX_OD):
+            self.gyro_x_avg.update_running_avg(tmp_val)
             self.ui.GyroLcdY.display(tmp_val)
           elif (sub_index == self.can_handler.GYRO_Z_SUBINDEX_OD):
+            self.gyro_x_avg.update_running_avg(tmp_val)
             self.ui.GyroLcdZ.display(tmp_val)
         else:
           print (f"Mapped index doesn't align with what is usable for TPDO: {mapped_index} {k}")
@@ -126,55 +162,20 @@ class MainWindow(QMainWindow):
         print("Error: TPDO1 message.data is empty!")
         return
       self.tpdo_cb(message,self.tpdo1)
-      # tmp_val = struct.unpack('<h', message.data[0:2])[0]  # First 2 bytes
-      # accel_x = self.can_handler.to_int16(tmp_val)/100
-      # tmp_val = struct.unpack('<h', message.data[2:4])[0]  # Next 2 bytes
-      # accel_y = self.can_handler.to_int16(tmp_val)/100
-      # tmp_val = struct.unpack('<h', message.data[4:6])[0]  # Next 2 bytes
-      # accel_z = self.can_handler.to_int16(tmp_val)/100
-      # tmp_val = struct.unpack('<h', message.data[6:8])[0]  # Next 2 bytes
-      # temp = self.can_handler.to_int16(tmp_val)/10
-      # self.ui.AccelLcdX.display(accel_x)
-      # self.ui.AccelLcdY.display(accel_y)
-      # self.ui.AccelLcdZ.display(accel_z)
-      # self.ui.TempLcd.display(temp)
-     
+
     def tpdo2_cb(self,message):
       if not message.data:  
         print("Error: TPDO2 message.data is empty!")
         return
       
       self.tpdo_cb(message,self.tpdo2)
-      # Handle Acceleration data
-      # print(f"Received TPDO {message.cob_id:#04X}: {message.data.hex()}")
-      # # Extract values
-      # tmp_val = struct.unpack('<h', message.data[0:2])[0]  # First 2 bytes
-      # gyro_x = self.can_handler.to_int16(tmp_val)/100
-      # tmp_val = struct.unpack('<h', message.data[2:4])[0]  # Next 2 bytes
-      # gyro_y = self.can_handler.to_int16(tmp_val)/100
-      # tmp_val = struct.unpack('<h', message.data[4:6])[0]  # Next 2 bytes
-      # gyro_z = self.can_handler.to_int16(tmp_val)/100
-      # self.ui.GyroLcdX.display(gyro_x)
-      # self.ui.GyroLcdY.display(gyro_y)
-      # self.ui.GyroLcdZ.display(gyro_z)
     
     def tpdo3_cb(self,message):
       # Handle IO data
       if not message.data:  
         print("Error: TPDO3 message.data is empty!")
         return
-      
       self.tpdo_cb(message,self.tpdo3)
-      # # Extract values
-      # tmp_val = struct.unpack('<h', message.data[0:2])[0]  # First 2 bytes
-      # current_input_states = self.can_handler.to_int16(tmp_val)
-      # tmp_val = struct.unpack('<h', message.data[2:4])[0]  # Next 2 bytes
-      # current_output_states = self.can_handler.to_int16(tmp_val)
-      # self.update_input_indicators(current_input_states)
-      # self.update_output_indicators(current_output_states)
-      # self.known_input_state = current_input_states
-      # self.known_output_state = current_output_states
-      # # print (f"OUT: {current_output_states}, IN {current_input_states}")
 
     def update_input_indicators(self,input_status:int):
       self.change_io_indicator_background(self.ui.DI_LED_widget_1,input_status,self.known_input_state,0x01)
@@ -241,7 +242,26 @@ class MainWindow(QMainWindow):
             self.check_boxes_states &= (0xFF ^(1 << position))
           
           print(f"{checkbox.text()} changed to {state} {'Checked' if state == 2 else 'Unchecked'}")
+      
+    def on_temperature_offset_button_clicked(self):
+      temperature_offset = get_value_from_text_box(self.ui.lineEdit_TempOffset.text())
+      # Send sdo 
+      self.can_handler.sdo_set_temperature_offset(temperature_offset)
 
+    def on_imu_offset_button_clicked(self):
+      # z value should be 'g' x and y = 0 for accelerometer
+      # gyro values should be zeros
+      # Use the average value to set offsets
+      accel_offsets = []
+      gyro_offsets = []
+      accel_offsets.append(-self.accel_x_avg.value)
+      accel_offsets.append(-self.accel_y_avg.value)
+      accel_offsets.append(-(self.accel_z_avg.value-G_ACCEL))
+      gyro_offsets.append(-self.gyro_x_avg.value)
+      gyro_offsets.append(-self.gyro_y_avg.value)
+      gyro_offsets.append(-self.gyro_z_avg.value)
+      # Send sdo 
+      self.can_handler.sdo_set_imu_offsets(accel_offsets,gyro_offsets)
 
     def setup_connections(self):
       # Example: Connect a button to a method
@@ -263,6 +283,9 @@ class MainWindow(QMainWindow):
       self.ui.ButtonRPDO2Send.clicked.connect(partial(self.handle_rpdo_button_click, self.rpdo2,2))
       self.ui.ButtonRPDO3Send.clicked.connect(partial(self.handle_rpdo_button_click, self.rpdo3,3))
       self.ui.ButtonRPDO4Send.clicked.connect(partial(self.handle_rpdo_button_click, self.rpdo4,4))
+
+      self.ui.ButtonIMUOffset.clicked.connect(self.on_imu_offset_button_clicked)
+      self.ui.ButtonIMU_TempOffset.clicked.connect(self.on_temperature_offset_button_clicked)
 
     def sync_on_enter_pressed(self):
       self.sync_period = get_value_from_text_box(self.ui.lineEdit_sync_period.text())
@@ -314,26 +337,12 @@ class MainWindow(QMainWindow):
       self.can_handler.update_rpdo_config(self.rpdo4)
       print ("RPDO4 Complete")
       
-        # Send output update to the device
-      # self.can_handler.upate_pdo_registers()
-      
-    # Load values into the RPDO buffer (not using SDOs)
-# node.rpdo[1][0].raw = 1234  # First mapped variable
-# node.rpdo[1][1].raw = 5678  # Second mapped variable
-
-# # Transmit the RPDO
-# node.rpdo[1].transmit()
-
-		# For RPDO
-		# I need a way to trigger RPDO sends, have a button
-
     def handle_rpdo_button_click(self,rpdo:PDOconfig,rpdo_num:int):
       data_set = False
       num_bits = []
       data = []
         # loop through mapped indices and load the correct data and transmit
       for k,mapped_index in enumerate(rpdo.mapped_indices):
-        print (f"{mapped_index:X}, {k}")
         if (mapped_index == -1): break
         index = mapped_index >> 16
         num_bytes = mapped_index & 0xFF
@@ -345,7 +354,6 @@ class MainWindow(QMainWindow):
         else:
           print (f"Mapped index doesn't align with what is usable for RPDO: {mapped_index} {k}")
       if (data_set): 
-        print ("Pre: ",data,num_bytes)
         self.can_handler.send_rpdo_message(rpdo.cob_id,num_bits,data)
 
     def handle_connect_button_click(self):
@@ -389,6 +397,7 @@ class MainWindow(QMainWindow):
       else:
           print("Checkbox unchecked!")
 
+    
 if __name__ == "__main__":
   app = QApplication(sys.argv)
   main_window = MainWindow()

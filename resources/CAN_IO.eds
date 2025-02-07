@@ -1928,6 +1928,96 @@ AccessType=rw
 DefaultValue=0x0000 ; 
 PDOMapping=0
 
+[SensorOffsets]
+3000=4
+3001=4
+3002=1
+
+
+[3000]
+ParameterName=Accelerometer (X, Y, Z)
+ObjectType=0x9  ; Array
+SubNumber=3
+PDOMapping=1
+
+[3000sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=3
+PDOMapping=0
+
+[3000sub1]
+ParameterName=Accelerometer X
+ObjectType=0x5
+DataType=0x0003  ; INT16
+AccessType=ro
+DefaultValue=0.0
+PDOMapping=1
+
+[3000sub2]
+ParameterName=Accelerometer Y
+ObjectType=0x5
+DataType=0x0003  ; INT16
+AccessType=ro
+DefaultValue=0.0
+PDOMapping=1
+
+[3000sub3]
+ParameterName=Accelerometer Z
+ObjectType=0x5
+DataType=0x0003  ; INT16
+AccessType=ro
+DefaultValue=0.0
+PDOMapping=1
+
+[3001]
+ParameterName=Gyroscope (X, Y, Z)
+ObjectType=0x9  ; Array
+SubNumber=3
+PDOMapping=1
+
+[3001sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=3
+PDOMapping=0
+
+[3001sub1]
+ParameterName=Gyroscope X
+ObjectType=0x5
+DataType=0x0003  ; INT16
+AccessType=ro
+DefaultValue=0.0
+PDOMapping=1
+
+[3001sub2]
+ParameterName=Gyroscope Y
+ObjectType=0x5
+DataType=0x0003  ; INT16
+AccessType=ro
+DefaultValue=0.0
+PDOMapping=1
+
+[3001sub3]
+ParameterName=Gyroscope Z
+ObjectType=0x5
+DataType=0x0003  ; INT16
+AccessType=ro
+DefaultValue=0.0
+PDOMapping=1
+
+[3002]
+ParameterName=Temperature Sensor
+ObjectType=0x7
+DataType=0x0003   ; INT16
+AccessType=ro
+DefaultValue=0.0
+PDOMapping=1
+
 [DigitalIOObjects]
 6000=1
 6200=1
