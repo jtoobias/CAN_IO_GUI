@@ -122,21 +122,21 @@ class CANBusHandler:
     __ANALOG_INPUT_6_SUBINDEX_OD  = 0x06
 
 
-    __INPUT_INDEX_OD                = 0x6000
-    __INPUT_SUBINDEX_OD             = 0x00
+    INPUT_INDEX_OD                = 0x6000
+    INPUT_SUBINDEX_OD             = 0x00
     OUTPUT_INDEX_OD               = 0x6200
     OUTPUT_SUBINDEX_OD            = 0x00
 
-    __TEMP_INDEX_OD                 = 0x6002
-    __TEMP_SUBINDEX_OD              = 0x00
-    __ACCEL_INDEX_OD                = 0x6003
-    __ACCEL_X_SUBINDEX_OD           = 0x00
-    __ACCEL_Y_SUBINDEX_OD           = 0x01
-    __ACCEL_Z_SUBINDEX_OD           = 0x02
-    __GYRO_INDEX_OD                 = 0x6004
-    __GYRO_X_SUBINDEX_OD            = 0x00
-    __GYRO_Y_SUBINDEX_OD            = 0x01
-    __GYRO_Z_SUBINDEX_OD            = 0x02
+    TEMP_INDEX_OD                 = 0x6002
+    TEMP_SUBINDEX_OD              = 0x00
+    ACCEL_INDEX_OD                = 0x6003
+    ACCEL_X_SUBINDEX_OD           = 0x00
+    ACCEL_Y_SUBINDEX_OD           = 0x01
+    ACCEL_Z_SUBINDEX_OD           = 0x02
+    GYRO_INDEX_OD                 = 0x6004
+    GYRO_X_SUBINDEX_OD            = 0x00
+    GYRO_Y_SUBINDEX_OD            = 0x01
+    GYRO_Z_SUBINDEX_OD            = 0x02
 
     def __init__(self):
         # Start with creating a network representing one CAN bus

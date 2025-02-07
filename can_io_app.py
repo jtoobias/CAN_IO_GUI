@@ -71,6 +71,50 @@ class MainWindow(QMainWindow):
       self.timer = QTimer(self)
       # self.timer.timeout.connect(self.update_periodic_data)
 
+      # This needs to be handles better. Check the indices for the tpdo and handle accordingly
+    def tpdo_cb(self,message,tpdo:PDOconfig):
+      # data_set = False
+      data_offset = 0
+        # loop through mapped indices and load the correct data and transmit
+      for k,mapped_index in enumerate(tpdo.mapped_indices):
+        print (f"{mapped_index:X}, {k}")
+        if (mapped_index == -1): break
+        index = mapped_index >> 16
+        sub_index = (mapped_index >> 8) & 0xFF
+        number_bytes = mapped_index & 0xFF
+        # Retrieve the correct amount of bytes
+        tmp_val = struct.unpack('<h', message.data[data_offset:(data_offset+number_bytes)])[0]
+        # Increment the data offset for correct data collection next time
+        data_offset += number_bytes
+
+        if (index == self.can_handler.INPUT_INDEX_OD):
+          current_input_states = self.can_handler.to_int16(tmp_val)
+          self.update_input_indicators(current_input_states)
+        elif (index == self.can_handler.OUTPUT_INDEX_OD):
+          current_output_states = self.can_handler.to_int16(tmp_val)
+          self.update_output_indicators(current_output_states)
+        elif (index == self.can_handler.TEMP_INDEX_OD):
+          tmp_val /= 10
+          self.ui.TempLcd.display(tmp_val)
+        elif (index == self.can_handler.ACCEL_INDEX_OD):
+          tmp_val /= 100
+          if (sub_index == self.can_handler.ACCEL_X_SUBINDEX_OD):
+            self.ui.AccelLcdX.display(tmp_val)
+          elif (sub_index == self.can_handler.ACCEL_Y_SUBINDEX_OD):
+            self.ui.AccelLcdY.display(tmp_val)
+          elif (sub_index == self.can_handler.ACCEL_Z_SUBINDEX_OD):
+            self.ui.AccelLcdZ.display(tmp_val)
+        elif (index == self.can_handler.GYRO_INDEX_OD):
+          tmp_val /= 100
+          if (sub_index == self.can_handler.GYRO_X_SUBINDEX_OD):
+            self.ui.GyroLcdX.display(tmp_val)
+          elif (sub_index == self.can_handler.GYRO_Y_SUBINDEX_OD):
+            self.ui.GyroLcdY.display(tmp_val)
+          elif (sub_index == self.can_handler.GYRO_Z_SUBINDEX_OD):
+            self.ui.GyroLcdZ.display(tmp_val)
+        else:
+          print (f"Mapped index doesn't align with what is usable for TPDO: {mapped_index} {k}")
+          
     def tpdo1_cb(self,message):
       # Handle Acceleration data
       # print(f"Received TPDO {message.cob_id:#04X}: {message.data.hex()}")
@@ -78,71 +122,77 @@ class MainWindow(QMainWindow):
       if not message.data:  
         print("Error: TPDO1 message.data is empty!")
         return
-      tmp_val = struct.unpack('<h', message.data[0:2])[0]  # First 2 bytes
-      accel_x = self.can_handler.to_int16(tmp_val)/100
-      tmp_val = struct.unpack('<h', message.data[2:4])[0]  # Next 2 bytes
-      accel_y = self.can_handler.to_int16(tmp_val)/100
-      tmp_val = struct.unpack('<h', message.data[4:6])[0]  # Next 2 bytes
-      accel_z = self.can_handler.to_int16(tmp_val)/100
-      tmp_val = struct.unpack('<h', message.data[6:8])[0]  # Next 2 bytes
-      temp = self.can_handler.to_int16(tmp_val)/10
-      self.ui.AccelLcdX.display(accel_x)
-      self.ui.AccelLcdY.display(accel_y)
-      self.ui.AccelLcdZ.display(accel_z)
-      self.ui.TempLcd.display(temp)
-
-      # This needs to be handles better. Check the indices for the tpdo and handle accordingly
-
-      
+      self.tpdo_cb(message,self.tpdo1)
+      # tmp_val = struct.unpack('<h', message.data[0:2])[0]  # First 2 bytes
+      # accel_x = self.can_handler.to_int16(tmp_val)/100
+      # tmp_val = struct.unpack('<h', message.data[2:4])[0]  # Next 2 bytes
+      # accel_y = self.can_handler.to_int16(tmp_val)/100
+      # tmp_val = struct.unpack('<h', message.data[4:6])[0]  # Next 2 bytes
+      # accel_z = self.can_handler.to_int16(tmp_val)/100
+      # tmp_val = struct.unpack('<h', message.data[6:8])[0]  # Next 2 bytes
+      # temp = self.can_handler.to_int16(tmp_val)/10
+      # self.ui.AccelLcdX.display(accel_x)
+      # self.ui.AccelLcdY.display(accel_y)
+      # self.ui.AccelLcdZ.display(accel_z)
+      # self.ui.TempLcd.display(temp)
+     
     def tpdo2_cb(self,message):
       if not message.data:  
         print("Error: TPDO2 message.data is empty!")
         return
+      
+      self.tpdo_cb(message,self.tpdo2)
       # Handle Acceleration data
       # print(f"Received TPDO {message.cob_id:#04X}: {message.data.hex()}")
-      # Extract values
-      tmp_val = struct.unpack('<h', message.data[0:2])[0]  # First 2 bytes
-      gyro_x = self.can_handler.to_int16(tmp_val)/100
-      tmp_val = struct.unpack('<h', message.data[2:4])[0]  # Next 2 bytes
-      gyro_y = self.can_handler.to_int16(tmp_val)/100
-      tmp_val = struct.unpack('<h', message.data[4:6])[0]  # Next 2 bytes
-      gyro_z = self.can_handler.to_int16(tmp_val)/100
-      self.ui.GyroLcdX.display(gyro_x)
-      self.ui.GyroLcdY.display(gyro_y)
-      self.ui.GyroLcdZ.display(gyro_z)
+      # # Extract values
+      # tmp_val = struct.unpack('<h', message.data[0:2])[0]  # First 2 bytes
+      # gyro_x = self.can_handler.to_int16(tmp_val)/100
+      # tmp_val = struct.unpack('<h', message.data[2:4])[0]  # Next 2 bytes
+      # gyro_y = self.can_handler.to_int16(tmp_val)/100
+      # tmp_val = struct.unpack('<h', message.data[4:6])[0]  # Next 2 bytes
+      # gyro_z = self.can_handler.to_int16(tmp_val)/100
+      # self.ui.GyroLcdX.display(gyro_x)
+      # self.ui.GyroLcdY.display(gyro_y)
+      # self.ui.GyroLcdZ.display(gyro_z)
     
     def tpdo3_cb(self,message):
       # Handle IO data
       if not message.data:  
         print("Error: TPDO3 message.data is empty!")
         return
-      # print(f"Received TPDO {message.cob_id:#04X}: {message.data.hex()}")
-
-      # Extract values
-      tmp_val = struct.unpack('<h', message.data[0:2])[0]  # First 2 bytes
-      current_input_states = self.can_handler.to_int16(tmp_val)
-      tmp_val = struct.unpack('<h', message.data[2:4])[0]  # Next 2 bytes
-      current_output_states = self.can_handler.to_int16(tmp_val)
-      self.change_io_indicator_background(self.ui.DI_LED_widget_1,current_input_states,self.known_input_state,0x01)
-      self.change_io_indicator_background(self.ui.DI_LED_widget_2,current_input_states,self.known_input_state,0x02)
-      self.change_io_indicator_background(self.ui.DI_LED_widget_3,current_input_states,self.known_input_state,0x04)
-      self.change_io_indicator_background(self.ui.DI_LED_widget_4,current_input_states,self.known_input_state,0x08)
-      self.change_io_indicator_background(self.ui.DI_LED_widget_5,current_input_states,self.known_input_state,0x10)
-      self.change_io_indicator_background(self.ui.DI_LED_widget_6,current_input_states,self.known_input_state,0x20)
-      self.change_io_indicator_background(self.ui.DI_LED_widget_7,current_input_states,self.known_input_state,0x40)
-      self.change_io_indicator_background(self.ui.DI_LED_widget_8,current_input_states,self.known_input_state,0x80)
       
-      self.change_io_indicator_background(self.ui.D0_LED_widget_1,current_output_states,self.known_output_state,0x01)
-      self.change_io_indicator_background(self.ui.D0_LED_widget_2,current_output_states,self.known_output_state,0x02)
-      self.change_io_indicator_background(self.ui.D0_LED_widget_3,current_output_states,self.known_output_state,0x04)
-      self.change_io_indicator_background(self.ui.D0_LED_widget_4,current_output_states,self.known_output_state,0x08)
-      self.change_io_indicator_background(self.ui.D0_LED_widget_5,current_output_states,self.known_output_state,0x10)
-      self.change_io_indicator_background(self.ui.D0_LED_widget_6,current_output_states,self.known_output_state,0x20)
-      self.change_io_indicator_background(self.ui.D0_LED_widget_7,current_output_states,self.known_output_state,0x40)
-      self.change_io_indicator_background(self.ui.D0_LED_widget_8,current_output_states,self.known_output_state,0x80)
-      self.known_input_state = current_input_states
-      self.known_output_state = current_output_states
-      # print (f"OUT: {current_output_states}, IN {current_input_states}")
+      self.tpdo_cb(message,self.tpdo3)
+      # # Extract values
+      # tmp_val = struct.unpack('<h', message.data[0:2])[0]  # First 2 bytes
+      # current_input_states = self.can_handler.to_int16(tmp_val)
+      # tmp_val = struct.unpack('<h', message.data[2:4])[0]  # Next 2 bytes
+      # current_output_states = self.can_handler.to_int16(tmp_val)
+      # self.update_input_indicators(current_input_states)
+      # self.update_output_indicators(current_output_states)
+      # self.known_input_state = current_input_states
+      # self.known_output_state = current_output_states
+      # # print (f"OUT: {current_output_states}, IN {current_input_states}")
+
+    def update_input_indicators(self,input_status:int):
+      self.change_io_indicator_background(self.ui.DI_LED_widget_1,input_status,self.known_input_state,0x01)
+      self.change_io_indicator_background(self.ui.DI_LED_widget_2,input_status,self.known_input_state,0x02)
+      self.change_io_indicator_background(self.ui.DI_LED_widget_3,input_status,self.known_input_state,0x04)
+      self.change_io_indicator_background(self.ui.DI_LED_widget_4,input_status,self.known_input_state,0x08)
+      self.change_io_indicator_background(self.ui.DI_LED_widget_5,input_status,self.known_input_state,0x10)
+      self.change_io_indicator_background(self.ui.DI_LED_widget_6,input_status,self.known_input_state,0x20)
+      self.change_io_indicator_background(self.ui.DI_LED_widget_7,input_status,self.known_input_state,0x40)
+      self.change_io_indicator_background(self.ui.DI_LED_widget_8,input_status,self.known_input_state,0x80)
+    
+    
+    def update_output_indicators(self,output_status:int):
+      self.change_io_indicator_background(self.ui.D0_LED_widget_1,output_status,self.known_output_state,0x01)
+      self.change_io_indicator_background(self.ui.D0_LED_widget_2,output_status,self.known_output_state,0x02)
+      self.change_io_indicator_background(self.ui.D0_LED_widget_3,output_status,self.known_output_state,0x04)
+      self.change_io_indicator_background(self.ui.D0_LED_widget_4,output_status,self.known_output_state,0x08)
+      self.change_io_indicator_background(self.ui.D0_LED_widget_5,output_status,self.known_output_state,0x10)
+      self.change_io_indicator_background(self.ui.D0_LED_widget_6,output_status,self.known_output_state,0x20)
+      self.change_io_indicator_background(self.ui.D0_LED_widget_7,output_status,self.known_output_state,0x40)
+      self.change_io_indicator_background(self.ui.D0_LED_widget_8,output_status,self.known_output_state,0x80)
 
     def change_io_indicator_background(self,widget:QWidget,io_state:int,known_io_state:int,bit_mask:int):
         # Is there a Change on that bit? 
