@@ -49,9 +49,6 @@ class MainWindow(QMainWindow):
       self.ui.comboBoxConnections = CustomComboBox(self.ui.comboBoxConnections)
       self.ui.comboBoxBaudRates.addItems(["1000","500","250","125","62.5"])
       self.check_boxes_states = 0
-      # Connect signals (e.g., buttons or checkboxes)
-      self.setup_connections()
-      self.connect_existing_checkboxes()
 
       self.tpdo1 = TPDOconfig(self.ui.TPDO_tab_widget,1,"T")
       self.tpdo2 = TPDOconfig(self.ui.TPDO_tab_widget,2,"T")
@@ -62,6 +59,10 @@ class MainWindow(QMainWindow):
       self.rpdo2 = PDOconfig(self.ui.RPDO_tab_widget,2,"R")
       self.rpdo3 = PDOconfig(self.ui.RPDO_tab_widget,3,"R")
       self.rpdo4 = PDOconfig(self.ui.RPDO_tab_widget,4,"R")
+      # Connect signals (e.g., buttons or checkboxes)
+      self.setup_connections()
+      self.connect_existing_checkboxes()
+
 
       self.known_output_state = 0
       self.known_input_state = 0
@@ -77,11 +78,11 @@ class MainWindow(QMainWindow):
       data_offset = 0
         # loop through mapped indices and load the correct data and transmit
       for k,mapped_index in enumerate(tpdo.mapped_indices):
-        print (f"{mapped_index:X}, {k}")
         if (mapped_index == -1): break
         index = mapped_index >> 16
         sub_index = (mapped_index >> 8) & 0xFF
-        number_bytes = mapped_index & 0xFF
+        number_bytes = int((mapped_index & 0xFF)/8)
+        # print (f"{mapped_index:X}, {data_offset}, {number_bytes}, {index}, {sub_index}")
         # Retrieve the correct amount of bytes
         tmp_val = struct.unpack('<h', message.data[data_offset:(data_offset+number_bytes)])[0]
         # Increment the data offset for correct data collection next time
@@ -90,9 +91,11 @@ class MainWindow(QMainWindow):
         if (index == self.can_handler.INPUT_INDEX_OD):
           current_input_states = self.can_handler.to_int16(tmp_val)
           self.update_input_indicators(current_input_states)
+          self.known_input_state = current_input_states
         elif (index == self.can_handler.OUTPUT_INDEX_OD):
           current_output_states = self.can_handler.to_int16(tmp_val)
           self.update_output_indicators(current_output_states)
+          self.known_output_state = current_output_states
         elif (index == self.can_handler.TEMP_INDEX_OD):
           tmp_val /= 10
           self.ui.TempLcd.display(tmp_val)
@@ -326,18 +329,24 @@ class MainWindow(QMainWindow):
 
     def handle_rpdo_button_click(self,rpdo:PDOconfig,rpdo_num:int):
       data_set = False
+      num_bits = []
+      data = []
         # loop through mapped indices and load the correct data and transmit
       for k,mapped_index in enumerate(rpdo.mapped_indices):
         print (f"{mapped_index:X}, {k}")
         if (mapped_index == -1): break
         index = mapped_index >> 16
+        num_bytes = mapped_index & 0xFF
         sub_index = (mapped_index >> 8) & 0xFF
         if (index == self.can_handler.OUTPUT_INDEX_OD):
-          self.can_handler.node.rpdo[rpdo_num][k] = self.check_boxes_states
+          num_bits.append(num_bytes)
+          data.append(self.check_boxes_states)
           data_set = True
         else:
           print (f"Mapped index doesn't align with what is usable for RPDO: {mapped_index} {k}")
-      if (data_set): self.can_handler.node.rpdo[rpdo_num].transmit()
+      if (data_set): 
+        print ("Pre: ",data,num_bytes)
+        self.can_handler.send_rpdo_message(rpdo.cob_id,num_bits,data)
 
     def handle_connect_button_click(self):
       print("Button clicked!")

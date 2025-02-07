@@ -130,13 +130,13 @@ class CANBusHandler:
     TEMP_INDEX_OD                 = 0x6002
     TEMP_SUBINDEX_OD              = 0x00
     ACCEL_INDEX_OD                = 0x6003
-    ACCEL_X_SUBINDEX_OD           = 0x00
-    ACCEL_Y_SUBINDEX_OD           = 0x01
-    ACCEL_Z_SUBINDEX_OD           = 0x02
+    ACCEL_X_SUBINDEX_OD           = 0x01
+    ACCEL_Y_SUBINDEX_OD           = 0x02
+    ACCEL_Z_SUBINDEX_OD           = 0x03
     GYRO_INDEX_OD                 = 0x6004
-    GYRO_X_SUBINDEX_OD            = 0x00
-    GYRO_Y_SUBINDEX_OD            = 0x01
-    GYRO_Z_SUBINDEX_OD            = 0x02
+    GYRO_X_SUBINDEX_OD            = 0x01
+    GYRO_Y_SUBINDEX_OD            = 0x02
+    GYRO_Z_SUBINDEX_OD            = 0x03
 
     def __init__(self):
         # Start with creating a network representing one CAN bus
@@ -415,3 +415,43 @@ class CANBusHandler:
         # print (payload)
         self.network.send_message(cob_id,payload,False)
         return True
+    
+
+    def send_rpdo_message(self,cob_id:int,num_bits:list[int],data:list[int]) -> bool:
+        byte_format = []
+        print (f"Post: cid: {cob_id} ,Data: {data} bits: {num_bits}")
+        # print (data)
+        for d in num_bits:
+            tmp_val = int(d/8)
+            if (tmp_val == 1):
+                byte_format.append("B")
+            elif (tmp_val == 2):
+                byte_format.append("H")
+            elif (tmp_val == 3 and tmp_val == 4):
+                byte_format.append("I")
+            else:
+                return False
+
+        data_b = numbers_to_bytes(data,byte_format)
+        
+        self.network.send_message(cob_id,data_b,False)
+        return True
+
+
+def numbers_to_bytes(data_list, formats):
+    """
+    Convert a list of numbers into a byte array based on specified formats.
+
+    :param data_list: List of numbers to be packed.
+    :param formats: List of format specifiers (e.g., 'B' for 1 byte, 'H' for 2 bytes, 'I' for 4 bytes).
+    :return: Byte array.
+    """
+    if len(data_list) != len(formats):
+        raise ValueError("Each number must have a corresponding format specifier.")
+
+    packed_bytes = b""
+    
+    for num, fmt in zip(data_list, formats):
+        packed_bytes += struct.pack(fmt, num)
+
+    return packed_bytes
