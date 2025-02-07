@@ -90,6 +90,9 @@ class MainWindow(QMainWindow):
       self.ui.AccelLcdY.display(accel_y)
       self.ui.AccelLcdZ.display(accel_z)
       self.ui.TempLcd.display(temp)
+
+      # This needs to be handles better. Check the indices for the tpdo and handle accordingly
+
       
     def tpdo2_cb(self,message):
       if not message.data:  
@@ -148,7 +151,6 @@ class MainWindow(QMainWindow):
         else:widget.setStyleSheet("background-color: rgb(192, 192, 192);")  # Green
 
 
-
     def update_periodic_data(self):
       #  pass
        accel_data = self.can_handler.sdo_read_accelerometer_data()
@@ -204,6 +206,11 @@ class MainWindow(QMainWindow):
       self.ui.lineEdit_sync_period.returnPressed.connect(self.sync_on_enter_pressed)
       self.ui.checkBox_sync_enable.stateChanged.connect(self.sync_checkbox_toggled)
 
+      self.ui.ButtonRPDO1Send.clicked.connect(partial(self.handle_rpdo_button_click, self.rpdo1,1))
+      self.ui.ButtonRPDO2Send.clicked.connect(partial(self.handle_rpdo_button_click, self.rpdo2,2))
+      self.ui.ButtonRPDO3Send.clicked.connect(partial(self.handle_rpdo_button_click, self.rpdo3,3))
+      self.ui.ButtonRPDO4Send.clicked.connect(partial(self.handle_rpdo_button_click, self.rpdo4,4))
+
     def sync_on_enter_pressed(self):
       self.sync_period = get_value_from_text_box(self.ui.lineEdit_sync_period.text())
     
@@ -257,6 +264,31 @@ class MainWindow(QMainWindow):
         # Send output update to the device
       # self.can_handler.upate_pdo_registers()
       
+    # Load values into the RPDO buffer (not using SDOs)
+# node.rpdo[1][0].raw = 1234  # First mapped variable
+# node.rpdo[1][1].raw = 5678  # Second mapped variable
+
+# # Transmit the RPDO
+# node.rpdo[1].transmit()
+
+		# For RPDO
+		# I need a way to trigger RPDO sends, have a button
+
+    def handle_rpdo_button_click(self,rpdo:PDOconfig,rpdo_num:int):
+      data_set = False
+        # loop through mapped indices and load the correct data and transmit
+      for k,mapped_index in enumerate(rpdo.mapped_indices):
+        print (f"{mapped_index:X}, {k}")
+        if (mapped_index == -1): break
+        index = mapped_index >> 16
+        sub_index = (mapped_index >> 8) & 0xFF
+        if (index == self.can_handler.OUTPUT_INDEX_OD):
+          self.can_handler.node.rpdo[rpdo_num][k] = self.check_boxes_states
+          data_set = True
+        else:
+          print (f"Mapped index doesn't align with what is usable for RPDO: {mapped_index} {k}")
+      if (data_set): self.can_handler.node.rpdo[rpdo_num].transmit()
+
     def handle_connect_button_click(self):
       print("Button clicked!")
       device = self.ui.comboBoxConnections.currentText()

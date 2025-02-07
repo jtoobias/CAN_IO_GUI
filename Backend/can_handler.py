@@ -124,8 +124,8 @@ class CANBusHandler:
 
     __INPUT_INDEX_OD                = 0x6000
     __INPUT_SUBINDEX_OD             = 0x00
-    __OUTPUT_INDEX_OD               = 0x6200
-    __OUTPUT_SUBINDEX_OD            = 0x00
+    OUTPUT_INDEX_OD               = 0x6200
+    OUTPUT_SUBINDEX_OD            = 0x00
 
     __TEMP_INDEX_OD                 = 0x6002
     __TEMP_SUBINDEX_OD              = 0x00

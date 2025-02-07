@@ -30,6 +30,8 @@ class PDOconfig():
 		self.transmit_period = -1
 		self.transmission_type_value = -1
 
+
+
 	def get_table_widget_item(self,table:QTableWidget,row:int,col:int):
 		item = table.item(row, 0)  # Access the item in the first column
 		if item and item.text():  # Check if item is not empty
