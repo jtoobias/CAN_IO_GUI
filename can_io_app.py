@@ -151,6 +151,18 @@ class MainWindow(QMainWindow):
           elif (sub_index == self.can_handler.GYRO_Z_SUBINDEX_OD):
             self.gyro_x_avg.update_running_avg(tmp_val)
             self.ui.GyroLcdZ.display(tmp_val)
+            
+        elif (index == self.can_handler.DEVICE_STATE_OD):
+          tmp_str = "UNKOWN"
+          if (tmp_val == self.can_handler.CAN_STATE_OFF):
+            tmp_str = "OFF"
+          elif (tmp_str == self.can_handler.CAN_STATE_PREOPERATIONAL):
+            tmp_str = "PRE-OPERATIONAL"
+          elif (tmp_str == self.can_handler.CAN_STATE_OPERATIONAL):
+            tmp_str = "OPERATIONAL"
+          elif (tmp_str == self.can_handler.CAN_STATE_STOPPED):
+            tmp_str = "STOPPED"
+          self.ui.lineEditCurrentDeviceState.setText(tmp_str)
         else:
           print (f"Mapped index doesn't align with what is usable for TPDO: {mapped_index} {k}")
           

@@ -137,6 +137,14 @@ class CANBusHandler:
     GYRO_X_SUBINDEX_OD            = 0x01
     GYRO_Y_SUBINDEX_OD            = 0x02
     GYRO_Z_SUBINDEX_OD            = 0x03
+    DEVICE_STATE_OD               = 0x7000
+
+
+    CAN_STATE_OFF                 = 0
+    CAN_STATE_INIT                = 1
+    CAN_STATE_PREOPERATIONAL      = 2
+    CAN_STATE_OPERATIONAL         = 3
+    CAN_STATE_STOPPED             = 4
 
     def __init__(self):
         # Start with creating a network representing one CAN bus
