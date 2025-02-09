@@ -318,23 +318,31 @@ class MainWindow(QMainWindow):
       # self.can_handler.update_pdo_mapped_indices(self.tpdo1)
 
       # self.can_handler.update_tpdo_config(self.tpdo1)
-
+      self.ui.progressBar_pdo_download.setValue(0)
       self.can_handler.update_tpdo_config(self.tpdo1)
+      self.ui.progressBar_pdo_download.setValue(12)
       print ("TPDO1 Complete")
       self.can_handler.update_tpdo_config(self.tpdo2)
+      self.ui.progressBar_pdo_download.setValue(25)
       print ("TPDO2 Complete")
       self.can_handler.update_tpdo_config(self.tpdo3)
+      self.ui.progressBar_pdo_download.setValue(38)
       print ("TPDO3 Complete")
       self.can_handler.update_tpdo_config(self.tpdo4)
+      self.ui.progressBar_pdo_download.setValue(50)
       print ("TPDO4 Complete")
       
       self.can_handler.update_rpdo_config(self.rpdo1)
+      self.ui.progressBar_pdo_download.setValue(62)
       print ("RPDO1 Complete")
       self.can_handler.update_rpdo_config(self.rpdo2)
+      self.ui.progressBar_pdo_download.setValue(75)
       print ("RPDO2 Complete")
       self.can_handler.update_rpdo_config(self.rpdo3)
+      self.ui.progressBar_pdo_download.setValue(88)
       print ("RPDO3 Complete")
       self.can_handler.update_rpdo_config(self.rpdo4)
+      self.ui.progressBar_pdo_download.setValue(100)
       print ("RPDO4 Complete")
       
     def handle_rpdo_button_click(self,rpdo:PDOconfig,rpdo_num:int):

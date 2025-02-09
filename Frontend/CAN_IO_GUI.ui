@@ -21,13 +21,13 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>20</y>
-      <width>1021</width>
+      <y>10</y>
+      <width>1031</width>
       <height>751</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Home_widget">
      <attribute name="title">
@@ -36,8 +36,8 @@
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>440</y>
+        <x>0</x>
+        <y>700</y>
         <width>351</width>
         <height>16</height>
        </rect>
@@ -50,7 +50,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>90</y>
+        <y>120</y>
         <width>231</width>
         <height>111</height>
        </rect>
@@ -127,7 +127,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>220</y>
+        <y>240</y>
         <width>231</width>
         <height>141</height>
        </rect>
@@ -205,10 +205,10 @@
      <widget class="QGroupBox" name="groupBox_4">
       <property name="geometry">
        <rect>
-        <x>600</x>
+        <x>670</x>
         <y>20</y>
         <width>321</width>
-        <height>311</height>
+        <height>331</height>
        </rect>
       </property>
       <property name="title">
@@ -381,8 +381,8 @@
       <widget class="QPushButton" name="ButtonIMUOffset">
        <property name="geometry">
         <rect>
-         <x>0</x>
-         <y>270</y>
+         <x>10</x>
+         <y>290</y>
          <width>121</width>
          <height>25</height>
         </rect>
@@ -421,7 +421,7 @@
        <property name="geometry">
         <rect>
          <x>140</x>
-         <y>240</y>
+         <y>260</y>
          <width>161</width>
          <height>61</height>
         </rect>
@@ -460,7 +460,7 @@
      <widget class="QGroupBox" name="groupBox_5">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>370</x>
         <y>20</y>
         <width>271</width>
         <height>331</height>
@@ -823,7 +823,7 @@ border-radius: 50%;</string>
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>370</y>
+        <y>390</y>
         <width>386</width>
         <height>56</height>
        </rect>
@@ -862,8 +862,8 @@ border-radius: 50%;</string>
      <widget class="QWidget" name="gridLayoutWidget_12">
       <property name="geometry">
        <rect>
-        <x>580</x>
-        <y>360</y>
+        <x>590</x>
+        <y>370</y>
         <width>400</width>
         <height>80</height>
        </rect>
@@ -899,6 +899,51 @@ border-radius: 50%;</string>
        </item>
       </layout>
      </widget>
+     <widget class="QLabel" name="labelCurrentState">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>550</y>
+        <width>67</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>80</y>
+        <width>301</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_18">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Current Device State:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEditCurrentDeviceState"/>
+       </item>
+      </layout>
+     </widget>
     </widget>
     <widget class="QWidget" name="PDO_Config">
      <attribute name="title">
@@ -914,7 +959,7 @@ border-radius: 50%;</string>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="TPDO1_tab">
        <attribute name="title">
@@ -4002,6 +4047,9 @@ border-radius: 50%;</string>
            </property>
            <property name="maximum">
             <number>255</number>
+           </property>
+           <property name="value">
+            <number>1</number>
            </property>
           </widget>
          </item>
