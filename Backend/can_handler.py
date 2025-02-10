@@ -169,6 +169,7 @@ class CANBusHandler:
         expanded_path = os.path.expanduser(file_path)
         self.node = canopen.RemoteNode(3, expanded_path)
         self.network.add_node(self.node)
+        # print(self.node.sdo.od.indices)
         return True
 
     
@@ -233,6 +234,16 @@ class CANBusHandler:
         if (self.node == None): 
             return
         return self.node.sdo[0x6000].raw
+    
+    def sdo_read_device_state(self) -> int:
+        if (self.node == None): 
+            return
+        return self.node.sdo[0x7000].raw
+    
+    def sdo_save_device_config(self,save_val:int) -> int:
+        if (self.node == None): 
+            return
+        self.node.sdo[0x1010].raw = save_val
     
     def sdo_read_temperature(self) -> float:
         if (self.node == None): 
@@ -301,7 +312,6 @@ class CANBusHandler:
             print ("PDO type not correct: ",pdo.pdo_type) 
 
         if (pdo.cob_id > -1): 
-            print (f"Sending COB id: {pdo.cob_id:X}")
             self.send_sdo(index,self.__PDO_COMM_PARAM_COB_ID_SUBINDEX_OD,pdo.cob_id)
             time.sleep(0.05)
         if (pdo.transmission_type_value > -1): 
@@ -336,7 +346,6 @@ class CANBusHandler:
 
         for offset,mapped_index in enumerate(pdo.mapped_indices):
             if (mapped_index == -1): break
-            print (mapped_index)
             self.send_sdo(index,(self.__PDO_MAPPING_SUBINDEX_ENTRY_1_OD+offset),mapped_index)
             time.sleep(0.05)
 
@@ -347,9 +356,6 @@ class CANBusHandler:
         elif (tpdo.pdo_num == 4): index = self.__TPDO4_TRIGGER_DIRS_OD
         
         for offset,tValue in enumerate(tpdo.triggers):
-            print (f"Value: {tValue} Index: {index:X} subIndex: {(self.__TRIGGER_IN_1_SUBINDEX_OD+offset):X}")
-            # self.send_sdo(index,(self.__TRIGGER_IN_1_SUBINDEX_OD+offset),tValue)
-
             self._send_message(self.__RSDO,1,index,(self.__TRIGGER_IN_1_SUBINDEX_OD+offset),1,[tValue])
             time.sleep(0.05)
 
@@ -366,13 +372,9 @@ class CANBusHandler:
     
     def update_tpdo_config(self,tpdo:TPDOconfig):
         self.update_pdo_comms_parameters(tpdo)
-        print ("Comms params completed")
         self.update_pdo_mapped_indices(tpdo)
-        print ("Mapped params completed")
         self.update_tpdo_analog_thresholds(tpdo)
-        print ("Analog Thresholds completed")
         self.update_tpdo_triggers(tpdo)
-        print ("Triggers completed")
 
     def update_rpdo_config(self,rpdo:PDOconfig):
         self.update_pdo_comms_parameters(rpdo)

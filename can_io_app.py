@@ -100,7 +100,7 @@ class MainWindow(QMainWindow):
       # self.can_handler.node.tpdo[1].enabled = True   
         # Set up the timer to call update_label every 100ms
       self.timer = QTimer(self)
-      # self.timer.timeout.connect(self.update_periodic_data)
+      self.timer.timeout.connect(self.update_periodic_data)
 
       # This needs to be handles better. Check the indices for the tpdo and handle accordingly
     def tpdo_cb(self,message,tpdo:PDOconfig):
@@ -108,11 +108,13 @@ class MainWindow(QMainWindow):
       data_offset = 0
         # loop through mapped indices and load the correct data and transmit
       for k,mapped_index in enumerate(tpdo.mapped_indices):
-        if (mapped_index == -1): break
+        if (mapped_index == -1): 
+          print (f"MAPPED Index Invalid: {mapped_index:X}")
+          break
         index = mapped_index >> 16
         sub_index = (mapped_index >> 8) & 0xFF
         number_bytes = int((mapped_index & 0xFF)/8)
-        # print (f"{mapped_index:X}, {data_offset}, {number_bytes}, {index}, {sub_index}")
+        print (f"{mapped_index:X}, {data_offset}, {number_bytes}, {index}, {sub_index}")
         # Retrieve the correct amount of bytes
         tmp_val = struct.unpack('<h', message.data[data_offset:(data_offset+number_bytes)])[0]
         # Increment the data offset for correct data collection next time
@@ -146,21 +148,21 @@ class MainWindow(QMainWindow):
             self.gyro_x_avg.update_running_avg(tmp_val)
             self.ui.GyroLcdX.display(tmp_val)
           elif (sub_index == self.can_handler.GYRO_Y_SUBINDEX_OD):
-            self.gyro_x_avg.update_running_avg(tmp_val)
+            self.gyro_y_avg.update_running_avg(tmp_val)
             self.ui.GyroLcdY.display(tmp_val)
           elif (sub_index == self.can_handler.GYRO_Z_SUBINDEX_OD):
-            self.gyro_x_avg.update_running_avg(tmp_val)
+            self.gyro_z_avg.update_running_avg(tmp_val)
             self.ui.GyroLcdZ.display(tmp_val)
             
         elif (index == self.can_handler.DEVICE_STATE_OD):
           tmp_str = "UNKOWN"
           if (tmp_val == self.can_handler.CAN_STATE_OFF):
             tmp_str = "OFF"
-          elif (tmp_str == self.can_handler.CAN_STATE_PREOPERATIONAL):
+          elif (tmp_val == self.can_handler.CAN_STATE_PREOPERATIONAL):
             tmp_str = "PRE-OPERATIONAL"
-          elif (tmp_str == self.can_handler.CAN_STATE_OPERATIONAL):
+          elif (tmp_val == self.can_handler.CAN_STATE_OPERATIONAL):
             tmp_str = "OPERATIONAL"
-          elif (tmp_str == self.can_handler.CAN_STATE_STOPPED):
+          elif (tmp_val == self.can_handler.CAN_STATE_STOPPED):
             tmp_str = "STOPPED"
           self.ui.lineEditCurrentDeviceState.setText(tmp_str)
         else:
@@ -168,7 +170,7 @@ class MainWindow(QMainWindow):
           
     def tpdo1_cb(self,message):
       # Handle Acceleration data
-      # print(f"Received TPDO {message.cob_id:#04X}: {message.data.hex()}")
+      print(f"Received TPDO {message.cob_id:#04X}: {message.data.hex()}")
       # Extract values
       if not message.data:  
         print("Error: TPDO1 message.data is empty!")
@@ -219,21 +221,17 @@ class MainWindow(QMainWindow):
 
     def update_periodic_data(self):
       #  pass
-       accel_data = self.can_handler.sdo_read_accelerometer_data()
-       if (accel_data == None): return
-       self.ui.AccelLcdX.display(accel_data[0])
-       self.ui.AccelLcdY.display(accel_data[1])
-       self.ui.AccelLcdZ.display(accel_data[2])
-
-       gyro_data = self.can_handler.sdo_read_gyro_data()
-       if (gyro_data == None): return
-       self.ui.GyroLcdX.display(gyro_data[0])
-       self.ui.GyroLcdY.display(gyro_data[1])
-       self.ui.GyroLcdZ.display(gyro_data[2])
-
-       temperature = self.can_handler.sdo_read_temperature()
-       if (temperature == None): return
-       self.ui.TempLcd.display(temperature)
+      tmp_val = self.can_handler.sdo_read_device_state()
+      tmp_str = "UNKOWN"
+      if (tmp_val == self.can_handler.CAN_STATE_OFF):
+        tmp_str = "OFF"
+      elif (tmp_val == self.can_handler.CAN_STATE_PREOPERATIONAL):
+        tmp_str = "PRE-OPERATIONAL"
+      elif (tmp_val == self.can_handler.CAN_STATE_OPERATIONAL):
+        tmp_str = "OPERATIONAL"
+      elif (tmp_val == self.can_handler.CAN_STATE_STOPPED):
+        tmp_str = "STOPPED"
+      self.ui.lineEditCurrentDeviceState.setText(tmp_str)
 
     def connect_existing_checkboxes(self):
         # Iterate through the existing layout items
@@ -285,6 +283,10 @@ class MainWindow(QMainWindow):
       self.ui.ButtonNMTResetComms.clicked.connect(self.can_handler.reset_comms_can_node)
 
       self.ui.PDO_apply_button.clicked.connect(self.handle_pdo_apply_button_click)
+      self.ui.PDO_burn_button.clicked.connect(self.handle_pdo_burn_button_click)
+      self.ui.pushButtonInitStorage.clicked.connect(self.handle_pdo_init_button_click)
+      self.ui.pushButtonBurnOffsets.clicked.connect(self.handle_save_offsets_button_click)
+      
       # Example: Connect a checkbox to a method
       self.ui.checkBoxOut1.stateChanged.connect(self.handle_checkbox_state_change)
 
@@ -301,6 +303,13 @@ class MainWindow(QMainWindow):
 
     def sync_on_enter_pressed(self):
       self.sync_period = get_value_from_text_box(self.ui.lineEdit_sync_period.text())
+      if (self.sync_period > 0): 
+        self.ui.checkBox_sync_enable.setEnabled(True)
+      else: 
+        self.ui.checkBox_sync_enable.setEnabled(False)
+        self.ui.checkBox_sync_enable.setChecked(False)
+        self.can_handler.network.sync.stop()
+        self.sync_enabled = False
     
     def sync_checkbox_toggled(self):
       try:
@@ -316,46 +325,55 @@ class MainWindow(QMainWindow):
       except:
         print ("Make sure the network is setup")
 
+
+    def handle_pdo_burn_button_click(self):
+      self.can_handler.sdo_save_device_config(1)
+
+    def handle_save_offsets_button_click(self):
+      self.can_handler.sdo_save_device_config(2)
+
+    def handle_pdo_init_button_click(self):
+      self.can_handler.sdo_save_device_config(255)
+      
+  
     def handle_pdo_apply_button_click(self):
+      self.ui.progressBar_pdo_download.setValue(0)
       self.tpdo1.update_tpdo_config()
+      self.ui.progressBar_pdo_download.setValue(6)
       self.tpdo2.update_tpdo_config()
+      self.ui.progressBar_pdo_download.setValue(12)
       self.tpdo3.update_tpdo_config()
+      self.ui.progressBar_pdo_download.setValue(18)
       self.tpdo4.update_tpdo_config()
+      self.ui.progressBar_pdo_download.setValue(25)
 
       self.rpdo1.update_general_pdo_config()
+      self.ui.progressBar_pdo_download.setValue(31)
       self.rpdo2.update_general_pdo_config()
+      self.ui.progressBar_pdo_download.setValue(38)
       self.rpdo3.update_general_pdo_config()
+      self.ui.progressBar_pdo_download.setValue(44)
       self.rpdo4.update_general_pdo_config()
-
-      # self.can_handler.update_pdo_mapped_indices(self.tpdo1)
+      self.ui.progressBar_pdo_download.setValue(50)
 
       # self.can_handler.update_tpdo_config(self.tpdo1)
-      self.ui.progressBar_pdo_download.setValue(0)
       self.can_handler.update_tpdo_config(self.tpdo1)
-      self.ui.progressBar_pdo_download.setValue(12)
-      print ("TPDO1 Complete")
+      self.ui.progressBar_pdo_download.setValue(56)
       self.can_handler.update_tpdo_config(self.tpdo2)
-      self.ui.progressBar_pdo_download.setValue(25)
-      print ("TPDO2 Complete")
+      self.ui.progressBar_pdo_download.setValue(62)
       self.can_handler.update_tpdo_config(self.tpdo3)
-      self.ui.progressBar_pdo_download.setValue(38)
-      print ("TPDO3 Complete")
+      self.ui.progressBar_pdo_download.setValue(69)
       self.can_handler.update_tpdo_config(self.tpdo4)
-      self.ui.progressBar_pdo_download.setValue(50)
-      print ("TPDO4 Complete")
+      self.ui.progressBar_pdo_download.setValue(75)
       
       self.can_handler.update_rpdo_config(self.rpdo1)
-      self.ui.progressBar_pdo_download.setValue(62)
-      print ("RPDO1 Complete")
+      self.ui.progressBar_pdo_download.setValue(82)
       self.can_handler.update_rpdo_config(self.rpdo2)
-      self.ui.progressBar_pdo_download.setValue(75)
-      print ("RPDO2 Complete")
-      self.can_handler.update_rpdo_config(self.rpdo3)
       self.ui.progressBar_pdo_download.setValue(88)
-      print ("RPDO3 Complete")
+      self.can_handler.update_rpdo_config(self.rpdo3)
+      self.ui.progressBar_pdo_download.setValue(94)
       self.can_handler.update_rpdo_config(self.rpdo4)
       self.ui.progressBar_pdo_download.setValue(100)
-      print ("RPDO4 Complete")
       
     def handle_rpdo_button_click(self,rpdo:PDOconfig,rpdo_num:int):
       data_set = False
@@ -403,6 +421,7 @@ class MainWindow(QMainWindow):
       # self.can_handler.node.tpdo.save()              # Save settings
       # print(f"Mapped objects: {self.can_handler.node.tpdo[1].map}")
 
+      self.timer.start(1000)
       # Update the status bar
       self.ui.statusbar.showMessage("Button was clicked!", 3000)
       

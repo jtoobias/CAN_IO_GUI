@@ -1,6 +1,6 @@
 [FileInfo]
 FileName=CAN_IO.eds
-FileVersion=1.3
+FileVersion=1.4
 Description=EDS for a CANopen I/O Board
 CreationDate=2025-01-01
 CreatedBy=Jonathan Tobias
@@ -44,6 +44,14 @@ DataType=0x0005         ; UINT8
 AccessType=ro
 DefaultValue=0x00
 PDOMapping=1
+
+[1010]
+ParameterName=Save Data
+ObjectType=0x7
+DataType=0x0005         ; UINT8
+AccessType=wo
+DefaultValue=0x00
+PDOMapping=0
 
 [1018]
 ParameterName=Identity Object
@@ -2182,10 +2190,13 @@ AccessType=ro
 DefaultValue=0
 PDOMapping=1
 
-[7000]
+[DeviceObjects]
+7000=1
+
+[7000]  
 ParameterName=Device State
-ObjectType=0x5
-DataType=0x0006  ; UINT8
+ObjectType=0x7
+DataType=0x0005  ; UINT8
 AccessType=ro
 DefaultValue=0
 PDOMapping=1
