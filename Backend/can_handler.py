@@ -277,7 +277,7 @@ class CANBusHandler:
         time.sleep(0.01)
         return [x_gyro,y_gyro,z_gyro]
     
-    def pdo_read_accelerometer_data(self) -> list[float]:
+    def sdo_read_accelerometer_data(self) -> list[float]:
         if (self.node == None): 
             return None
         tmp_val = self.node.tpdo
@@ -289,6 +289,88 @@ class CANBusHandler:
         z_accel = self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6003][0x03].raw,2))/100
         time.sleep(0.01)
         return [x_accel,y_accel,z_accel]
+    
+    def upload_pdo_config(self,pdo:PDOconfig|TPDOconfig):
+        index = 0
+        if (pdo.pdo_type == "T"):
+            if (pdo.pdo_num == 1): index = self.__TPDO1_COMM_PARAM_OD
+            elif (pdo.pdo_num == 2): index = self.__TPDO2_COMM_PARAM_OD
+            elif (pdo.pdo_num == 3): index = self.__TPDO3_COMM_PARAM_OD
+            elif (pdo.pdo_num == 4): index = self.__TPDO4_COMM_PARAM_OD
+            else: 
+                print ("RPDO number not correct: ",pdo.pdo_num) 
+                return
+        elif (pdo.pdo_type == "R"):
+            if (pdo.pdo_num == 1): index = self.__RPDO1_COMM_PARAM_OD
+            elif (pdo.pdo_num == 2): index = self.__RPDO2_COMM_PARAM_OD
+            elif (pdo.pdo_num == 3): index = self.__RPDO3_COMM_PARAM_OD
+            elif (pdo.pdo_num == 4): index = self.__RPDO4_COMM_PARAM_OD
+            else: 
+                print ("RPDO number not correct: ",pdo.pdo_num) 
+                return
+        else:
+            print ("PDO type not correct: ",pdo.pdo_type) 
+
+        pdo.cob_id = self.little_endian_to_big_endian(self.node.sdo[index][self.__PDO_COMM_PARAM_COB_ID_SUBINDEX_OD].raw,4)
+        
+        time.sleep(0.04)
+        pdo.transmission_type_value = self.node.sdo[index][self.__PDO_COMM_PARAM_TRANS_TYPE_SUBINDEX_OD].raw
+        time.sleep(0.04)
+        pdo.inhibit_time = self.little_endian_to_big_endian(self.node.sdo[index][self.__PDO_COMM_PARAM_INHIBIT_TIME_SUBINDEX_OD].raw,4)
+        time.sleep(0.04)
+        pdo.transmit_period = self.little_endian_to_big_endian(self.node.sdo[index][self.__PDO_COMM_PARAM_EVENT_TIMER_SUBINDEX_OD].raw,4)
+        time.sleep(0.04)
+
+        if (pdo.pdo_type == "T"):
+            if (pdo.pdo_num == 1): index = self.__TPDO1_MAPPING_PARAM_OD
+            elif (pdo.pdo_num == 2): index = self.__TPDO2_MAPPING_PARAM_OD
+            elif (pdo.pdo_num == 3): index = self.__TPDO3_MAPPING_PARAM_OD
+            elif (pdo.pdo_num == 4): index = self.__TPDO4_MAPPING_PARAM_OD
+            else: 
+                print ("RPDO number not correct: ",pdo.pdo_num) 
+                return
+        elif (pdo.pdo_type == "R"):
+            if (pdo.pdo_num == 1): index = self.__RPDO1_MAPPING_PARAM_OD
+            elif (pdo.pdo_num == 2): index = self.__RPDO2_MAPPING_PARAM_OD
+            elif (pdo.pdo_num == 3): index = self.__RPDO3_MAPPING_PARAM_OD
+            elif (pdo.pdo_num == 4): index = self.__RPDO4_MAPPING_PARAM_OD
+            else: 
+                print ("RPDO number not correct: ",pdo.pdo_num) 
+                return
+        else:
+            print ("PDO type not correct: ",pdo.pdo_type) 
+        for offset in range(len(pdo.mapped_indices)):
+            mapped_index = self.little_endian_to_big_endian(self.node.sdo[index][(self.__PDO_MAPPING_SUBINDEX_ENTRY_1_OD+offset)].raw,4)
+
+            if (mapped_index > 0):
+                pdo.mapped_indices[offset] = mapped_index
+            else:
+                pdo.mapped_indices[offset] = -1
+            time.sleep(0.04)
+
+    def upload_pdo_triggers(self,tpdo:TPDOconfig):
+        if (tpdo.pdo_num == 1): index = self.__TPDO1_TRIGGER_DIRS_OD
+        elif (tpdo.pdo_num == 2): index = self.__TPDO2_TRIGGER_DIRS_OD
+        elif (tpdo.pdo_num == 3): index = self.__TPDO3_TRIGGER_DIRS_OD
+        elif (tpdo.pdo_num == 4): index = self.__TPDO4_TRIGGER_DIRS_OD
+            # Debug indices
+        # record = self.node.sdo[index]  # Get the record
+        # print (f"{index:X}")
+        # print("Available sub-indexes:", list(record.keys()))  # Check all sub-indexes
+
+        for offset in range(len(tpdo.triggers)):
+            tpdo.triggers[offset] = self.node.sdo[index][(self.__TRIGGER_IN_1_SUBINDEX_OD+offset)].raw
+            time.sleep(0.04)
+
+        if (tpdo.pdo_num == 1): index = self.__TPDO1_ANALOG_THRESHOLDS_OD
+        elif (tpdo.pdo_num == 2): index = self.__TPDO2_ANALOG_THRESHOLDS_OD
+        elif (tpdo.pdo_num == 3): index = self.__TPDO3_ANALOG_THRESHOLDS_OD
+        elif (tpdo.pdo_num == 4): index = self.__TPDO4_ANALOG_THRESHOLDS_OD
+        
+        for offset in range(len(tpdo.analog_thresholds)):
+            tpdo.analog_thresholds[offset] = self.little_endian_to_big_endian(self.node.sdo[index][(self.__ANALOG_INPUT_1_SUBINDEX_OD+offset)].raw,2)
+            time.sleep(0.04)
+
     
     def update_pdo_comms_parameters(self,pdo:PDOconfig|TPDOconfig):
         index = 0
@@ -313,16 +395,16 @@ class CANBusHandler:
 
         if (pdo.cob_id > -1): 
             self.send_sdo(index,self.__PDO_COMM_PARAM_COB_ID_SUBINDEX_OD,pdo.cob_id)
-            time.sleep(0.05)
+            time.sleep(0.04)
         if (pdo.transmission_type_value > -1): 
             self.send_sdo(index,self.__PDO_COMM_PARAM_TRANS_TYPE_SUBINDEX_OD,pdo.transmission_type_value)
-            time.sleep(0.05)
+            time.sleep(0.04)
         if (pdo.inhibit_time > -1): 
             self.send_sdo(index,self.__PDO_COMM_PARAM_INHIBIT_TIME_SUBINDEX_OD,pdo.inhibit_time)
-            time.sleep(0.05)
+            time.sleep(0.04)
         if (pdo.transmit_period > -1): 
             self.send_sdo(index,self.__PDO_COMM_PARAM_EVENT_TIMER_SUBINDEX_OD,pdo.transmit_period)
-            time.sleep(0.05)
+            time.sleep(0.04)
 
     def update_pdo_mapped_indices(self,pdo:PDOconfig|TPDOconfig):
         if (pdo.pdo_type == "T"):
@@ -347,7 +429,7 @@ class CANBusHandler:
         for offset,mapped_index in enumerate(pdo.mapped_indices):
             if (mapped_index == -1): break
             self.send_sdo(index,(self.__PDO_MAPPING_SUBINDEX_ENTRY_1_OD+offset),mapped_index)
-            time.sleep(0.05)
+            time.sleep(0.04)
 
     def update_tpdo_triggers(self,tpdo:TPDOconfig):
         if (tpdo.pdo_num == 1): index = self.__TPDO1_TRIGGER_DIRS_OD
@@ -356,8 +438,8 @@ class CANBusHandler:
         elif (tpdo.pdo_num == 4): index = self.__TPDO4_TRIGGER_DIRS_OD
         
         for offset,tValue in enumerate(tpdo.triggers):
-            self._send_message(self.__RSDO,1,index,(self.__TRIGGER_IN_1_SUBINDEX_OD+offset),1,[tValue])
-            time.sleep(0.05)
+            self.send_sdo(index,(self.__TRIGGER_IN_1_SUBINDEX_OD+offset),tValue)
+            time.sleep(0.04)
 
     def update_tpdo_analog_thresholds(self,tpdo:TPDOconfig):
         if (tpdo.pdo_num == 1): index = self.__TPDO1_ANALOG_THRESHOLDS_OD
@@ -368,7 +450,7 @@ class CANBusHandler:
         for offset,aValue in enumerate(tpdo.analog_thresholds):
             if (aValue == None): continue
             self.send_sdo(index,(self.__ANALOG_INPUT_1_SUBINDEX_OD+offset),aValue)
-            time.sleep(0.05)
+            time.sleep(0.04)
     
     def update_tpdo_config(self,tpdo:TPDOconfig):
         self.update_pdo_comms_parameters(tpdo)
@@ -381,11 +463,14 @@ class CANBusHandler:
         self.update_pdo_mapped_indices(rpdo)
         
     def send_sdo(self,index,sub_index,data:int):
-        if (sub_index == 0): 
-            self.node.sdo[index].raw = data
-        else: 
-            print (f"Data being Sent: {data} {index:X} {sub_index}",data)
-            self.node.sdo[index][sub_index].raw = data
+        try:
+            if (sub_index == 0): 
+                self.node.sdo[index].raw = data
+            else: 
+                # print (f"Data being Sent: {data} {index:X} {sub_index}",data)
+                self.node.sdo[index][sub_index].raw = data
+        except:
+            print(f"Send was not completed: index: {index} sub-index: {sub_index}, data: {data}")
 
     def to_int16(self,value):
         # Ensure the value is within the 16-bit signed integer range
@@ -413,35 +498,75 @@ class CANBusHandler:
         return big_endian_value
     
 
-    def _send_message(self,func_code:int,operation:int,index:int,sub_index:int,num_bytes:int,data:list[int]) -> bool:
-        cob_id = func_code | self.node_id
-        # print (f"{cob_id:X}")
-        if (operation == 1):
-            if (num_bytes == 1): cmd = self.__WR_CLIENT_REQUEST_CMD_1_BYTE.to_bytes(1, byteorder='little')
-            elif (num_bytes == 2): cmd = self.__WR_CLIENT_REQUEST_CMD_2_BYTE.to_bytes(1, byteorder='little')
-            elif (num_bytes == 3): cmd = self.__WR_CLIENT_REQUEST_CMD_3_BYTE.to_bytes(1, byteorder='little')
-            elif (num_bytes == 4): cmd = self.__WR_CLIENT_REQUEST_CMD_4_BYTE.to_bytes(1, byteorder='little')
-            else: return False
-        else:
-            cmd = self.__RD_CLIENT_REQUEST_CMD_BYTE.to_bytes(1, byteorder='little')
-        # print (cmd)
-        bit_index = index.to_bytes(2, byteorder='little')
-        # print (bit_index)
-        bit_sub_index = sub_index.to_bytes(1, byteorder='little')
-        # print (bit_sub_index)
-        tmp_val = 0
-        offset = len(data)
-        # print (data)
-        for d in data:
-            offset -= 1
-            tmp_val += (d << (8*offset))
-        data_b = tmp_val.to_bytes(len(data), byteorder='little')
-        # print (data_b)
-        payload = cmd + bit_index + bit_sub_index + data_b
-        # print (payload)
-        self.network.send_message(cob_id,payload,False)
-        return True
+    # def _send_message(self,func_code:int,operation:int,index:int,sub_index:int,num_bytes:int,data:list[int]) -> bool:
+    #     cob_id = func_code | self.node_id
+    #     # print (f"{cob_id:X}")
+    #     if (operation == 1):
+    #         if (num_bytes == 1): cmd = self.__WR_CLIENT_REQUEST_CMD_1_BYTE.to_bytes(1, byteorder='little')
+    #         elif (num_bytes == 2): cmd = self.__WR_CLIENT_REQUEST_CMD_2_BYTE.to_bytes(1, byteorder='little')
+    #         elif (num_bytes == 3): cmd = self.__WR_CLIENT_REQUEST_CMD_3_BYTE.to_bytes(1, byteorder='little')
+    #         elif (num_bytes == 4): cmd = self.__WR_CLIENT_REQUEST_CMD_4_BYTE.to_bytes(1, byteorder='little')
+    #         else: return False
+    #     else:
+    #         cmd = self.__RD_CLIENT_REQUEST_CMD_BYTE.to_bytes(1, byteorder='little')
+    #     # print (cmd)
+    #     bit_index = index.to_bytes(2, byteorder='little')
+    #     # print (bit_index)
+    #     bit_sub_index = sub_index.to_bytes(1, byteorder='little')
+    #     # print (bit_sub_index)
+    #     tmp_val = 0
+    #     offset = len(data)
+    #     # print (data)
+    #     for d in data:
+    #         offset -= 1
+    #         tmp_val += (d << (8*offset))
+    #     data_b = tmp_val.to_bytes(len(data), byteorder='little')
+    #     # print (data_b)
+    #     payload = cmd + bit_index + bit_sub_index + data_b
+    #     # print (payload)
+    #     self.network.send_message(cob_id,payload,False)
+    #     return True
     
+    def _send_message(self, func_code: int, operation: int, index: int, sub_index: int, num_bytes: int, data: list[int] = None) -> list[int] | bool:
+        cob_id = func_code | self.node_id
+
+        if operation == 1:  # Write operation
+            if num_bytes == 1: cmd = self.__WR_CLIENT_REQUEST_CMD_1_BYTE.to_bytes(1, byteorder='little')
+            elif num_bytes == 2: cmd = self.__WR_CLIENT_REQUEST_CMD_2_BYTE.to_bytes(1, byteorder='little')
+            elif num_bytes == 3: cmd = self.__WR_CLIENT_REQUEST_CMD_3_BYTE.to_bytes(1, byteorder='little')
+            elif num_bytes == 4: cmd = self.__WR_CLIENT_REQUEST_CMD_4_BYTE.to_bytes(1, byteorder='little')
+            else: return False
+        else:  # Read operation
+            cmd = self.__RD_CLIENT_REQUEST_CMD_BYTE.to_bytes(1, byteorder='little')
+
+        bit_index = index.to_bytes(2, byteorder='little')
+        bit_sub_index = sub_index.to_bytes(1, byteorder='little')
+
+        # Prepare data for write operation
+        data_b = b''
+        if operation == 1 and data is not None:
+            tmp_val = sum((d << (8 * (len(data) - 1 - i))) for i, d in enumerate(data))
+            data_b = tmp_val.to_bytes(len(data), byteorder='little')
+
+        # Send request
+        payload = cmd + bit_index + bit_sub_index + data_b
+        self.network.send_message(cob_id, payload, False)
+
+        if operation == 1:  # Write: No response expected
+            return True
+
+        # Wait for response (Read operation)
+        timeout = 0.5  # Adjust timeout as needed
+        start_time = time.time()
+
+        while time.time() - start_time < timeout:
+            message = self.network.receive_message()  # This should be a blocking or polling receive
+            if message and message.cob_id == (0x580 | self.node_id):  # 0x580 = SDO response base
+                if message.data[1:3] == bit_index and message.data[3] == sub_index:
+                    return list(message.data[4:])  # Return received data (ignoring first 4 bytes)
+
+        return False  # Timeout or no valid response received
+        
 
     def send_rpdo_message(self,cob_id:int,num_bits:list[int],data:list[int]) -> bool:
         byte_format = []

@@ -8,6 +8,7 @@ import sys
 import os
 from functools import partial
 import struct
+import time
 
 G_ACCEL = 9.80665
 
@@ -109,12 +110,12 @@ class MainWindow(QMainWindow):
         # loop through mapped indices and load the correct data and transmit
       for k,mapped_index in enumerate(tpdo.mapped_indices):
         if (mapped_index == -1): 
-          print (f"MAPPED Index Invalid: {mapped_index:X}")
+          # print (f"MAPPED Index Invalid: {mapped_index:X}")
           break
         index = mapped_index >> 16
         sub_index = (mapped_index >> 8) & 0xFF
         number_bytes = int((mapped_index & 0xFF)/8)
-        print (f"{mapped_index:X}, {data_offset}, {number_bytes}, {index}, {sub_index}")
+        # print (f"{mapped_index:X}, {data_offset}, {number_bytes}, {index}, {sub_index}")
         # Retrieve the correct amount of bytes
         tmp_val = struct.unpack('<h', message.data[data_offset:(data_offset+number_bytes)])[0]
         # Increment the data offset for correct data collection next time
@@ -170,7 +171,7 @@ class MainWindow(QMainWindow):
           
     def tpdo1_cb(self,message):
       # Handle Acceleration data
-      print(f"Received TPDO {message.cob_id:#04X}: {message.data.hex()}")
+      # print(f"Received TPDO {message.cob_id:#04X}: {message.data.hex()}")
       # Extract values
       if not message.data:  
         print("Error: TPDO1 message.data is empty!")
@@ -417,9 +418,10 @@ class MainWindow(QMainWindow):
       self.can_handler.node.tpdo[3].cob_id = 0x383  # Set custom COB-ID
       self.can_handler.node.tpdo[3].enabled = True   # Ensure TPDO is enabled
       self.can_handler.node.tpdo.subscribe()
-
-      # self.can_handler.node.tpdo.save()              # Save settings
-      # print(f"Mapped objects: {self.can_handler.node.tpdo[1].map}")
+      time.sleep(1)
+      self.upload_all_pdo_config()
+      # Update the pdo configuration display
+      self.update_pdo_config_ui()
 
       self.timer.start(1000)
       # Update the status bar
@@ -435,7 +437,54 @@ class MainWindow(QMainWindow):
           print("Checkbox checked!")
       else:
           print("Checkbox unchecked!")
+    
+    def upload_all_pdo_config(self):
+      if (self.can_handler.node == None): return
+      print ("start")
+      self.can_handler.upload_pdo_config(self.rpdo1)
+      self.can_handler.upload_pdo_config(self.rpdo2)
+      self.can_handler.upload_pdo_config(self.rpdo3)
+      self.can_handler.upload_pdo_config(self.rpdo4)
+      
+      print ("RPDO Config upload complete")
 
+      self.can_handler.upload_pdo_config(self.tpdo1)
+      self.can_handler.upload_pdo_config(self.tpdo2)
+      self.can_handler.upload_pdo_config(self.tpdo3)
+      self.can_handler.upload_pdo_config(self.tpdo4)
+      print ("TPDO Config upload complete")
+      
+      self.can_handler.upload_pdo_triggers(self.tpdo1)
+      self.can_handler.upload_pdo_triggers(self.tpdo2)
+      self.can_handler.upload_pdo_triggers(self.tpdo3)
+      self.can_handler.upload_pdo_triggers(self.tpdo4)
+      print ("TPDO Triggers upload complete")
+
+    def update_pdo_config_ui(self):
+      self.rpdo1.update_pdo_comms_parameters_ui()
+      self.rpdo2.update_pdo_comms_parameters_ui()
+      self.rpdo3.update_pdo_comms_parameters_ui()
+      self.rpdo4.update_pdo_comms_parameters_ui()
+      print ("RPDO Comms Config UI complete")
+
+      self.tpdo1.update_pdo_comms_parameters_ui()
+      self.tpdo2.update_pdo_comms_parameters_ui()
+      self.tpdo3.update_pdo_comms_parameters_ui()
+      self.tpdo4.update_pdo_comms_parameters_ui()
+      print ("TPDO Comms Config UI complete")
+      
+      self.tpdo1.update_tpdo_digital_config_ui()
+      self.tpdo1.update_tpdo_analog_config_ui()
+      print ("TPDO1 Trigger Config UI complete")
+      self.tpdo2.update_tpdo_digital_config_ui()
+      self.tpdo2.update_tpdo_analog_config_ui()
+      print ("TPDO2 Trigger Config UI complete")
+      self.tpdo3.update_tpdo_digital_config_ui()
+      self.tpdo3.update_tpdo_analog_config_ui()
+      print ("TPDO3 Trigger Config UI complete")
+      self.tpdo4.update_tpdo_digital_config_ui()
+      self.tpdo4.update_tpdo_analog_config_ui()
+      print ("TPDO4 Trigger Config UI complete")
     
 if __name__ == "__main__":
   app = QApplication(sys.argv)

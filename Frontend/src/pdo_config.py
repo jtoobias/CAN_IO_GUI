@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QApplication, QMainWindow,QWidget,\
-    QVBoxLayout, QCheckBox, QComboBox, QTableWidget, QSpinBox,QLineEdit
+    QVBoxLayout, QCheckBox, QComboBox, QTableWidget, QSpinBox,QLineEdit,QTableWidgetItem
 
 def get_value_from_text_box(text:str):
 	try:
@@ -13,7 +13,7 @@ def get_value_from_text_box(text:str):
 			return num
 		except ValueError:
 			return None 
-
+	
 class PDOconfig():
 	__PDO_DISABLED_ID = 0x80000000
 	def __init__(self,tab:QWidget,pdo_num:int,pdo_type:str):
@@ -30,14 +30,44 @@ class PDOconfig():
 		self.transmit_period = -1
 		self.transmission_type_value = -1
 
-
-
+	def set_table_widget_item(self,table:QTableWidget,row:int,col:int,value:int):
+		if (value == -1): item = QTableWidgetItem("")  # Create item
+		else: item = QTableWidgetItem(f"0x{value:X}")  # Create item
+		table.setItem(row, col, item)  # Set item in the correct row & column
+		
 	def get_table_widget_item(self,table:QTableWidget,row:int,col:int):
-		item = table.item(row, 0)  # Access the item in the first column
+		item = table.item(row, col)  # Access the item in the first column
 		if item and item.text():  # Check if item is not empty
 			return int(item.text(), 16)
 		else:
 			return None
+		
+	def update_pdo_mapped_indices_ui(self):
+		try:
+			tableWidget = self.tab.findChild(QTableWidget, f"tableWidget_{self.pdo_type}PDO{self.pdo_num}")
+			row_count = tableWidget.rowCount()
+			for row in range(row_count):
+				if (self.mapped_indices[row] > 0):
+					self.set_table_widget_item(tableWidget,row,0,self.mapped_indices[row])
+				else:
+					self.set_table_widget_item(tableWidget,row,0,-1)
+		except Exception as e:
+			print (f"{self.pdo_type}PDO{self.pdo_num} APPLY Mapped Indices: ",e)
+	
+
+	def update_pdo_comms_parameters_ui(self):
+		try:
+			value = self.tab.findChild(QLineEdit, f"COB_ID_box_{self.pdo_type}PDO{self.pdo_num}")
+			value.setText(f"0x{self.cob_id:X}")
+			value = self.tab.findChild(QLineEdit, f"Inhibit_time_box_{self.pdo_type}PDO{self.pdo_num}")
+			value.setText(f"{self.inhibit_time}")
+			value = self.tab.findChild(QLineEdit, f"Transmit_period_box_{self.pdo_type}PDO{self.pdo_num}")
+			value.setText(f"{self.transmit_period}")
+			value = self.tab.findChild(QSpinBox, f"spinBox_{self.pdo_type}PDO{self.pdo_num}")
+			value.setValue(self.transmission_type_value)
+		except Exception as e:
+			print (f"{self.pdo_type}PDO{self.pdo_num} APPLY Comms Params: ",e)
+
 
 	def update_pdo_mapped_indices(self):
 		try:
@@ -68,7 +98,6 @@ class PDOconfig():
 			self.transmission_type_value = int(self.tab.findChild(QSpinBox, f"spinBox_{self.pdo_type}PDO{self.pdo_num}").value())
 		except Exception as e:
 			print (f"{self.pdo_type}PDO{self.pdo_num} APPLY Comms Params: ",e)
-
 
 	def update_general_pdo_config(self):
 		self.update_pdo_mapped_indices()
@@ -166,6 +195,65 @@ class TPDOconfig(PDOconfig):
 			self.analog_thresholds[self.__ANALOG_THRESHOLD_ACCEL_Y] = line_edit
 			line_edit = get_value_from_text_box(self.tab.findChild(QLineEdit, f"TPDO{self.pdo_num}_Accel_Z_threshold").text())
 			self.analog_thresholds[self.__ANALOG_THRESHOLD_ACCEL_Z] = line_edit
+			
+		except Exception as e:
+			print (f"TPDO{self.pdo_num} APPLY Analog reads: ",e)
+
+	def update_tpdo_digital_config_ui(self):
+		try:
+			combo_box = self.tab.findChild(QComboBox, f"comboBox_TPDO{self.pdo_num}_IN1")
+			if (3 >= self.triggers[self.__TRIGGER_MODE_DIN_1] >= 0): combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_DIN_1]) 
+
+			combo_box = self.tab.findChild(QComboBox, f"comboBox_TPDO{self.pdo_num}_IN2")
+			if (3 >= self.triggers[self.__TRIGGER_MODE_DIN_2] >= 0): combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_DIN_2])
+			combo_box = self.tab.findChild(QComboBox, f"comboBox_TPDO{self.pdo_num}_IN3")
+			if (3 >= self.triggers[self.__TRIGGER_MODE_DIN_3] >= 0): combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_DIN_3])
+			combo_box = self.tab.findChild(QComboBox, f"comboBox_TPDO{self.pdo_num}_IN4")
+			if (3 >= self.triggers[self.__TRIGGER_MODE_DIN_4] >= 0): combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_DIN_4])
+			combo_box = self.tab.findChild(QComboBox, f"comboBox_TPDO{self.pdo_num}_IN5")
+			if (3 >= self.triggers[self.__TRIGGER_MODE_DIN_5] >= 0): combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_DIN_5])
+			combo_box = self.tab.findChild(QComboBox, f"comboBox_TPDO{self.pdo_num}_IN6")
+			if (3 >= self.triggers[self.__TRIGGER_MODE_DIN_6] >= 0): combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_DIN_6])
+			combo_box = self.tab.findChild(QComboBox, f"comboBox_TPDO{self.pdo_num}_IN7")
+			if (3 >= self.triggers[self.__TRIGGER_MODE_DIN_7] >= 0): combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_DIN_7])
+			combo_box = self.tab.findChild(QComboBox, f"comboBox_TPDO{self.pdo_num}_IN8")
+			if (3 >= self.triggers[self.__TRIGGER_MODE_DIN_8] >= 0): combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_DIN_8])
+			
+			print (f"TPDO{self.pdo_num} Triggers: {self.triggers}")
+			print (f"TPDO{self.pdo_num} Analog Thresholds: {self.analog_thresholds}")
+		except Exception as e:
+			print (f"TPDO{self.pdo_num} APPLY Digital reads: ",e)
+
+	def update_tpdo_analog_config_ui(self):
+		try:
+				#Modes
+			combo_box = self.tab.findChild(QComboBox, f"comboBox_TPDO{self.pdo_num}_GYROX")
+			if (3 >= self.triggers[self.__TRIGGER_MODE_GYRO_X] >= 0): combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_GYRO_X])
+			combo_box = self.tab.findChild(QComboBox, f"comboBox_TPDO{self.pdo_num}_GYROY")
+			if (3 >= self.triggers[self.__TRIGGER_MODE_GYRO_Y] >= 0): combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_GYRO_Y])
+			combo_box = self.tab.findChild(QComboBox, f"comboBox_TPDO{self.pdo_num}_GYROZ")
+			if (3 >= self.triggers[self.__TRIGGER_MODE_GYRO_Z] >= 0): combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_GYRO_Z])
+			combo_box = self.tab.findChild(QComboBox, f"comboBox_TPDO{self.pdo_num}_ACCELX")
+			if (3 >= self.triggers[self.__TRIGGER_MODE_ACCEL_X] >= 0): combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_ACCEL_X])
+			combo_box = self.tab.findChild(QComboBox, f"comboBox_TPDO{self.pdo_num}_ACCELY")
+			if (3 >= self.triggers[self.__TRIGGER_MODE_ACCEL_Y] >= 0): combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_ACCEL_Y])
+			combo_box = self.tab.findChild(QComboBox, f"comboBox_TPDO{self.pdo_num}_ACCELZ")
+			if (3 >= self.triggers[self.__TRIGGER_MODE_ACCEL_Z] >= 0): combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_ACCEL_Z])
+				
+			# Read all PDO data into the correct objects (thresholds)
+			
+			line_edit = self.tab.findChild(QLineEdit, f"TPDO{self.pdo_num}_Gyro_X_threshold")
+			line_edit.setText(f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_GYRO_X]}")
+			line_edit = self.tab.findChild(QLineEdit, f"TPDO{self.pdo_num}_Gyro_Y_threshold")
+			line_edit.setText(f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_GYRO_Y]}")
+			line_edit = self.tab.findChild(QLineEdit, f"TPDO{self.pdo_num}_Gyro_Z_threshold")
+			line_edit.setText(f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_GYRO_Z]}")
+			line_edit = self.tab.findChild(QLineEdit, f"TPDO{self.pdo_num}_Accel_X_threshold")
+			line_edit.setText(f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_ACCEL_X]}")
+			line_edit = self.tab.findChild(QLineEdit, f"TPDO{self.pdo_num}_Accel_Y_threshold")
+			line_edit.setText(f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_ACCEL_Y]}")
+			line_edit = self.tab.findChild(QLineEdit, f"TPDO{self.pdo_num}_Accel_Z_threshold")
+			line_edit.setText(f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_ACCEL_Z]}")
 			
 		except Exception as e:
 			print (f"TPDO{self.pdo_num} APPLY Analog reads: ",e)

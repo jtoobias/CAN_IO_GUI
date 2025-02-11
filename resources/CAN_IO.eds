@@ -122,7 +122,7 @@ PDOMapping=0
 [1400sub2]
 ParameterName=TRANSMISSION TYPE
 ObjectType=0x7  
-DataType=0x0006         ; UINT8_t
+DataType=0x0005         ; UINT8_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -176,7 +176,7 @@ PDOMapping=0
 [1401sub2]
 ParameterName=TRANSMISSION TYPE
 ObjectType=0x7  
-DataType=0x0006         ; UINT8_t
+DataType=0x0005         ; UINT8_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -230,7 +230,7 @@ PDOMapping=0
 [1402sub2]
 ParameterName=TRANSMISSION TYPE
 ObjectType=0x7  
-DataType=0x0006         ; UINT8_t
+DataType=0x0005         ; UINT8_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -284,7 +284,7 @@ PDOMapping=0
 [1403sub2]
 ParameterName=TRANSMISSION TYPE
 ObjectType=0x7  
-DataType=0x0006         ; UINT8_t
+DataType=0x0005         ; UINT8_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -320,7 +320,7 @@ PDOMapping=0
 1803=5
 
 [1800]
-ParameterName=TPDO1 COMM PARAM
+ParameterName=R COMM PARAM
 ObjectType=0x9
 SubNumber=5
 PDOMapping=0
@@ -344,7 +344,7 @@ PDOMapping=0
 [1800sub2]
 ParameterName=TRANSMISSION TYPE
 ObjectType=0x7  
-DataType=0x0006         ; UINT8_t
+DataType=0x0005         ; UINT8_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -398,7 +398,7 @@ PDOMapping=0
 [1801sub2]
 ParameterName=TRANSMISSION TYPE
 ObjectType=0x7  
-DataType=0x0006         ; UINT8_t
+DataType=0x0005         ; UINT8_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -452,7 +452,7 @@ PDOMapping=0
 [1802sub2]
 ParameterName=TRANSMISSION TYPE
 ObjectType=0x7  
-DataType=0x0006         ; UINT8_t
+DataType=0x0005         ; UINT8_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -506,7 +506,7 @@ PDOMapping=0
 [1803sub2]
 ParameterName=TRANSMISSION TYPE
 ObjectType=0x7  
-DataType=0x0006         ; UINT8_t
+DataType=0x0005         ; UINT8_t
 AccessType=rw
 DefaultValue=0x00000000 ; 
 PDOMapping=0
@@ -1172,7 +1172,7 @@ DefaultValue=0x00000000 ;
 PDOMapping=0
 
 
-[PDOTriggerDirection]
+[TPDOTriggerDirection]
 0x2001=15
 0x2011=15
 0x2021=15
@@ -1264,7 +1264,7 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[2001sub10]
+[2001subA]
 ParameterName=GYRO Y
 ObjectType=0x7  
 DataType=0x0005         ; uint8
@@ -1272,7 +1272,7 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[2001sub11]
+[2001subB]
 ParameterName=GYRO Z
 ObjectType=0x7  
 DataType=0x0005         ; uint8
@@ -1280,7 +1280,7 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[2001sub12]
+[2001subC]
 ParameterName=ACCEL X
 ObjectType=0x7  
 DataType=0x0005         ; uint8
@@ -1288,7 +1288,7 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[2001sub13]
+[2001subD]
 ParameterName=ACCEL Y
 ObjectType=0x7  
 DataType=0x0005         ; uint8
@@ -1296,7 +1296,7 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[2001sub14]
+[2001subE]
 ParameterName=ACCEL Z
 ObjectType=0x7  
 DataType=0x0005         ; uint8
@@ -1390,7 +1390,7 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[2011sub10]
+[2011subA]
 ParameterName=GYRO Y
 ObjectType=0x7  
 DataType=0x0005         ; uint8
@@ -1398,7 +1398,7 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[2011sub11]
+[2011subB]
 ParameterName=GYRO Z
 ObjectType=0x7  
 DataType=0x0005         ; uint8
@@ -1406,7 +1406,7 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[2011sub12]
+[2011subC]
 ParameterName=ACCEL X
 ObjectType=0x7  
 DataType=0x0005         ; uint8
@@ -1414,7 +1414,7 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[2011sub13]
+[2011subD]
 ParameterName=ACCEL Y
 ObjectType=0x7  
 DataType=0x0005         ; uint8
@@ -1422,7 +1422,7 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[2011sub14]
+[2011subE]
 ParameterName=ACCEL Z
 ObjectType=0x7  
 DataType=0x0005         ; uint8
@@ -1516,7 +1516,7 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[2021sub10]
+[2021subA]
 ParameterName=GYRO Y
 ObjectType=0x7  
 DataType=0x0005         ; uint8
@@ -1524,7 +1524,7 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[2021sub11]
+[2021subB]
 ParameterName=GYRO Z
 ObjectType=0x7  
 DataType=0x0005         ; uint8
@@ -1532,7 +1532,7 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[2021sub12]
+[2021subC]
 ParameterName=ACCEL X
 ObjectType=0x7  
 DataType=0x0005         ; uint8
@@ -1540,7 +1540,7 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[2021sub13]
+[2021subD]
 ParameterName=ACCEL Y
 ObjectType=0x7  
 DataType=0x0005         ; uint8
@@ -1548,7 +1548,7 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[2021sub14]
+[2021subE]
 ParameterName=ACCEL Z
 ObjectType=0x7  
 DataType=0x0005         ; uint8
@@ -1642,7 +1642,7 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[2031sub10]
+[2031subA]
 ParameterName=GYRO Y
 ObjectType=0x7  
 DataType=0x0005         ; uint8
@@ -1650,7 +1650,7 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[2031sub11]
+[2031subB]
 ParameterName=GYRO Z
 ObjectType=0x7  
 DataType=0x0005         ; uint8
@@ -1658,7 +1658,7 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[2031sub12]
+[2031subC]
 ParameterName=ACCEL X
 ObjectType=0x7  
 DataType=0x0005         ; uint8
@@ -1666,7 +1666,7 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[2031sub13]
+[2031subD]
 ParameterName=ACCEL Y
 ObjectType=0x7  
 DataType=0x0005         ; uint8
@@ -1674,7 +1674,7 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[2031sub14]
+[2031subE]
 ParameterName=ACCEL Z
 ObjectType=0x7  
 DataType=0x0005         ; uint8
@@ -1682,11 +1682,11 @@ AccessType=rw
 DefaultValue=0x00 ; 
 PDOMapping=0
 
-[PDOAnalogThreshold]
-0x2000=15
-0x2010=15
-0x2020=15
-0x2030=15
+[TPDOAnalogThreshold]
+0x2000=6
+0x2010=6
+0x2020=6
+0x2030=6
 
 [2000]
 ParameterName=TPDO1 ANALOG THRESHOLDS
@@ -1936,11 +1936,774 @@ AccessType=rw
 DefaultValue=0x0000 ; 
 PDOMapping=0
 
+[RPDOTriggerDirection]
+0x2003=15
+0x2013=15
+0x2023=15
+0x2033=15
+
+[2003]
+ParameterName=RPDO1 TRIGGERS DIRECTION
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[2003sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=15
+PDOMapping=0
+
+[2003sub1]
+ParameterName=DIGITAL INPUT1
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2003sub2]
+ParameterName=DIGITAL INPUT2
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2003sub3]
+ParameterName=DIGITAL INPUT3
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2003sub4]
+ParameterName=DIGITAL INPUT4
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2003sub5]
+ParameterName=DIGITAL INPUT5
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2003sub6]
+ParameterName=DIGITAL INPUT6
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2003sub7]
+ParameterName=DIGITAL INPUT7
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2003sub8]
+ParameterName=DIGITAL INPUT8
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2003sub9]
+ParameterName=GYRO X
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2003subA]
+ParameterName=GYRO Y
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2003subB]
+ParameterName=GYRO Z
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2003subC]
+ParameterName=ACCEL X
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2003subD]
+ParameterName=ACCEL Y
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2003subE]
+ParameterName=ACCEL Z
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2013]
+ParameterName=RPDO2 TRIGGERS DIRECTION
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[2013sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=15
+PDOMapping=0
+
+[2013sub1]
+ParameterName=DIGITAL INPUT1
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2013sub2]
+ParameterName=DIGITAL INPUT2
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2013sub3]
+ParameterName=DIGITAL INPUT3
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2013sub4]
+ParameterName=DIGITAL INPUT4
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2013sub5]
+ParameterName=DIGITAL INPUT5
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2013sub6]
+ParameterName=DIGITAL INPUT6
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2013sub7]
+ParameterName=DIGITAL INPUT7
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2013sub8]
+ParameterName=DIGITAL INPUT8
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2013sub9]
+ParameterName=GYRO X
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2013subA]
+ParameterName=GYRO Y
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2013subB]
+ParameterName=GYRO Z
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2013subC]
+ParameterName=ACCEL X
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2013subD]
+ParameterName=ACCEL Y
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2013subE]
+ParameterName=ACCEL Z
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2023]
+ParameterName=RPDO3 TRIGGERS DIRECTION
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[2023sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=15
+PDOMapping=0
+
+[2023sub1]
+ParameterName=DIGITAL INPUT1
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2023sub2]
+ParameterName=DIGITAL INPUT2
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2023sub3]
+ParameterName=DIGITAL INPUT3
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2023sub4]
+ParameterName=DIGITAL INPUT4
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2023sub5]
+ParameterName=DIGITAL INPUT5
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2023sub6]
+ParameterName=DIGITAL INPUT6
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2023sub7]
+ParameterName=DIGITAL INPUT7
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2023sub8]
+ParameterName=DIGITAL INPUT8
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2023sub9]
+ParameterName=GYRO X
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2023subA]
+ParameterName=GYRO Y
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2023subB]
+ParameterName=GYRO Z
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2023subC]
+ParameterName=ACCEL X
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2023subD]
+ParameterName=ACCEL Y
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2023subE]
+ParameterName=ACCEL Z
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2033]
+ParameterName=RPDO4 TRIGGERS DIRECTION
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[2033sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=15
+PDOMapping=0
+
+[2033sub1]
+ParameterName=DIGITAL INPUT1
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2033sub2]
+ParameterName=DIGITAL INPUT2
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2033sub3]
+ParameterName=DIGITAL INPUT3
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2033sub4]
+ParameterName=DIGITAL INPUT4
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2033sub5]
+ParameterName=DIGITAL INPUT5
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2033sub6]
+ParameterName=DIGITAL INPUT6
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2033sub7]
+ParameterName=DIGITAL INPUT7
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2033sub8]
+ParameterName=DIGITAL INPUT8
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2033sub9]
+ParameterName=GYRO X
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2033subA]
+ParameterName=GYRO Y
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2033subB]
+ParameterName=GYRO Z
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2033subC]
+ParameterName=ACCEL X
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2033subD]
+ParameterName=ACCEL Y
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[2033subE]
+ParameterName=ACCEL Z
+ObjectType=0x7  
+DataType=0x0005         ; uint8
+AccessType=rw
+DefaultValue=0x00 ; 
+PDOMapping=0
+
+[RPDOAnalogThreshold]
+0x2002=6
+0x2012=6
+0x2022=6
+0x2032=6
+
+[2002]
+ParameterName=RPDO1 ANALOG THRESHOLDS
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[2002sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=7
+PDOMapping=0
+
+[2002sub1]
+ParameterName=GYRO X
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2002sub2]
+ParameterName=GYRO Y
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2002sub3]
+ParameterName=GYRO Z
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2002sub4]
+ParameterName=ACCEL X
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2002sub5]
+ParameterName=ACCEL Y
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2002sub6]
+ParameterName=ACCEL Z
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2012]
+ParameterName=RPDO2 ANALOG THRESHOLDS
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[2012sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=7
+PDOMapping=0
+
+[2012sub1]
+ParameterName=GYRO X
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2012sub2]
+ParameterName=GYRO Y
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2012sub3]
+ParameterName=GYRO Z
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2012sub4]
+ParameterName=ACCEL X
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2012sub5]
+ParameterName=ACCEL Y
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2012sub6]
+ParameterName=ACCEL Z
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2022]
+ParameterName=RPDO3 ANALOG THRESHOLDS
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[2022sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=7
+PDOMapping=0
+
+[2022sub1]
+ParameterName=GYRO X
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2022sub2]
+ParameterName=GYRO Y
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2022sub3]
+ParameterName=GYRO Z
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2022sub4]
+ParameterName=ACCEL X
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2022sub5]
+ParameterName=ACCEL Y
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2022sub6]
+ParameterName=ACCEL Z
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2032]
+ParameterName=RPDO4 ANALOG THRESHOLDS
+ObjectType=0x9
+SubNumber=5
+PDOMapping=0
+
+[2032sub0]
+ParameterName=Number of Entries
+ObjectType=0x5
+DataType=0x0005
+AccessType=ro
+DefaultValue=7
+PDOMapping=0
+
+[2032sub1]
+ParameterName=GYRO X
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2032sub2]
+ParameterName=GYRO Y
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2032sub3]
+ParameterName=GYRO Z
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2032sub4]
+ParameterName=ACCEL X
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2032sub5]
+ParameterName=ACCEL Y
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
+[2032sub6]
+ParameterName=ACCEL Z
+ObjectType=0x7  
+DataType=0x0003         ; int16
+AccessType=rw
+DefaultValue=0x0000 ; 
+PDOMapping=0
+
 [SensorOffsets]
 3000=4
 3001=4
 3002=1
-
 
 [3000]
 ParameterName=Accelerometer (X, Y, Z)
@@ -2203,6 +2966,6 @@ PDOMapping=1
 
 
 [Mapping]
-TPDO1=6003,3  ; Map Accelerometer X, Y, Z, Temperature
+R=6003,3  ; Map Accelerometer X, Y, Z, Temperature
 TPDO2=6004,3  ; Map Gyroscope X, Y, Z
 TPDO3=6000,1,6200,1  ; Map Digital Inputs,Map Digital Outputs
