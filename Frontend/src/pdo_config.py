@@ -139,7 +139,6 @@ class PDOconfig():
 		try:
 			combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN1").currentText()
 			self.triggers[self.__TRIGGER_MODE_DIN_1] = self.trigger_dict[combo_box]
-			print (self.triggers[self.__TRIGGER_MODE_DIN_1])
 			combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN2").currentText()
 			self.triggers[self.__TRIGGER_MODE_DIN_2] = self.trigger_dict[combo_box]
 			combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN3").currentText()

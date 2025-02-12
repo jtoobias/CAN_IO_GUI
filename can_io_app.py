@@ -353,6 +353,7 @@ class MainWindow(QMainWindow):
       self.rpdo1.update_all_pdo_config()
       self.ui.progressBar_pdo_download.setValue(31)
       self.rpdo2.update_all_pdo_config()
+      print (f"RPDO2 ANALOG: {self.rpdo2.analog_thresholds}")
       self.ui.progressBar_pdo_download.setValue(38)
       self.rpdo3.update_all_pdo_config()
       self.ui.progressBar_pdo_download.setValue(44)

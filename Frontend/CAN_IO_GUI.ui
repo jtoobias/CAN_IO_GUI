@@ -3952,7 +3952,7 @@ border-radius: 50%;</string>
          </item>
         </layout>
        </widget>
-       <widget class="QTableWidget" name="tableWidget_RPDO1_5">
+       <widget class="QTableWidget" name="tableWidget_TPDO4">
         <property name="geometry">
          <rect>
           <x>290</x>
@@ -4035,7 +4035,7 @@ border-radius: 50%;</string>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="RPDO1_tab">
        <attribute name="title">
@@ -4765,7 +4765,7 @@ border-radius: 50%;</string>
             <string>Choose the COB ID that is sent with this PDO</string>
            </property>
            <property name="text">
-            <string/>
+            <string>303</string>
            </property>
           </widget>
          </item>
@@ -4816,7 +4816,7 @@ border-radius: 50%;</string>
          </item>
         </layout>
        </widget>
-       <widget class="QTableWidget" name="tableWidget_RPDO1_2">
+       <widget class="QTableWidget" name="tableWidget_RPDO2">
         <property name="geometry">
          <rect>
           <x>290</x>
@@ -5514,7 +5514,7 @@ border-radius: 50%;</string>
          </item>
         </layout>
        </widget>
-       <widget class="QTableWidget" name="tableWidget_RPDO1_3">
+       <widget class="QTableWidget" name="tableWidget_RPDO3">
         <property name="geometry">
          <rect>
           <x>290</x>
@@ -5973,7 +5973,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="RPDO1_Accel_X_threshold_3">
+            <widget class="QLineEdit" name="RPDO3_Accel_X_threshold">
              <property name="statusTip">
               <string>Set the threshold value in meters/second^2 to be triggered on</string>
              </property>
@@ -5991,7 +5991,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="RPDO1_Accel_Y_threshold_3">
+            <widget class="QLineEdit" name="RPDO3_Accel_Y_threshold">
              <property name="statusTip">
               <string>Set the threshold value in meters/second^2 to be triggered on</string>
              </property>
@@ -6009,7 +6009,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="RPDO1_Gyro_Y_threshold_3">
+            <widget class="QLineEdit" name="RPDO3_Gyro_Y_threshold">
              <property name="statusTip">
               <string>Set the threshold value in degrees/second to be triggered on</string>
              </property>
@@ -6051,7 +6051,7 @@ border-radius: 50%;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="RPDO1_Gyro_Z_threshold_3">
+            <widget class="QLineEdit" name="RPDO3_Gyro_Z_threshold">
              <property name="statusTip">
               <string>Set the threshold value in degrees/second to be triggered on</string>
              </property>
@@ -6212,7 +6212,7 @@ border-radius: 50%;</string>
          </item>
         </layout>
        </widget>
-       <widget class="QTableWidget" name="tableWidget_RPDO1_4">
+       <widget class="QTableWidget" name="tableWidget_RPDO4">
         <property name="geometry">
          <rect>
           <x>290</x>

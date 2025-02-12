@@ -235,7 +235,7 @@ class CANBusHandler:
         for i in range(len(accel_offset)):
             self.node.sdo[0x3000][i+1].raw = accel_offset[i]*100
             time.sleep(0.05)
-            self.node.sdo[0x3001][i+1].raw = gyro_offset[i]*10
+            self.node.sdo[0x3001][i+1].raw = gyro_offset[i]*100
             time.sleep(0.05)
 
     def sdo_read_inputs(self) -> int:
@@ -348,6 +348,7 @@ class CANBusHandler:
         else:
             print ("PDO type not correct: ",pdo.pdo_type) 
         for offset in range(len(pdo.mapped_indices)):
+            print (f"{pdo.pdo_type} - {pdo.pdo_num} - {index:X} {(self.__PDO_MAPPING_SUBINDEX_ENTRY_1_OD+offset):X}") 
             mapped_index = self.little_endian_to_big_endian(self.node.sdo[index][(self.__PDO_MAPPING_SUBINDEX_ENTRY_1_OD+offset)].raw,4)
 
             if (mapped_index > 0):
@@ -378,6 +379,7 @@ class CANBusHandler:
         
 
         for offset in range(len(pdo.triggers)):
+            print (f"{pdo.pdo_type} - {pdo.pdo_num} - {index:X} {(self.__TRIGGER_IN_1_SUBINDEX_OD+offset):X}") 
             pdo.triggers[offset] = self.node.sdo[index][(self.__TRIGGER_IN_1_SUBINDEX_OD+offset)].raw
             time.sleep(0.04)
 
@@ -401,6 +403,7 @@ class CANBusHandler:
             print ("PDO type not correct: ",pdo.pdo_type)
         
         for offset in range(len(pdo.analog_thresholds)):
+            print (f"{pdo.pdo_type} - {pdo.pdo_num} - {index:X} {(self.__ANALOG_INPUT_1_SUBINDEX_OD+offset):X}") 
             pdo.analog_thresholds[offset] = self.little_endian_to_big_endian(self.node.sdo[index][(self.__ANALOG_INPUT_1_SUBINDEX_OD+offset)].raw,2)
             if (pdo.analog_thresholds[offset] == self.__ANALOG_INVALID_NUMBER): pdo.analog_thresholds[offset] = None
             time.sleep(0.04)
@@ -510,6 +513,8 @@ class CANBusHandler:
                 return
         else:
             print ("PDO type not correct: ",pdo.pdo_type)
+        
+        print (f"ANALOG Sends: {pdo.pdo_type} - {pdo.pdo_num} - {index}")
         
         for offset,aValue in enumerate(pdo.analog_thresholds):
             if (aValue == None): continue
