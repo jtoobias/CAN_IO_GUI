@@ -4,10 +4,11 @@ import os
 import time
 import numpy as np
 import struct
-from Frontend.src.pdo_config import PDOconfig, TPDOconfig
+from Frontend.src.pdo_config import PDOconfig
 
 class CANBusHandler:
-
+    __INT32_MAX = (1 << 31) - 1
+    __ANALOG_INVALID_NUMBER = __INT32_MAX
     # SDO's
     __TSDO = 0x580		# Transmitted by the CAN IO board
     __RSDO = 0x600		# Received by the CAN IO board
@@ -80,21 +81,28 @@ class CANBusHandler:
     __PDO_MAPPING_SUBINDEX_ENTRY_7_OD = 0x07 # Subindex for seventh entry
     __PDO_MAPPING_SUBINDEX_ENTRY_8_OD = 0x08 # Subindex for eighth entry
 
-# TPDO1 Analog Thresholds and Trigger Directions
     __TPDO1_ANALOG_THRESHOLDS_OD    = 0x2000
     __TPDO1_TRIGGER_DIRS_OD         = 0x2001
+    __RPDO1_ANALOG_THRESHOLDS_OD    = 0x2002
+    __RPDO1_TRIGGER_DIRS_OD         = 0x2003
 
 # TPDO2 Analog Thresholds and Trigger Directions
     __TPDO2_ANALOG_THRESHOLDS_OD    = 0x2010
     __TPDO2_TRIGGER_DIRS_OD         = 0x2011
+    __RPDO3_ANALOG_THRESHOLDS_OD    = 0x2022
+    __RPDO3_TRIGGER_DIRS_OD         = 0x2023
 
 # TPDO3 Analog Thresholds and Trigger Directions
     __TPDO3_ANALOG_THRESHOLDS_OD    = 0x2020
     __TPDO3_TRIGGER_DIRS_OD         = 0x2021
+    __RPDO2_ANALOG_THRESHOLDS_OD    = 0x2012
+    __RPDO2_TRIGGER_DIRS_OD         = 0x2013
 
 # TPDO4 Analog Thresholds and Trigger Directions
     __TPDO4_ANALOG_THRESHOLDS_OD    = 0x2030
     __TPDO4_TRIGGER_DIRS_OD         = 0x2031
+    __RPDO4_ANALOG_THRESHOLDS_OD    = 0x2032
+    __RPDO4_TRIGGER_DIRS_OD         = 0x2033
 
 
     #  Trigger sub_indices
@@ -227,7 +235,7 @@ class CANBusHandler:
         for i in range(len(accel_offset)):
             self.node.sdo[0x3000][i+1].raw = accel_offset[i]*100
             time.sleep(0.05)
-            self.node.sdo[0x3001][i+1].raw = gyro_offset[i]*100
+            self.node.sdo[0x3001][i+1].raw = gyro_offset[i]*10
             time.sleep(0.05)
 
     def sdo_read_inputs(self) -> int:
@@ -290,7 +298,7 @@ class CANBusHandler:
         time.sleep(0.01)
         return [x_accel,y_accel,z_accel]
     
-    def upload_pdo_config(self,pdo:PDOconfig|TPDOconfig):
+    def upload_pdo_config(self,pdo:PDOconfig):
         index = 0
         if (pdo.pdo_type == "T"):
             if (pdo.pdo_num == 1): index = self.__TPDO1_COMM_PARAM_OD
@@ -298,7 +306,7 @@ class CANBusHandler:
             elif (pdo.pdo_num == 3): index = self.__TPDO3_COMM_PARAM_OD
             elif (pdo.pdo_num == 4): index = self.__TPDO4_COMM_PARAM_OD
             else: 
-                print ("RPDO number not correct: ",pdo.pdo_num) 
+                print ("TPDO number not correct: ",pdo.pdo_num) 
                 return
         elif (pdo.pdo_type == "R"):
             if (pdo.pdo_num == 1): index = self.__RPDO1_COMM_PARAM_OD
@@ -327,7 +335,7 @@ class CANBusHandler:
             elif (pdo.pdo_num == 3): index = self.__TPDO3_MAPPING_PARAM_OD
             elif (pdo.pdo_num == 4): index = self.__TPDO4_MAPPING_PARAM_OD
             else: 
-                print ("RPDO number not correct: ",pdo.pdo_num) 
+                print ("TPDO number not correct: ",pdo.pdo_num) 
                 return
         elif (pdo.pdo_type == "R"):
             if (pdo.pdo_num == 1): index = self.__RPDO1_MAPPING_PARAM_OD
@@ -348,31 +356,57 @@ class CANBusHandler:
                 pdo.mapped_indices[offset] = -1
             time.sleep(0.04)
 
-    def upload_pdo_triggers(self,tpdo:TPDOconfig):
-        if (tpdo.pdo_num == 1): index = self.__TPDO1_TRIGGER_DIRS_OD
-        elif (tpdo.pdo_num == 2): index = self.__TPDO2_TRIGGER_DIRS_OD
-        elif (tpdo.pdo_num == 3): index = self.__TPDO3_TRIGGER_DIRS_OD
-        elif (tpdo.pdo_num == 4): index = self.__TPDO4_TRIGGER_DIRS_OD
-            # Debug indices
-        # record = self.node.sdo[index]  # Get the record
-        # print (f"{index:X}")
-        # print("Available sub-indexes:", list(record.keys()))  # Check all sub-indexes
+    def upload_pdo_triggers(self,pdo:PDOconfig):
+        if (pdo.pdo_type == "T"):
+            if (pdo.pdo_num == 1): index = self.__TPDO1_TRIGGER_DIRS_OD
+            elif (pdo.pdo_num == 2): index = self.__TPDO2_TRIGGER_DIRS_OD
+            elif (pdo.pdo_num == 3): index = self.__TPDO3_TRIGGER_DIRS_OD
+            elif (pdo.pdo_num == 4): index = self.__TPDO4_TRIGGER_DIRS_OD
+            else: 
+                print ("TPDO number not correct: ",pdo.pdo_num) 
+                return
+        elif (pdo.pdo_type == "R"):
+            if (pdo.pdo_num == 1): index = self.__RPDO1_TRIGGER_DIRS_OD
+            elif (pdo.pdo_num == 2): index = self.__RPDO2_TRIGGER_DIRS_OD
+            elif (pdo.pdo_num == 3): index = self.__RPDO3_TRIGGER_DIRS_OD
+            elif (pdo.pdo_num == 4): index = self.__RPDO4_TRIGGER_DIRS_OD
+            else: 
+                print ("RPDO number not correct: ",pdo.pdo_num) 
+                return
+        else:
+            print ("PDO type not correct: ",pdo.pdo_type) 
+        
 
-        for offset in range(len(tpdo.triggers)):
-            tpdo.triggers[offset] = self.node.sdo[index][(self.__TRIGGER_IN_1_SUBINDEX_OD+offset)].raw
+        for offset in range(len(pdo.triggers)):
+            pdo.triggers[offset] = self.node.sdo[index][(self.__TRIGGER_IN_1_SUBINDEX_OD+offset)].raw
             time.sleep(0.04)
 
-        if (tpdo.pdo_num == 1): index = self.__TPDO1_ANALOG_THRESHOLDS_OD
-        elif (tpdo.pdo_num == 2): index = self.__TPDO2_ANALOG_THRESHOLDS_OD
-        elif (tpdo.pdo_num == 3): index = self.__TPDO3_ANALOG_THRESHOLDS_OD
-        elif (tpdo.pdo_num == 4): index = self.__TPDO4_ANALOG_THRESHOLDS_OD
+        if (pdo.pdo_type == "T"):
+            if (pdo.pdo_num == 1): index = self.__TPDO1_ANALOG_THRESHOLDS_OD
+            elif (pdo.pdo_num == 2): index = self.__TPDO2_ANALOG_THRESHOLDS_OD
+            elif (pdo.pdo_num == 3): index = self.__TPDO3_ANALOG_THRESHOLDS_OD
+            elif (pdo.pdo_num == 4): index = self.__TPDO4_ANALOG_THRESHOLDS_OD
+            else: 
+                print ("TPDO number not correct: ",pdo.pdo_num) 
+                return
+        elif (pdo.pdo_type == "R"):
+            if (pdo.pdo_num == 1): index = self.__RPDO1_ANALOG_THRESHOLDS_OD
+            elif (pdo.pdo_num == 2): index = self.__RPDO2_ANALOG_THRESHOLDS_OD
+            elif (pdo.pdo_num == 3): index = self.__RPDO3_ANALOG_THRESHOLDS_OD
+            elif (pdo.pdo_num == 4): index = self.__RPDO4_ANALOG_THRESHOLDS_OD
+            else: 
+                print ("RPDO number not correct: ",pdo.pdo_num) 
+                return
+        else:
+            print ("PDO type not correct: ",pdo.pdo_type)
         
-        for offset in range(len(tpdo.analog_thresholds)):
-            tpdo.analog_thresholds[offset] = self.little_endian_to_big_endian(self.node.sdo[index][(self.__ANALOG_INPUT_1_SUBINDEX_OD+offset)].raw,2)
+        for offset in range(len(pdo.analog_thresholds)):
+            pdo.analog_thresholds[offset] = self.little_endian_to_big_endian(self.node.sdo[index][(self.__ANALOG_INPUT_1_SUBINDEX_OD+offset)].raw,2)
+            if (pdo.analog_thresholds[offset] == self.__ANALOG_INVALID_NUMBER): pdo.analog_thresholds[offset] = None
             time.sleep(0.04)
 
     
-    def update_pdo_comms_parameters(self,pdo:PDOconfig|TPDOconfig):
+    def update_pdo_comms_parameters(self,pdo:PDOconfig):
         index = 0
         if (pdo.pdo_type == "T"):
             if (pdo.pdo_num == 1): index = self.__TPDO1_COMM_PARAM_OD
@@ -380,7 +414,7 @@ class CANBusHandler:
             elif (pdo.pdo_num == 3): index = self.__TPDO3_COMM_PARAM_OD
             elif (pdo.pdo_num == 4): index = self.__TPDO4_COMM_PARAM_OD
             else: 
-                print ("RPDO number not correct: ",pdo.pdo_num) 
+                print ("TPDO number not correct: ",pdo.pdo_num) 
                 return
         elif (pdo.pdo_type == "R"):
             if (pdo.pdo_num == 1): index = self.__RPDO1_COMM_PARAM_OD
@@ -406,7 +440,7 @@ class CANBusHandler:
             self.send_sdo(index,self.__PDO_COMM_PARAM_EVENT_TIMER_SUBINDEX_OD,pdo.transmit_period)
             time.sleep(0.04)
 
-    def update_pdo_mapped_indices(self,pdo:PDOconfig|TPDOconfig):
+    def update_pdo_mapped_indices(self,pdo:PDOconfig):
         if (pdo.pdo_type == "T"):
             if (pdo.pdo_num == 1): index = self.__TPDO1_MAPPING_PARAM_OD
             elif (pdo.pdo_num == 2): index = self.__TPDO2_MAPPING_PARAM_OD
@@ -431,36 +465,62 @@ class CANBusHandler:
             self.send_sdo(index,(self.__PDO_MAPPING_SUBINDEX_ENTRY_1_OD+offset),mapped_index)
             time.sleep(0.04)
 
-    def update_tpdo_triggers(self,tpdo:TPDOconfig):
-        if (tpdo.pdo_num == 1): index = self.__TPDO1_TRIGGER_DIRS_OD
-        elif (tpdo.pdo_num == 2): index = self.__TPDO2_TRIGGER_DIRS_OD
-        elif (tpdo.pdo_num == 3): index = self.__TPDO3_TRIGGER_DIRS_OD
-        elif (tpdo.pdo_num == 4): index = self.__TPDO4_TRIGGER_DIRS_OD
+    def update_pdo_triggers(self,pdo:PDOconfig):
+
+        if (pdo.pdo_type == "T"):
+            if (pdo.pdo_num == 1): index = self.__TPDO1_TRIGGER_DIRS_OD
+            elif (pdo.pdo_num == 2): index = self.__TPDO2_TRIGGER_DIRS_OD
+            elif (pdo.pdo_num == 3): index = self.__TPDO3_TRIGGER_DIRS_OD
+            elif (pdo.pdo_num == 4): index = self.__TPDO4_TRIGGER_DIRS_OD
+            else: 
+                print ("RPDO number not correct: ",pdo.pdo_num) 
+                return
+        elif (pdo.pdo_type == "R"):
+            if (pdo.pdo_num == 1): index = self.__RPDO1_TRIGGER_DIRS_OD
+            elif (pdo.pdo_num == 2): index = self.__RPDO2_TRIGGER_DIRS_OD
+            elif (pdo.pdo_num == 3): index = self.__RPDO3_TRIGGER_DIRS_OD
+            elif (pdo.pdo_num == 4): index = self.__RPDO4_TRIGGER_DIRS_OD
+            else: 
+                print ("RPDO number not correct: ",pdo.pdo_num) 
+                return
+        else:
+            print ("PDO type not correct: ",pdo.pdo_type) 
         
-        for offset,tValue in enumerate(tpdo.triggers):
+        for offset,tValue in enumerate(pdo.triggers):
             self.send_sdo(index,(self.__TRIGGER_IN_1_SUBINDEX_OD+offset),tValue)
             time.sleep(0.04)
 
-    def update_tpdo_analog_thresholds(self,tpdo:TPDOconfig):
-        if (tpdo.pdo_num == 1): index = self.__TPDO1_ANALOG_THRESHOLDS_OD
-        elif (tpdo.pdo_num == 2): index = self.__TPDO2_ANALOG_THRESHOLDS_OD
-        elif (tpdo.pdo_num == 3): index = self.__TPDO3_ANALOG_THRESHOLDS_OD
-        elif (tpdo.pdo_num == 4): index = self.__TPDO4_ANALOG_THRESHOLDS_OD
+    def update_pdo_analog_thresholds(self,pdo:PDOconfig):
+
+        if (pdo.pdo_type == "T"):
+            if (pdo.pdo_num == 1): index = self.__TPDO1_ANALOG_THRESHOLDS_OD
+            elif (pdo.pdo_num == 2): index = self.__TPDO2_ANALOG_THRESHOLDS_OD
+            elif (pdo.pdo_num == 3): index = self.__TPDO3_ANALOG_THRESHOLDS_OD
+            elif (pdo.pdo_num == 4): index = self.__TPDO4_ANALOG_THRESHOLDS_OD
+            else: 
+                print ("RPDO number not correct: ",pdo.pdo_num) 
+                return
+        elif (pdo.pdo_type == "R"):
+            if (pdo.pdo_num == 1): index = self.__RPDO1_ANALOG_THRESHOLDS_OD
+            elif (pdo.pdo_num == 2): index = self.__RPDO2_ANALOG_THRESHOLDS_OD
+            elif (pdo.pdo_num == 3): index = self.__RPDO3_ANALOG_THRESHOLDS_OD
+            elif (pdo.pdo_num == 4): index = self.__RPDO4_ANALOG_THRESHOLDS_OD
+            else: 
+                print ("RPDO number not correct: ",pdo.pdo_num) 
+                return
+        else:
+            print ("PDO type not correct: ",pdo.pdo_type)
         
-        for offset,aValue in enumerate(tpdo.analog_thresholds):
+        for offset,aValue in enumerate(pdo.analog_thresholds):
             if (aValue == None): continue
             self.send_sdo(index,(self.__ANALOG_INPUT_1_SUBINDEX_OD+offset),aValue)
             time.sleep(0.04)
     
-    def update_tpdo_config(self,tpdo:TPDOconfig):
-        self.update_pdo_comms_parameters(tpdo)
-        self.update_pdo_mapped_indices(tpdo)
-        self.update_tpdo_analog_thresholds(tpdo)
-        self.update_tpdo_triggers(tpdo)
-
-    def update_rpdo_config(self,rpdo:PDOconfig):
-        self.update_pdo_comms_parameters(rpdo)
-        self.update_pdo_mapped_indices(rpdo)
+    def update_pdo_config(self,pdo:PDOconfig):
+        self.update_pdo_comms_parameters(pdo)
+        self.update_pdo_mapped_indices(pdo)
+        self.update_pdo_analog_thresholds(pdo)
+        self.update_pdo_triggers(pdo)
         
     def send_sdo(self,index,sub_index,data:int):
         try:

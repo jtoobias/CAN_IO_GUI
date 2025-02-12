@@ -3,7 +3,7 @@ from PyQt6.QtCore import Qt,QTimer
 from PyQt6.QtWidgets import QApplication, QMainWindow,QWidget,QCheckBox
 from Frontend.src.CAN_IO_GUI import Ui_MainWindow
 from Backend.can_handler import CANBusHandler
-from Frontend.src.pdo_config import PDOconfig, TPDOconfig, get_value_from_text_box
+from Frontend.src.pdo_config import PDOconfig, get_value_from_text_box
 import sys
 import os
 from functools import partial
@@ -72,10 +72,10 @@ class MainWindow(QMainWindow):
       self.ui.comboBoxBaudRates.addItems(["1000","500","250","125","62.5"])
       self.check_boxes_states = 0
 
-      self.tpdo1 = TPDOconfig(self.ui.TPDO_tab_widget,1,"T")
-      self.tpdo2 = TPDOconfig(self.ui.TPDO_tab_widget,2,"T")
-      self.tpdo3 = TPDOconfig(self.ui.TPDO_tab_widget,3,"T")
-      self.tpdo4 = TPDOconfig(self.ui.TPDO_tab_widget,4,"T")
+      self.tpdo1 = PDOconfig(self.ui.TPDO_tab_widget,1,"T")
+      self.tpdo2 = PDOconfig(self.ui.TPDO_tab_widget,2,"T")
+      self.tpdo3 = PDOconfig(self.ui.TPDO_tab_widget,3,"T")
+      self.tpdo4 = PDOconfig(self.ui.TPDO_tab_widget,4,"T")
       
       self.rpdo1 = PDOconfig(self.ui.RPDO_tab_widget,1,"R")
       self.rpdo2 = PDOconfig(self.ui.RPDO_tab_widget,2,"R")
@@ -338,42 +338,45 @@ class MainWindow(QMainWindow):
       
   
     def handle_pdo_apply_button_click(self):
+      # Get all the new information from the UI for TPDOs
       self.ui.progressBar_pdo_download.setValue(0)
-      self.tpdo1.update_tpdo_config()
+      self.tpdo1.update_all_pdo_config()
       self.ui.progressBar_pdo_download.setValue(6)
-      self.tpdo2.update_tpdo_config()
+      self.tpdo2.update_all_pdo_config()
       self.ui.progressBar_pdo_download.setValue(12)
-      self.tpdo3.update_tpdo_config()
+      self.tpdo3.update_all_pdo_config()
       self.ui.progressBar_pdo_download.setValue(18)
-      self.tpdo4.update_tpdo_config()
+      self.tpdo4.update_all_pdo_config()
       self.ui.progressBar_pdo_download.setValue(25)
 
-      self.rpdo1.update_general_pdo_config()
+      # Get all the new information from the UI for RPDOs
+      self.rpdo1.update_all_pdo_config()
       self.ui.progressBar_pdo_download.setValue(31)
-      self.rpdo2.update_general_pdo_config()
+      self.rpdo2.update_all_pdo_config()
       self.ui.progressBar_pdo_download.setValue(38)
-      self.rpdo3.update_general_pdo_config()
+      self.rpdo3.update_all_pdo_config()
       self.ui.progressBar_pdo_download.setValue(44)
-      self.rpdo4.update_general_pdo_config()
+      self.rpdo4.update_all_pdo_config()
       self.ui.progressBar_pdo_download.setValue(50)
 
-      # self.can_handler.update_tpdo_config(self.tpdo1)
-      self.can_handler.update_tpdo_config(self.tpdo1)
+      # Send all the new information from the UI for TPDOs
+      self.can_handler.update_pdo_config(self.tpdo1)
       self.ui.progressBar_pdo_download.setValue(56)
-      self.can_handler.update_tpdo_config(self.tpdo2)
+      self.can_handler.update_pdo_config(self.tpdo2)
       self.ui.progressBar_pdo_download.setValue(62)
-      self.can_handler.update_tpdo_config(self.tpdo3)
+      self.can_handler.update_pdo_config(self.tpdo3)
       self.ui.progressBar_pdo_download.setValue(69)
-      self.can_handler.update_tpdo_config(self.tpdo4)
+      self.can_handler.update_pdo_config(self.tpdo4)
       self.ui.progressBar_pdo_download.setValue(75)
       
-      self.can_handler.update_rpdo_config(self.rpdo1)
+      # Send all the new information from the UI for RPDOs
+      self.can_handler.update_pdo_config(self.rpdo1)
       self.ui.progressBar_pdo_download.setValue(82)
-      self.can_handler.update_rpdo_config(self.rpdo2)
+      self.can_handler.update_pdo_config(self.rpdo2)
       self.ui.progressBar_pdo_download.setValue(88)
-      self.can_handler.update_rpdo_config(self.rpdo3)
+      self.can_handler.update_pdo_config(self.rpdo3)
       self.ui.progressBar_pdo_download.setValue(94)
-      self.can_handler.update_rpdo_config(self.rpdo4)
+      self.can_handler.update_pdo_config(self.rpdo4)
       self.ui.progressBar_pdo_download.setValue(100)
       
     def handle_rpdo_button_click(self,rpdo:PDOconfig,rpdo_num:int):
@@ -473,17 +476,30 @@ class MainWindow(QMainWindow):
       self.tpdo4.update_pdo_comms_parameters_ui()
       print ("TPDO Comms Config UI complete")
       
-      self.tpdo1.update_tpdo_digital_config_ui()
-      self.tpdo1.update_tpdo_analog_config_ui()
+      self.rpdo1.update_pdo_digital_config_ui()
+      self.rpdo1.update_pdo_analog_config_ui()
+      print ("RPDO1 Trigger Config UI complete")
+      self.rpdo2.update_pdo_digital_config_ui()
+      self.rpdo2.update_pdo_analog_config_ui()
+      print ("RPDO2 Trigger Config UI complete")
+      self.rpdo3.update_pdo_digital_config_ui()
+      self.rpdo3.update_pdo_analog_config_ui()
+      print ("RPDO3 Trigger Config UI complete")
+      self.rpdo4.update_pdo_digital_config_ui()
+      self.rpdo4.update_pdo_analog_config_ui()
+      print ("RPDO4 Trigger Config UI complete")
+      
+      self.tpdo1.update_pdo_digital_config_ui()
+      self.tpdo1.update_pdo_analog_config_ui()
       print ("TPDO1 Trigger Config UI complete")
-      self.tpdo2.update_tpdo_digital_config_ui()
-      self.tpdo2.update_tpdo_analog_config_ui()
+      self.tpdo2.update_pdo_digital_config_ui()
+      self.tpdo2.update_pdo_analog_config_ui()
       print ("TPDO2 Trigger Config UI complete")
-      self.tpdo3.update_tpdo_digital_config_ui()
-      self.tpdo3.update_tpdo_analog_config_ui()
+      self.tpdo3.update_pdo_digital_config_ui()
+      self.tpdo3.update_pdo_analog_config_ui()
       print ("TPDO3 Trigger Config UI complete")
-      self.tpdo4.update_tpdo_digital_config_ui()
-      self.tpdo4.update_tpdo_analog_config_ui()
+      self.tpdo4.update_pdo_digital_config_ui()
+      self.tpdo4.update_pdo_analog_config_ui()
       print ("TPDO4 Trigger Config UI complete")
     
 if __name__ == "__main__":
