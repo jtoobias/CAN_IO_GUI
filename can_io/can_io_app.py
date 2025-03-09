@@ -1,9 +1,9 @@
 from PyQt6 import QtWidgets
 from PyQt6.QtCore import Qt,QTimer
 from PyQt6.QtWidgets import QApplication, QMainWindow,QWidget,QCheckBox
-from Frontend.src.CAN_IO_GUI import Ui_MainWindow
+from Frontend.CAN_IO_GUI import Ui_MainWindow
 from Backend.can_handler import CANBusHandler
-from Frontend.src.pdo_config import PDOconfig, get_value_from_text_box
+from Frontend.pdo_config import PDOconfig, get_value_from_text_box
 import sys
 import os
 from functools import partial
