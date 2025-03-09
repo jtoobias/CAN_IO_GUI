@@ -14,8 +14,6 @@ dependencies = [
 ]
 
 [tool.poetry]
-packages = [{ include = "can_io" }]
-
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
