@@ -1,5 +1,5 @@
 from PyQt6 import QtWidgets
-from PyQt6.QtCore import Qt, QTimer
+from PyQt6.QtCore import QTimer
 from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QCheckBox
 from Frontend.CAN_IO_GUI import Ui_MainWindow
 from Backend.can_handler import CANBusHandler
@@ -118,9 +118,9 @@ class MainWindow(QMainWindow):
             number_bytes = int((mapped_index & 0xFF) / 8)
             # print (f"{mapped_index:X}, {data_offset}, {number_bytes}, {index}, {sub_index}")
             # Retrieve the correct amount of bytes
-            tmp_val = struct.unpack(
-                "<h", message.data[data_offset : (data_offset + number_bytes)]
-            )[0]
+            tmp_val = struct.unpack("<h", message.data[data_offset : (data_offset + number_bytes)])[
+                0
+            ]
             # Increment the data offset for correct data collection next time
             data_offset += number_bytes
 
@@ -320,22 +320,16 @@ class MainWindow(QMainWindow):
         self.ui.ButtonConnect.clicked.connect(self.handle_connect_button_click)
         self.ui.ButtonOutput.clicked.connect(self.handle_set_outputs_button_click)
         self.ui.ButtonNMTStart.clicked.connect(
-            partial(
-                self.can_handler.start_can_node, self.sync_enabled, self.sync_period
-            )
+            partial(self.can_handler.start_can_node, self.sync_enabled, self.sync_period)
         )
         self.ui.ButtonNMTStop.clicked.connect(self.can_handler.stop_can_node)
         self.ui.ButtonNMTRestart.clicked.connect(self.can_handler.restart_can_node)
-        self.ui.ButtonNMTResetComms.clicked.connect(
-            self.can_handler.reset_comms_can_node
-        )
+        self.ui.ButtonNMTResetComms.clicked.connect(self.can_handler.reset_comms_can_node)
 
         self.ui.PDO_apply_button.clicked.connect(self.handle_pdo_apply_button_click)
         self.ui.PDO_burn_button.clicked.connect(self.handle_pdo_burn_button_click)
         self.ui.pushButtonInitStorage.clicked.connect(self.handle_pdo_init_button_click)
-        self.ui.pushButtonBurnOffsets.clicked.connect(
-            self.handle_save_offsets_button_click
-        )
+        self.ui.pushButtonBurnOffsets.clicked.connect(self.handle_save_offsets_button_click)
 
         # Example: Connect a checkbox to a method
         self.ui.checkBoxOut1.stateChanged.connect(self.handle_checkbox_state_change)
@@ -357,9 +351,7 @@ class MainWindow(QMainWindow):
         )
 
         self.ui.ButtonIMUOffset.clicked.connect(self.on_imu_offset_button_clicked)
-        self.ui.ButtonIMU_TempOffset.clicked.connect(
-            self.on_temperature_offset_button_clicked
-        )
+        self.ui.ButtonIMU_TempOffset.clicked.connect(self.on_temperature_offset_button_clicked)
 
     def sync_on_enter_pressed(self):
         self.sync_period = get_value_from_text_box(self.ui.lineEdit_sync_period.text())
@@ -374,7 +366,7 @@ class MainWindow(QMainWindow):
     def sync_checkbox_toggled(self):
         try:
             if self.ui.checkBox_sync_enable.isChecked():
-                if self.sync_period == None:
+                if self.sync_period is None:
                     print('Sync period is incorrect: "None"')
                     return
                 self.can_handler.network.sync.start((self.sync_period / 1000))
@@ -382,8 +374,8 @@ class MainWindow(QMainWindow):
             else:
                 self.can_handler.network.sync.stop()
                 self.sync_enabled = False
-        except:
-            print("Make sure the network is setup")
+        except Exception as e:
+            print(f"Make sure the network is setup: {e}")
 
     def handle_pdo_burn_button_click(self):
         self.can_handler.sdo_save_device_config(1)
@@ -447,7 +439,7 @@ class MainWindow(QMainWindow):
                 break
             index = mapped_index >> 16
             num_bytes = mapped_index & 0xFF
-            sub_index = (mapped_index >> 8) & 0xFF
+            # sub_index = (mapped_index >> 8) & 0xFF
             if index == self.can_handler.OUTPUT_INDEX_OD:
                 num_bits.append(num_bytes)
                 data.append(self.check_boxes_states)
@@ -465,9 +457,7 @@ class MainWindow(QMainWindow):
         # need to handle only numbers
         self.can_handler.node_id = int(self.ui.spinBox_CAN_ID.value())
 
-        self.can_handler.baud_rate = (
-            float(self.ui.comboBoxBaudRates.currentText()) * 1000
-        )
+        self.can_handler.baud_rate = float(self.ui.comboBoxBaudRates.currentText()) * 1000
         print("Connect to ", device)
         print(self.can_handler.connect_device(device, self.can_handler.baud_rate))
 
@@ -505,7 +495,7 @@ class MainWindow(QMainWindow):
             print("Checkbox unchecked!")
 
     def upload_all_pdo_config(self):
-        if self.can_handler.node == None:
+        if self.can_handler.node is None:
             return
         print("start")
         self.can_handler.upload_pdo_config(self.rpdo1)

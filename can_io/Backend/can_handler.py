@@ -2,7 +2,6 @@
 import canopen
 import os
 import time
-import numpy as np
 import struct
 from Frontend.pdo_config import PDOconfig
 
@@ -161,13 +160,11 @@ class CANBusHandler:
 
     def connect_device(self, device_name: str, buad_rate: int) -> bool:
         print(self.node_id)
-        if self.node_id == None or self.node_id == 0:
+        if self.node_id is None or self.node_id == 0:
             return False
         device_path = "/dev/serial/by-id/" + device_name
         print("conneting: ", device_path)
-        self.network.connect(
-            bustype="seeedstudio", channel=device_path, bitrate=buad_rate
-        )
+        self.network.connect(bustype="seeedstudio", channel=device_path, bitrate=buad_rate)
 
         file_name = "CAN_IO.eds"
         file_path = os.path.join("~/software/CAN_IO/resources", file_name)
@@ -179,7 +176,7 @@ class CANBusHandler:
         return True
 
     def start_can_node(self, sync_enabled, sync_period):
-        if self.node == None:
+        if self.node is None:
             print("Node not connected")
             return
         print("Start")
@@ -188,7 +185,7 @@ class CANBusHandler:
             self.network.sync.start(sync_period)
 
     def stop_can_node(self):
-        if self.node == None:
+        if self.node is None:
             print("Node not connected")
             return
         print("Stop")
@@ -196,14 +193,14 @@ class CANBusHandler:
         self.network.sync.stop()
 
     def reset_comms_can_node(self):
-        if self.node == None:
+        if self.node is None:
             print("Node not connected")
             return
         print("Reset Comms")
         self.node.nmt.state = "RESET COMMUNICATION"
 
     def restart_can_node(self):
-        if self.node == None:
+        if self.node is None:
             print("Node not connected")
             return
         print("Restart")
@@ -213,20 +210,20 @@ class CANBusHandler:
         self.network.disconnect()
 
     def sdo_set_outputs(self, output_value: int):
-        if self.node == None:
+        if self.node is None:
             print("Node not connected")
             return
         self.node.sdo[0x6200].raw = output_value
         # self._send_message(self.__RSDO,[output_value])
 
     def sdo_set_temperature_offset(self, temperature_offset: int):
-        if self.node == None:
+        if self.node is None:
             print("Node not connected")
             return
         self.node.sdo[0x3002].raw = temperature_offset * 10
 
     def sdo_set_imu_offsets(self, accel_offset, gyro_offset: int):
-        if self.node == None:
+        if self.node is None:
             print("Node not connected")
             return
         for i in range(len(accel_offset)):
@@ -236,100 +233,81 @@ class CANBusHandler:
             time.sleep(0.05)
 
     def sdo_read_inputs(self) -> int:
-        if self.node == None:
+        if self.node is None:
             return
         return self.node.sdo[0x6000].raw
 
     def sdo_read_device_state(self) -> int:
-        if self.node == None:
+        if self.node is None:
             return
         return self.node.sdo[0x7000].raw
 
     def sdo_save_device_config(self, save_val: int) -> int:
-        if self.node == None:
+        if self.node is None:
             return
         self.node.sdo[0x1010].raw = save_val
 
     def sdo_read_temperature(self) -> float:
-        if self.node == None:
+        if self.node is None:
             return None
-        tmp_val = (
-            self.to_int16(
-                self.little_endian_to_big_endian(self.node.sdo[0x6002].raw, 2)
-            )
-            / 10
-        )
+        tmp_val = self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6002].raw, 2)) / 10
         time.sleep(0.01)
         # print (f"{tmp_val:X} {tmp_val}")
         return tmp_val
 
     def sdo_read_accelerometer_data(self) -> list[float]:
-        if self.node == None:
+        if self.node is None:
             return None
         tmp_val = self.node.sdo[0x6003][0x01].raw
-        print(f"{tmp_val:X} {self.little_endian_to_big_endian(tmp_val,2):X}")
+        print(f"{tmp_val:X} {self.little_endian_to_big_endian(tmp_val, 2):X}")
         x_accel = self.to_int16(self.little_endian_to_big_endian(tmp_val, 2)) / 100
         time.sleep(0.01)
         y_accel = (
-            self.to_int16(
-                self.little_endian_to_big_endian(self.node.sdo[0x6003][0x02].raw, 2)
-            )
+            self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6003][0x02].raw, 2))
             / 100
         )
         time.sleep(0.01)
         z_accel = (
-            self.to_int16(
-                self.little_endian_to_big_endian(self.node.sdo[0x6003][0x03].raw, 2)
-            )
+            self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6003][0x03].raw, 2))
             / 100
         )
         time.sleep(0.01)
         return [x_accel, y_accel, z_accel]
 
     def sdo_read_gyro_data(self) -> list[float]:
-        if self.node == None:
+        if self.node is None:
             return None
         x_gyro = (
-            self.to_int16(
-                self.little_endian_to_big_endian(self.node.sdo[0x6004][0x01].raw, 2)
-            )
+            self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6004][0x01].raw, 2))
             / 100
         )
         time.sleep(0.01)
         y_gyro = (
-            self.to_int16(
-                self.little_endian_to_big_endian(self.node.sdo[0x6004][0x02].raw, 2)
-            )
+            self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6004][0x02].raw, 2))
             / 100
         )
         time.sleep(0.01)
         z_gyro = (
-            self.to_int16(
-                self.little_endian_to_big_endian(self.node.sdo[0x6004][0x03].raw, 2)
-            )
+            self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6004][0x03].raw, 2))
             / 100
         )
         time.sleep(0.01)
         return [x_gyro, y_gyro, z_gyro]
 
-    def sdo_read_accelerometer_data(self) -> list[float]:
-        if self.node == None:
+    def tpdo_read_accelerometer_data(self) -> list[float]:
+        if self.node is None:
             return None
         tmp_val = self.node.tpdo
-        print(f"{tmp_val:X} {self.little_endian_to_big_endian(tmp_val,2):X}")
+        print(f"{tmp_val:X} {self.little_endian_to_big_endian(tmp_val, 2):X}")
         x_accel = self.to_int16(self.little_endian_to_big_endian(tmp_val, 2)) / 100
         time.sleep(0.01)
         y_accel = (
-            self.to_int16(
-                self.little_endian_to_big_endian(self.node.sdo[0x6003][0x02].raw, 2)
-            )
+            self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6003][0x02].raw, 2))
             / 100
         )
         time.sleep(0.01)
         z_accel = (
-            self.to_int16(
-                self.little_endian_to_big_endian(self.node.sdo[0x6003][0x03].raw, 2)
-            )
+            self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6003][0x03].raw, 2))
             / 100
         )
         time.sleep(0.01)
@@ -413,9 +391,7 @@ class CANBusHandler:
                 f"{pdo.pdo_type} - {pdo.pdo_num} - {index:X} {(self.__PDO_MAPPING_SUBINDEX_ENTRY_1_OD+offset):X}"
             )
             mapped_index = self.little_endian_to_big_endian(
-                self.node.sdo[index][
-                    (self.__PDO_MAPPING_SUBINDEX_ENTRY_1_OD + offset)
-                ].raw,
+                self.node.sdo[index][(self.__PDO_MAPPING_SUBINDEX_ENTRY_1_OD + offset)].raw,
                 4,
             )
 
@@ -541,9 +517,7 @@ class CANBusHandler:
             )
             time.sleep(0.04)
         if pdo.inhibit_time > -1:
-            self.send_sdo(
-                index, self.__PDO_COMM_PARAM_INHIBIT_TIME_SUBINDEX_OD, pdo.inhibit_time
-            )
+            self.send_sdo(index, self.__PDO_COMM_PARAM_INHIBIT_TIME_SUBINDEX_OD, pdo.inhibit_time)
             time.sleep(0.04)
         if pdo.transmit_period > -1:
             self.send_sdo(
@@ -584,9 +558,7 @@ class CANBusHandler:
         for offset, mapped_index in enumerate(pdo.mapped_indices):
             if mapped_index == -1:
                 break
-            self.send_sdo(
-                index, (self.__PDO_MAPPING_SUBINDEX_ENTRY_1_OD + offset), mapped_index
-            )
+            self.send_sdo(index, (self.__PDO_MAPPING_SUBINDEX_ENTRY_1_OD + offset), mapped_index)
             time.sleep(0.04)
 
     def update_pdo_triggers(self, pdo: PDOconfig):
@@ -654,7 +626,7 @@ class CANBusHandler:
         print(f"ANALOG Sends: {pdo.pdo_type} - {pdo.pdo_num} - {index}")
 
         for offset, aValue in enumerate(pdo.analog_thresholds):
-            if aValue == None:
+            if aValue is None:
                 continue
             self.send_sdo(index, (self.__ANALOG_INPUT_1_SUBINDEX_OD + offset), aValue)
             time.sleep(0.04)
@@ -672,9 +644,9 @@ class CANBusHandler:
             else:
                 # print (f"Data being Sent: {data} {index:X} {sub_index}",data)
                 self.node.sdo[index][sub_index].raw = data
-        except:
+        except Exception as e:
             print(
-                f"Send was not completed: index: {index} sub-index: {sub_index}, data: {data}"
+                f"Send was not completed: index: {index} sub-index: {sub_index}, data: {data}, {e}"
             )
 
     def to_int16(self, value):
@@ -753,21 +725,13 @@ class CANBusHandler:
 
         if operation == 1:  # Write operation
             if num_bytes == 1:
-                cmd = self.__WR_CLIENT_REQUEST_CMD_1_BYTE.to_bytes(
-                    1, byteorder="little"
-                )
+                cmd = self.__WR_CLIENT_REQUEST_CMD_1_BYTE.to_bytes(1, byteorder="little")
             elif num_bytes == 2:
-                cmd = self.__WR_CLIENT_REQUEST_CMD_2_BYTE.to_bytes(
-                    1, byteorder="little"
-                )
+                cmd = self.__WR_CLIENT_REQUEST_CMD_2_BYTE.to_bytes(1, byteorder="little")
             elif num_bytes == 3:
-                cmd = self.__WR_CLIENT_REQUEST_CMD_3_BYTE.to_bytes(
-                    1, byteorder="little"
-                )
+                cmd = self.__WR_CLIENT_REQUEST_CMD_3_BYTE.to_bytes(1, byteorder="little")
             elif num_bytes == 4:
-                cmd = self.__WR_CLIENT_REQUEST_CMD_4_BYTE.to_bytes(
-                    1, byteorder="little"
-                )
+                cmd = self.__WR_CLIENT_REQUEST_CMD_4_BYTE.to_bytes(1, byteorder="little")
             else:
                 return False
         else:  # Read operation
@@ -794,22 +758,14 @@ class CANBusHandler:
         start_time = time.time()
 
         while time.time() - start_time < timeout:
-            message = (
-                self.network.receive_message()
-            )  # This should be a blocking or polling receive
-            if message and message.cob_id == (
-                0x580 | self.node_id
-            ):  # 0x580 = SDO response base
+            message = self.network.receive_message()  # This should be a blocking or polling receive
+            if message and message.cob_id == (0x580 | self.node_id):  # 0x580 = SDO response base
                 if message.data[1:3] == bit_index and message.data[3] == sub_index:
-                    return list(
-                        message.data[4:]
-                    )  # Return received data (ignoring first 4 bytes)
+                    return list(message.data[4:])  # Return received data (ignoring first 4 bytes)
 
         return False  # Timeout or no valid response received
 
-    def send_rpdo_message(
-        self, cob_id: int, num_bits: list[int], data: list[int]
-    ) -> bool:
+    def send_rpdo_message(self, cob_id: int, num_bits: list[int], data: list[int]) -> bool:
         byte_format = []
         # print (f"Post: cid: {cob_id} ,Data: {data} bits: {num_bits}")
         # print (data)

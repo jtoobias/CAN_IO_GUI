@@ -1,9 +1,5 @@
 from PyQt6.QtWidgets import (
-    QApplication,
-    QMainWindow,
     QWidget,
-    QVBoxLayout,
-    QCheckBox,
     QComboBox,
     QTableWidget,
     QSpinBox,
@@ -70,9 +66,7 @@ class PDOconfig:
 
         self.trigger_dict = {"OFF": 0, "Low->High": 1, "High->Low": 2, "Both": 3}
 
-    def set_table_widget_item(
-        self, table: QTableWidget, row: int, col: int, value: int
-    ):
+    def set_table_widget_item(self, table: QTableWidget, row: int, col: int, value: int):
         if value == -1:
             item = QTableWidgetItem("")  # Create item
         else:
@@ -94,9 +88,7 @@ class PDOconfig:
             row_count = tableWidget.rowCount()
             for row in range(row_count):
                 if self.mapped_indices[row] > 0:
-                    self.set_table_widget_item(
-                        tableWidget, row, 0, self.mapped_indices[row]
-                    )
+                    self.set_table_widget_item(tableWidget, row, 0, self.mapped_indices[row])
                 else:
                     self.set_table_widget_item(tableWidget, row, 0, -1)
         except Exception as e:
@@ -104,9 +96,7 @@ class PDOconfig:
 
     def update_pdo_comms_parameters_ui(self):
         try:
-            value = self.tab.findChild(
-                QLineEdit, f"COB_ID_box_{self.pdo_type}PDO{self.pdo_num}"
-            )
+            value = self.tab.findChild(QLineEdit, f"COB_ID_box_{self.pdo_type}PDO{self.pdo_num}")
             value.setText(f"0x{self.cob_id:X}")
             value = self.tab.findChild(
                 QLineEdit, f"Inhibit_time_box_{self.pdo_type}PDO{self.pdo_num}"
@@ -116,9 +106,7 @@ class PDOconfig:
                 QLineEdit, f"Transmit_period_box_{self.pdo_type}PDO{self.pdo_num}"
             )
             value.setText(f"{self.transmit_period}")
-            value = self.tab.findChild(
-                QSpinBox, f"spinBox_{self.pdo_type}PDO{self.pdo_num}"
-            )
+            value = self.tab.findChild(QSpinBox, f"spinBox_{self.pdo_type}PDO{self.pdo_num}")
             value.setValue(self.transmission_type_value)
         except Exception as e:
             print(f"{self.pdo_type}PDO{self.pdo_num} APPLY Comms Params: ", e)
@@ -130,11 +118,9 @@ class PDOconfig:
             )
             row_count = tableWidget.rowCount()
             for row in range(row_count):
-                if (value := self.get_table_widget_item(tableWidget, row, 0)) == None:
+                if (value := self.get_table_widget_item(tableWidget, row, 0)) is None:
                     # Make sure to clear the other potientially old entries
-                    self.mapped_indices[row:-1] = [-1] * (
-                        len(self.mapped_indices) - row
-                    )
+                    self.mapped_indices[row:-1] = [-1] * (len(self.mapped_indices) - row)
                     break
                 print(f"{self.pdo_type}PDO{self.pdo_num}: Mapped indices: {hex(value)}")
                 self.mapped_indices[row] = value
@@ -143,9 +129,7 @@ class PDOconfig:
 
     def update_pdo_comms_parameters(self):
         try:
-            value = self.tab.findChild(
-                QLineEdit, f"COB_ID_box_{self.pdo_type}PDO{self.pdo_num}"
-            )
+            value = self.tab.findChild(QLineEdit, f"COB_ID_box_{self.pdo_type}PDO{self.pdo_num}")
             # Check if item is not empty
             if value and value.text():
                 self.cob_id = int(value.text(), 16)
@@ -156,7 +140,7 @@ class PDOconfig:
                     QLineEdit, f"Inhibit_time_box_{self.pdo_type}PDO{self.pdo_num}"
                 ).text()
             )
-            if value != None:
+            if value is not None:
                 self.inhibit_time = int(value)
             else:
                 self.inhibit_time = -1
@@ -165,14 +149,12 @@ class PDOconfig:
                     QLineEdit, f"Transmit_period_box_{self.pdo_type}PDO{self.pdo_num}"
                 ).text()
             )
-            if value != None:
+            if value is not None:
                 self.transmit_period = int(value)
             else:
                 self.transmit_period = -1
             self.transmission_type_value = int(
-                self.tab.findChild(
-                    QSpinBox, f"spinBox_{self.pdo_type}PDO{self.pdo_num}"
-                ).value()
+                self.tab.findChild(QSpinBox, f"spinBox_{self.pdo_type}PDO{self.pdo_num}").value()
             )
         except Exception as e:
             print(f"{self.pdo_type}PDO{self.pdo_num} APPLY Comms Params: ", e)
@@ -213,9 +195,7 @@ class PDOconfig:
             self.triggers[self.__TRIGGER_MODE_DIN_8] = self.trigger_dict[combo_box]
 
             print(f"{self.pdo_type}PDO{self.pdo_num} Triggers: {self.triggers}")
-            print(
-                f"{self.pdo_type}PDO{self.pdo_num} Analog Thresholds: {self.analog_thresholds}"
-            )
+            print(f"{self.pdo_type}PDO{self.pdo_num} Analog Thresholds: {self.analog_thresholds}")
         except Exception as e:
             print(f"{self.pdo_type}PDO{self.pdo_num} APPLY Digital reads: ", e)
 
@@ -333,9 +313,7 @@ class PDOconfig:
                 combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_DIN_8])
 
             print(f"{self.pdo_type}PDO{self.pdo_num} Triggers: {self.triggers}")
-            print(
-                f"{self.pdo_type}PDO{self.pdo_num} Analog Thresholds: {self.analog_thresholds}"
-            )
+            print(f"{self.pdo_type}PDO{self.pdo_num} Analog Thresholds: {self.analog_thresholds}")
         except Exception as e:
             print(f"{self.pdo_type}PDO{self.pdo_num} APPLY Digital reads: ", e)
 
@@ -378,39 +356,27 @@ class PDOconfig:
             line_edit = self.tab.findChild(
                 QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Gyro_X_threshold"
             )
-            line_edit.setText(
-                f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_GYRO_X]}"
-            )
+            line_edit.setText(f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_GYRO_X]}")
             line_edit = self.tab.findChild(
                 QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Gyro_Y_threshold"
             )
-            line_edit.setText(
-                f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_GYRO_Y]}"
-            )
+            line_edit.setText(f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_GYRO_Y]}")
             line_edit = self.tab.findChild(
                 QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Gyro_Z_threshold"
             )
-            line_edit.setText(
-                f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_GYRO_Z]}"
-            )
+            line_edit.setText(f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_GYRO_Z]}")
             line_edit = self.tab.findChild(
                 QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Accel_X_threshold"
             )
-            line_edit.setText(
-                f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_ACCEL_X]}"
-            )
+            line_edit.setText(f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_ACCEL_X]}")
             line_edit = self.tab.findChild(
                 QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Accel_Y_threshold"
             )
-            line_edit.setText(
-                f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_ACCEL_Y]}"
-            )
+            line_edit.setText(f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_ACCEL_Y]}")
             line_edit = self.tab.findChild(
                 QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Accel_Z_threshold"
             )
-            line_edit.setText(
-                f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_ACCEL_Z]}"
-            )
+            line_edit.setText(f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_ACCEL_Z]}")
 
         except Exception as e:
             print(f"{self.pdo_type}PDO{self.pdo_num} APPLY Analog reads: ", e)

@@ -50,9 +50,7 @@ class Ui_MainWindow(object):
         self.formLayout.setObjectName("formLayout")
         self.label_2 = QtWidgets.QLabel(parent=self.formLayoutWidget)
         self.label_2.setObjectName("label_2")
-        self.formLayout.setWidget(
-            0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_2
-        )
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_2)
         self.comboBoxBaudRates = QtWidgets.QComboBox(parent=self.formLayoutWidget)
         self.comboBoxBaudRates.setCurrentText("")
         self.comboBoxBaudRates.setPlaceholderText("")
@@ -62,26 +60,18 @@ class Ui_MainWindow(object):
         )
         self.label_130 = QtWidgets.QLabel(parent=self.formLayoutWidget)
         self.label_130.setObjectName("label_130")
-        self.formLayout.setWidget(
-            1, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_130
-        )
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_130)
         self.spinBox_CAN_ID = QtWidgets.QSpinBox(parent=self.formLayoutWidget)
         self.spinBox_CAN_ID.setMaximum(2031)
         self.spinBox_CAN_ID.setProperty("value", 3)
         self.spinBox_CAN_ID.setObjectName("spinBox_CAN_ID")
-        self.formLayout.setWidget(
-            1, QtWidgets.QFormLayout.ItemRole.FieldRole, self.spinBox_CAN_ID
-        )
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.ItemRole.FieldRole, self.spinBox_CAN_ID)
         self.ButtonSet = QtWidgets.QPushButton(parent=self.formLayoutWidget)
         self.ButtonSet.setObjectName("ButtonSet")
-        self.formLayout.setWidget(
-            2, QtWidgets.QFormLayout.ItemRole.LabelRole, self.ButtonSet
-        )
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.ItemRole.LabelRole, self.ButtonSet)
         self.ButtonBurn = QtWidgets.QPushButton(parent=self.formLayoutWidget)
         self.ButtonBurn.setObjectName("ButtonBurn")
-        self.formLayout.setWidget(
-            2, QtWidgets.QFormLayout.ItemRole.FieldRole, self.ButtonBurn
-        )
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.ItemRole.FieldRole, self.ButtonBurn)
         self.groupBox_4 = QtWidgets.QGroupBox(parent=self.Home_widget)
         self.groupBox_4.setGeometry(QtCore.QRect(670, 20, 321, 331))
         self.groupBox_4.setObjectName("groupBox_4")
@@ -145,14 +135,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.ButtonIMU_TempOffset = QtWidgets.QPushButton(
-            parent=self.horizontalLayoutWidget
-        )
+        self.ButtonIMU_TempOffset = QtWidgets.QPushButton(parent=self.horizontalLayoutWidget)
         self.ButtonIMU_TempOffset.setObjectName("ButtonIMU_TempOffset")
         self.horizontalLayout.addWidget(self.ButtonIMU_TempOffset)
-        self.lineEdit_TempOffset = QtWidgets.QLineEdit(
-            parent=self.horizontalLayoutWidget
-        )
+        self.lineEdit_TempOffset = QtWidgets.QLineEdit(parent=self.horizontalLayoutWidget)
         self.lineEdit_TempOffset.setObjectName("lineEdit_TempOffset")
         self.horizontalLayout.addWidget(self.lineEdit_TempOffset)
         self.pushButtonBurnOffsets = QtWidgets.QPushButton(parent=self.groupBox_4)
@@ -358,9 +344,7 @@ class Ui_MainWindow(object):
         )
         self.label = QtWidgets.QLabel(parent=self.formLayoutWidget_3)
         self.label.setObjectName("label")
-        self.formLayout_13.setWidget(
-            0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label
-        )
+        self.formLayout_13.setWidget(0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label)
         self.gridLayoutWidget_9 = QtWidgets.QWidget(parent=self.Home_widget)
         self.gridLayoutWidget_9.setGeometry(QtCore.QRect(20, 390, 386, 56))
         self.gridLayoutWidget_9.setObjectName("gridLayoutWidget_9")
@@ -418,13 +402,9 @@ class Ui_MainWindow(object):
         self.label_18.setAutoFillBackground(False)
         self.label_18.setObjectName("label_18")
         self.horizontalLayout_2.addWidget(self.label_18)
-        self.lineEditCurrentDeviceState = QtWidgets.QLineEdit(
-            parent=self.horizontalLayoutWidget_2
-        )
+        self.lineEditCurrentDeviceState = QtWidgets.QLineEdit(parent=self.horizontalLayoutWidget_2)
         self.lineEditCurrentDeviceState.setEnabled(True)
-        self.lineEditCurrentDeviceState.setCursor(
-            QtGui.QCursor(QtCore.Qt.CursorShape.BlankCursor)
-        )
+        self.lineEditCurrentDeviceState.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.BlankCursor))
         self.lineEditCurrentDeviceState.setReadOnly(True)
         self.lineEditCurrentDeviceState.setObjectName("lineEditCurrentDeviceState")
         self.horizontalLayout_2.addWidget(self.lineEditCurrentDeviceState)
@@ -461,9 +441,7 @@ class Ui_MainWindow(object):
         self.spinBox_TPDO1.setMaximum(255)
         self.spinBox_TPDO1.setProperty("value", 255)
         self.spinBox_TPDO1.setObjectName("spinBox_TPDO1")
-        self.formLayout_2.setWidget(
-            2, QtWidgets.QFormLayout.ItemRole.FieldRole, self.spinBox_TPDO1
-        )
+        self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.ItemRole.FieldRole, self.spinBox_TPDO1)
         self.Inhibit_time_label_2 = QtWidgets.QLabel(parent=self.layoutWidget)
         self.Inhibit_time_label_2.setObjectName("Inhibit_time_label_2")
         self.formLayout_2.setWidget(
@@ -491,17 +469,13 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.label_16.setFont(font)
         self.label_16.setObjectName("label_16")
-        self.formLayout_2.setWidget(
-            0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.label_16
-        )
+        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.label_16)
         self.label_14 = QtWidgets.QLabel(parent=self.layoutWidget)
         font = QtGui.QFont()
         font.setUnderline(True)
         self.label_14.setFont(font)
         self.label_14.setObjectName("label_14")
-        self.formLayout_2.setWidget(
-            0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_14
-        )
+        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_14)
         self.tableWidget_TPDO1 = QtWidgets.QTableWidget(parent=self.TPDO1_tab)
         self.tableWidget_TPDO1.setGeometry(QtCore.QRect(290, 20, 191, 271))
         self.tableWidget_TPDO1.setObjectName("tableWidget_TPDO1")
@@ -668,9 +642,7 @@ class Ui_MainWindow(object):
         self.label_23 = QtWidgets.QLabel(parent=self.gridLayoutWidget_2)
         self.label_23.setObjectName("label_23")
         self.horizontalLayout_18.addWidget(self.label_23)
-        self.TPDO1_Accel_X_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_2
-        )
+        self.TPDO1_Accel_X_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_2)
         self.TPDO1_Accel_X_threshold.setObjectName("TPDO1_Accel_X_threshold")
         self.horizontalLayout_18.addWidget(self.TPDO1_Accel_X_threshold)
         self.gridLayout_2.addLayout(self.horizontalLayout_18, 4, 0, 1, 1)
@@ -679,9 +651,7 @@ class Ui_MainWindow(object):
         self.label_24 = QtWidgets.QLabel(parent=self.gridLayoutWidget_2)
         self.label_24.setObjectName("label_24")
         self.horizontalLayout_19.addWidget(self.label_24)
-        self.TPDO1_Accel_Y_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_2
-        )
+        self.TPDO1_Accel_Y_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_2)
         self.TPDO1_Accel_Y_threshold.setObjectName("TPDO1_Accel_Y_threshold")
         self.horizontalLayout_19.addWidget(self.TPDO1_Accel_Y_threshold)
         self.gridLayout_2.addLayout(self.horizontalLayout_19, 5, 0, 1, 1)
@@ -690,9 +660,7 @@ class Ui_MainWindow(object):
         self.label_22 = QtWidgets.QLabel(parent=self.gridLayoutWidget_2)
         self.label_22.setObjectName("label_22")
         self.horizontalLayout_16.addWidget(self.label_22)
-        self.TPDO1_Gyro_Y_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_2
-        )
+        self.TPDO1_Gyro_Y_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_2)
         self.TPDO1_Gyro_Y_threshold.setObjectName("TPDO1_Gyro_Y_threshold")
         self.horizontalLayout_16.addWidget(self.TPDO1_Gyro_Y_threshold)
         self.gridLayout_2.addLayout(self.horizontalLayout_16, 2, 0, 1, 1)
@@ -708,9 +676,7 @@ class Ui_MainWindow(object):
         self.label_21 = QtWidgets.QLabel(parent=self.gridLayoutWidget_2)
         self.label_21.setObjectName("label_21")
         self.horizontalLayout_17.addWidget(self.label_21)
-        self.TPDO1_Gyro_Z_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_2
-        )
+        self.TPDO1_Gyro_Z_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_2)
         self.TPDO1_Gyro_Z_threshold.setObjectName("TPDO1_Gyro_Z_threshold")
         self.horizontalLayout_17.addWidget(self.TPDO1_Gyro_Z_threshold)
         self.gridLayout_2.addLayout(self.horizontalLayout_17, 3, 0, 1, 1)
@@ -719,9 +685,7 @@ class Ui_MainWindow(object):
         self.label_25 = QtWidgets.QLabel(parent=self.gridLayoutWidget_2)
         self.label_25.setObjectName("label_25")
         self.horizontalLayout_20.addWidget(self.label_25)
-        self.TPDO1_Accel_Z_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_2
-        )
+        self.TPDO1_Accel_Z_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_2)
         self.TPDO1_Accel_Z_threshold.setObjectName("TPDO1_Accel_Z_threshold")
         self.horizontalLayout_20.addWidget(self.TPDO1_Accel_Z_threshold)
         self.gridLayout_2.addLayout(self.horizontalLayout_20, 6, 0, 1, 1)
@@ -730,9 +694,7 @@ class Ui_MainWindow(object):
         self.label_15 = QtWidgets.QLabel(parent=self.gridLayoutWidget_2)
         self.label_15.setObjectName("label_15")
         self.horizontalLayout_12.addWidget(self.label_15)
-        self.TPDO1_Gyro_X_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_2
-        )
+        self.TPDO1_Gyro_X_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_2)
         self.TPDO1_Gyro_X_threshold.setObjectName("TPDO1_Gyro_X_threshold")
         self.horizontalLayout_12.addWidget(self.TPDO1_Gyro_X_threshold)
         self.gridLayout_2.addLayout(self.horizontalLayout_12, 1, 0, 1, 1)
@@ -869,9 +831,7 @@ class Ui_MainWindow(object):
         self.spinBox_TPDO2.setMaximum(255)
         self.spinBox_TPDO2.setProperty("value", 255)
         self.spinBox_TPDO2.setObjectName("spinBox_TPDO2")
-        self.formLayout_6.setWidget(
-            2, QtWidgets.QFormLayout.ItemRole.FieldRole, self.spinBox_TPDO2
-        )
+        self.formLayout_6.setWidget(2, QtWidgets.QFormLayout.ItemRole.FieldRole, self.spinBox_TPDO2)
         self.Inhibit_time_label_6 = QtWidgets.QLabel(parent=self.layoutWidget_2)
         self.Inhibit_time_label_6.setObjectName("Inhibit_time_label_6")
         self.formLayout_6.setWidget(
@@ -899,17 +859,13 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.label_85.setFont(font)
         self.label_85.setObjectName("label_85")
-        self.formLayout_6.setWidget(
-            0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.label_85
-        )
+        self.formLayout_6.setWidget(0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.label_85)
         self.label_86 = QtWidgets.QLabel(parent=self.layoutWidget_2)
         font = QtGui.QFont()
         font.setUnderline(True)
         self.label_86.setFont(font)
         self.label_86.setObjectName("label_86")
-        self.formLayout_6.setWidget(
-            0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_86
-        )
+        self.formLayout_6.setWidget(0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_86)
         self.tableWidget_TPDO2 = QtWidgets.QTableWidget(parent=self.TPDO2_tab)
         self.tableWidget_TPDO2.setGeometry(QtCore.QRect(290, 20, 191, 271))
         self.tableWidget_TPDO2.setObjectName("tableWidget_TPDO2")
@@ -982,9 +938,7 @@ class Ui_MainWindow(object):
         self.label_87 = QtWidgets.QLabel(parent=self.gridLayoutWidget_4)
         self.label_87.setObjectName("label_87")
         self.horizontalLayout_37.addWidget(self.label_87)
-        self.TPDO2_Accel_X_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_4
-        )
+        self.TPDO2_Accel_X_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_4)
         self.TPDO2_Accel_X_threshold.setObjectName("TPDO2_Accel_X_threshold")
         self.horizontalLayout_37.addWidget(self.TPDO2_Accel_X_threshold)
         self.gridLayout_10.addLayout(self.horizontalLayout_37, 4, 0, 1, 1)
@@ -993,9 +947,7 @@ class Ui_MainWindow(object):
         self.label_88 = QtWidgets.QLabel(parent=self.gridLayoutWidget_4)
         self.label_88.setObjectName("label_88")
         self.horizontalLayout_38.addWidget(self.label_88)
-        self.TPDO2_Accel_Y_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_4
-        )
+        self.TPDO2_Accel_Y_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_4)
         self.TPDO2_Accel_Y_threshold.setObjectName("TPDO2_Accel_Y_threshold")
         self.horizontalLayout_38.addWidget(self.TPDO2_Accel_Y_threshold)
         self.gridLayout_10.addLayout(self.horizontalLayout_38, 5, 0, 1, 1)
@@ -1004,9 +956,7 @@ class Ui_MainWindow(object):
         self.label_89 = QtWidgets.QLabel(parent=self.gridLayoutWidget_4)
         self.label_89.setObjectName("label_89")
         self.horizontalLayout_39.addWidget(self.label_89)
-        self.TPDO2_Gyro_Y_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_4
-        )
+        self.TPDO2_Gyro_Y_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_4)
         self.TPDO2_Gyro_Y_threshold.setObjectName("TPDO2_Gyro_Y_threshold")
         self.horizontalLayout_39.addWidget(self.TPDO2_Gyro_Y_threshold)
         self.gridLayout_10.addLayout(self.horizontalLayout_39, 2, 0, 1, 1)
@@ -1022,9 +972,7 @@ class Ui_MainWindow(object):
         self.label_90 = QtWidgets.QLabel(parent=self.gridLayoutWidget_4)
         self.label_90.setObjectName("label_90")
         self.horizontalLayout_40.addWidget(self.label_90)
-        self.TPDO2_Gyro_Z_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_4
-        )
+        self.TPDO2_Gyro_Z_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_4)
         self.TPDO2_Gyro_Z_threshold.setObjectName("TPDO2_Gyro_Z_threshold")
         self.horizontalLayout_40.addWidget(self.TPDO2_Gyro_Z_threshold)
         self.gridLayout_10.addLayout(self.horizontalLayout_40, 3, 0, 1, 1)
@@ -1033,9 +981,7 @@ class Ui_MainWindow(object):
         self.label_91 = QtWidgets.QLabel(parent=self.gridLayoutWidget_4)
         self.label_91.setObjectName("label_91")
         self.horizontalLayout_41.addWidget(self.label_91)
-        self.TPDO2_Accel_Z_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_4
-        )
+        self.TPDO2_Accel_Z_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_4)
         self.TPDO2_Accel_Z_threshold.setObjectName("TPDO2_Accel_Z_threshold")
         self.horizontalLayout_41.addWidget(self.TPDO2_Accel_Z_threshold)
         self.gridLayout_10.addLayout(self.horizontalLayout_41, 6, 0, 1, 1)
@@ -1044,9 +990,7 @@ class Ui_MainWindow(object):
         self.label_92 = QtWidgets.QLabel(parent=self.gridLayoutWidget_4)
         self.label_92.setObjectName("label_92")
         self.horizontalLayout_42.addWidget(self.label_92)
-        self.TPDO2_Gyro_X_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_4
-        )
+        self.TPDO2_Gyro_X_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_4)
         self.TPDO2_Gyro_X_threshold.setObjectName("TPDO2_Gyro_X_threshold")
         self.horizontalLayout_42.addWidget(self.TPDO2_Gyro_X_threshold)
         self.gridLayout_10.addLayout(self.horizontalLayout_42, 1, 0, 1, 1)
@@ -1213,17 +1157,13 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.label_103.setFont(font)
         self.label_103.setObjectName("label_103")
-        self.formLayout_10.setWidget(
-            0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.label_103
-        )
+        self.formLayout_10.setWidget(0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.label_103)
         self.label_104 = QtWidgets.QLabel(parent=self.layoutWidget_3)
         font = QtGui.QFont()
         font.setUnderline(True)
         self.label_104.setFont(font)
         self.label_104.setObjectName("label_104")
-        self.formLayout_10.setWidget(
-            0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_104
-        )
+        self.formLayout_10.setWidget(0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_104)
         self.tableWidget_TPDO3 = QtWidgets.QTableWidget(parent=self.TPDO3_tab)
         self.tableWidget_TPDO3.setGeometry(QtCore.QRect(290, 20, 191, 271))
         self.tableWidget_TPDO3.setObjectName("tableWidget_TPDO3")
@@ -1306,9 +1246,7 @@ class Ui_MainWindow(object):
         self.label_105 = QtWidgets.QLabel(parent=self.gridLayoutWidget_6)
         self.label_105.setObjectName("label_105")
         self.horizontalLayout_43.addWidget(self.label_105)
-        self.TPDO3_Accel_X_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_6
-        )
+        self.TPDO3_Accel_X_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_6)
         self.TPDO3_Accel_X_threshold.setObjectName("TPDO3_Accel_X_threshold")
         self.horizontalLayout_43.addWidget(self.TPDO3_Accel_X_threshold)
         self.gridLayout_12.addLayout(self.horizontalLayout_43, 4, 0, 1, 1)
@@ -1317,9 +1255,7 @@ class Ui_MainWindow(object):
         self.label_106 = QtWidgets.QLabel(parent=self.gridLayoutWidget_6)
         self.label_106.setObjectName("label_106")
         self.horizontalLayout_44.addWidget(self.label_106)
-        self.TPDO3_Accel_Y_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_6
-        )
+        self.TPDO3_Accel_Y_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_6)
         self.TPDO3_Accel_Y_threshold.setObjectName("TPDO3_Accel_Y_threshold")
         self.horizontalLayout_44.addWidget(self.TPDO3_Accel_Y_threshold)
         self.gridLayout_12.addLayout(self.horizontalLayout_44, 5, 0, 1, 1)
@@ -1328,9 +1264,7 @@ class Ui_MainWindow(object):
         self.label_107 = QtWidgets.QLabel(parent=self.gridLayoutWidget_6)
         self.label_107.setObjectName("label_107")
         self.horizontalLayout_45.addWidget(self.label_107)
-        self.TPDO3_Gyro_Y_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_6
-        )
+        self.TPDO3_Gyro_Y_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_6)
         self.TPDO3_Gyro_Y_threshold.setObjectName("TPDO3_Gyro_Y_threshold")
         self.horizontalLayout_45.addWidget(self.TPDO3_Gyro_Y_threshold)
         self.gridLayout_12.addLayout(self.horizontalLayout_45, 2, 0, 1, 1)
@@ -1346,9 +1280,7 @@ class Ui_MainWindow(object):
         self.label_108 = QtWidgets.QLabel(parent=self.gridLayoutWidget_6)
         self.label_108.setObjectName("label_108")
         self.horizontalLayout_46.addWidget(self.label_108)
-        self.TPDO3_Gyro_Z_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_6
-        )
+        self.TPDO3_Gyro_Z_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_6)
         self.TPDO3_Gyro_Z_threshold.setObjectName("TPDO3_Gyro_Z_threshold")
         self.horizontalLayout_46.addWidget(self.TPDO3_Gyro_Z_threshold)
         self.gridLayout_12.addLayout(self.horizontalLayout_46, 3, 0, 1, 1)
@@ -1357,9 +1289,7 @@ class Ui_MainWindow(object):
         self.label_109 = QtWidgets.QLabel(parent=self.gridLayoutWidget_6)
         self.label_109.setObjectName("label_109")
         self.horizontalLayout_47.addWidget(self.label_109)
-        self.TPDO3_Accel_Z_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_6
-        )
+        self.TPDO3_Accel_Z_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_6)
         self.TPDO3_Accel_Z_threshold.setObjectName("TPDO3_Accel_Z_threshold")
         self.horizontalLayout_47.addWidget(self.TPDO3_Accel_Z_threshold)
         self.gridLayout_12.addLayout(self.horizontalLayout_47, 6, 0, 1, 1)
@@ -1368,9 +1298,7 @@ class Ui_MainWindow(object):
         self.label_110 = QtWidgets.QLabel(parent=self.gridLayoutWidget_6)
         self.label_110.setObjectName("label_110")
         self.horizontalLayout_48.addWidget(self.label_110)
-        self.TPDO3_Gyro_X_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_6
-        )
+        self.TPDO3_Gyro_X_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_6)
         self.TPDO3_Gyro_X_threshold.setObjectName("TPDO3_Gyro_X_threshold")
         self.horizontalLayout_48.addWidget(self.TPDO3_Gyro_X_threshold)
         self.gridLayout_12.addLayout(self.horizontalLayout_48, 1, 0, 1, 1)
@@ -1537,17 +1465,13 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.label_121.setFont(font)
         self.label_121.setObjectName("label_121")
-        self.formLayout_11.setWidget(
-            0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.label_121
-        )
+        self.formLayout_11.setWidget(0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.label_121)
         self.label_122 = QtWidgets.QLabel(parent=self.layoutWidget_8)
         font = QtGui.QFont()
         font.setUnderline(True)
         self.label_122.setFont(font)
         self.label_122.setObjectName("label_122")
-        self.formLayout_11.setWidget(
-            0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_122
-        )
+        self.formLayout_11.setWidget(0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_122)
         self.gridLayoutWidget_8 = QtWidgets.QWidget(parent=self.TPDO4_tab)
         self.gridLayoutWidget_8.setGeometry(QtCore.QRect(710, 20, 271, 217))
         self.gridLayoutWidget_8.setObjectName("gridLayoutWidget_8")
@@ -1587,9 +1511,7 @@ class Ui_MainWindow(object):
         self.label_123 = QtWidgets.QLabel(parent=self.gridLayoutWidget_8)
         self.label_123.setObjectName("label_123")
         self.horizontalLayout_49.addWidget(self.label_123)
-        self.TPDO4_Accel_X_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_8
-        )
+        self.TPDO4_Accel_X_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_8)
         self.TPDO4_Accel_X_threshold.setObjectName("TPDO4_Accel_X_threshold")
         self.horizontalLayout_49.addWidget(self.TPDO4_Accel_X_threshold)
         self.gridLayout_14.addLayout(self.horizontalLayout_49, 4, 0, 1, 1)
@@ -1598,9 +1520,7 @@ class Ui_MainWindow(object):
         self.label_124 = QtWidgets.QLabel(parent=self.gridLayoutWidget_8)
         self.label_124.setObjectName("label_124")
         self.horizontalLayout_50.addWidget(self.label_124)
-        self.TPDO4_Accel_Y_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_8
-        )
+        self.TPDO4_Accel_Y_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_8)
         self.TPDO4_Accel_Y_threshold.setObjectName("TPDO4_Accel_Y_threshold")
         self.horizontalLayout_50.addWidget(self.TPDO4_Accel_Y_threshold)
         self.gridLayout_14.addLayout(self.horizontalLayout_50, 5, 0, 1, 1)
@@ -1609,9 +1529,7 @@ class Ui_MainWindow(object):
         self.label_125 = QtWidgets.QLabel(parent=self.gridLayoutWidget_8)
         self.label_125.setObjectName("label_125")
         self.horizontalLayout_51.addWidget(self.label_125)
-        self.TPDO4_Gyro_Y_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_8
-        )
+        self.TPDO4_Gyro_Y_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_8)
         self.TPDO4_Gyro_Y_threshold.setObjectName("TPDO4_Gyro_Y_threshold")
         self.horizontalLayout_51.addWidget(self.TPDO4_Gyro_Y_threshold)
         self.gridLayout_14.addLayout(self.horizontalLayout_51, 2, 0, 1, 1)
@@ -1627,9 +1545,7 @@ class Ui_MainWindow(object):
         self.label_126 = QtWidgets.QLabel(parent=self.gridLayoutWidget_8)
         self.label_126.setObjectName("label_126")
         self.horizontalLayout_52.addWidget(self.label_126)
-        self.TPDO4_Gyro_Z_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_8
-        )
+        self.TPDO4_Gyro_Z_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_8)
         self.TPDO4_Gyro_Z_threshold.setObjectName("TPDO4_Gyro_Z_threshold")
         self.horizontalLayout_52.addWidget(self.TPDO4_Gyro_Z_threshold)
         self.gridLayout_14.addLayout(self.horizontalLayout_52, 3, 0, 1, 1)
@@ -1638,9 +1554,7 @@ class Ui_MainWindow(object):
         self.label_127 = QtWidgets.QLabel(parent=self.gridLayoutWidget_8)
         self.label_127.setObjectName("label_127")
         self.horizontalLayout_53.addWidget(self.label_127)
-        self.TPDO4_Accel_Z_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_8
-        )
+        self.TPDO4_Accel_Z_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_8)
         self.TPDO4_Accel_Z_threshold.setObjectName("TPDO4_Accel_Z_threshold")
         self.horizontalLayout_53.addWidget(self.TPDO4_Accel_Z_threshold)
         self.gridLayout_14.addLayout(self.horizontalLayout_53, 6, 0, 1, 1)
@@ -1649,9 +1563,7 @@ class Ui_MainWindow(object):
         self.label_128 = QtWidgets.QLabel(parent=self.gridLayoutWidget_8)
         self.label_128.setObjectName("label_128")
         self.horizontalLayout_54.addWidget(self.label_128)
-        self.TPDO4_Gyro_X_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_8
-        )
+        self.TPDO4_Gyro_X_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_8)
         self.TPDO4_Gyro_X_threshold.setObjectName("TPDO4_Gyro_X_threshold")
         self.horizontalLayout_54.addWidget(self.TPDO4_Gyro_X_threshold)
         self.gridLayout_14.addLayout(self.horizontalLayout_54, 1, 0, 1, 1)
@@ -1726,9 +1638,7 @@ class Ui_MainWindow(object):
         self.spinBox_RPDO1.setMaximum(255)
         self.spinBox_RPDO1.setProperty("value", 1)
         self.spinBox_RPDO1.setObjectName("spinBox_RPDO1")
-        self.formLayout_7.setWidget(
-            1, QtWidgets.QFormLayout.ItemRole.FieldRole, self.spinBox_RPDO1
-        )
+        self.formLayout_7.setWidget(1, QtWidgets.QFormLayout.ItemRole.FieldRole, self.spinBox_RPDO1)
         self.Inhibit_time_label_11 = QtWidgets.QLabel(parent=self.layoutWidget_4)
         self.Inhibit_time_label_11.setObjectName("Inhibit_time_label_11")
         self.formLayout_7.setWidget(
@@ -1888,18 +1798,14 @@ class Ui_MainWindow(object):
         self.comboBox_RPDO1_GYROZ.addItem("")
         self.comboBox_RPDO1_GYROZ.addItem("")
         self.gridLayout_6.addWidget(self.comboBox_RPDO1_GYROZ, 3, 1, 1, 1)
-        self.comboBox_RPDO1_ACCELY = QtWidgets.QComboBox(
-            parent=self.gridLayoutWidget_14
-        )
+        self.comboBox_RPDO1_ACCELY = QtWidgets.QComboBox(parent=self.gridLayoutWidget_14)
         self.comboBox_RPDO1_ACCELY.setObjectName("comboBox_RPDO1_ACCELY")
         self.comboBox_RPDO1_ACCELY.addItem("")
         self.comboBox_RPDO1_ACCELY.addItem("")
         self.comboBox_RPDO1_ACCELY.addItem("")
         self.comboBox_RPDO1_ACCELY.addItem("")
         self.gridLayout_6.addWidget(self.comboBox_RPDO1_ACCELY, 5, 1, 1, 1)
-        self.comboBox_RPDO1_ACCELZ = QtWidgets.QComboBox(
-            parent=self.gridLayoutWidget_14
-        )
+        self.comboBox_RPDO1_ACCELZ = QtWidgets.QComboBox(parent=self.gridLayoutWidget_14)
         self.comboBox_RPDO1_ACCELZ.setObjectName("comboBox_RPDO1_ACCELZ")
         self.comboBox_RPDO1_ACCELZ.addItem("")
         self.comboBox_RPDO1_ACCELZ.addItem("")
@@ -1911,9 +1817,7 @@ class Ui_MainWindow(object):
         self.label_33 = QtWidgets.QLabel(parent=self.gridLayoutWidget_14)
         self.label_33.setObjectName("label_33")
         self.horizontalLayout_21.addWidget(self.label_33)
-        self.RPDO1_Accel_X_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_14
-        )
+        self.RPDO1_Accel_X_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_14)
         self.RPDO1_Accel_X_threshold.setObjectName("RPDO1_Accel_X_threshold")
         self.horizontalLayout_21.addWidget(self.RPDO1_Accel_X_threshold)
         self.gridLayout_6.addLayout(self.horizontalLayout_21, 4, 0, 1, 1)
@@ -1922,9 +1826,7 @@ class Ui_MainWindow(object):
         self.label_34 = QtWidgets.QLabel(parent=self.gridLayoutWidget_14)
         self.label_34.setObjectName("label_34")
         self.horizontalLayout_22.addWidget(self.label_34)
-        self.RPDO1_Accel_Y_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_14
-        )
+        self.RPDO1_Accel_Y_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_14)
         self.RPDO1_Accel_Y_threshold.setObjectName("RPDO1_Accel_Y_threshold")
         self.horizontalLayout_22.addWidget(self.RPDO1_Accel_Y_threshold)
         self.gridLayout_6.addLayout(self.horizontalLayout_22, 5, 0, 1, 1)
@@ -1933,15 +1835,11 @@ class Ui_MainWindow(object):
         self.label_35 = QtWidgets.QLabel(parent=self.gridLayoutWidget_14)
         self.label_35.setObjectName("label_35")
         self.horizontalLayout_23.addWidget(self.label_35)
-        self.RPDO1_Gyro_Y_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_14
-        )
+        self.RPDO1_Gyro_Y_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_14)
         self.RPDO1_Gyro_Y_threshold.setObjectName("RPDO1_Gyro_Y_threshold")
         self.horizontalLayout_23.addWidget(self.RPDO1_Gyro_Y_threshold)
         self.gridLayout_6.addLayout(self.horizontalLayout_23, 2, 0, 1, 1)
-        self.comboBox_RPDO1_ACCELX = QtWidgets.QComboBox(
-            parent=self.gridLayoutWidget_14
-        )
+        self.comboBox_RPDO1_ACCELX = QtWidgets.QComboBox(parent=self.gridLayoutWidget_14)
         self.comboBox_RPDO1_ACCELX.setObjectName("comboBox_RPDO1_ACCELX")
         self.comboBox_RPDO1_ACCELX.addItem("")
         self.comboBox_RPDO1_ACCELX.addItem("")
@@ -1953,9 +1851,7 @@ class Ui_MainWindow(object):
         self.label_36 = QtWidgets.QLabel(parent=self.gridLayoutWidget_14)
         self.label_36.setObjectName("label_36")
         self.horizontalLayout_24.addWidget(self.label_36)
-        self.RPDO1_Gyro_Z_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_14
-        )
+        self.RPDO1_Gyro_Z_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_14)
         self.RPDO1_Gyro_Z_threshold.setObjectName("RPDO1_Gyro_Z_threshold")
         self.horizontalLayout_24.addWidget(self.RPDO1_Gyro_Z_threshold)
         self.gridLayout_6.addLayout(self.horizontalLayout_24, 3, 0, 1, 1)
@@ -1964,9 +1860,7 @@ class Ui_MainWindow(object):
         self.label_37 = QtWidgets.QLabel(parent=self.gridLayoutWidget_14)
         self.label_37.setObjectName("label_37")
         self.horizontalLayout_25.addWidget(self.label_37)
-        self.RPDO1_Accel_Z_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_14
-        )
+        self.RPDO1_Accel_Z_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_14)
         self.RPDO1_Accel_Z_threshold.setObjectName("RPDO1_Accel_Z_threshold")
         self.horizontalLayout_25.addWidget(self.RPDO1_Accel_Z_threshold)
         self.gridLayout_6.addLayout(self.horizontalLayout_25, 6, 0, 1, 1)
@@ -1975,9 +1869,7 @@ class Ui_MainWindow(object):
         self.label_38 = QtWidgets.QLabel(parent=self.gridLayoutWidget_14)
         self.label_38.setObjectName("label_38")
         self.horizontalLayout_14.addWidget(self.label_38)
-        self.RPDO1_Gyro_X_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_14
-        )
+        self.RPDO1_Gyro_X_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_14)
         self.RPDO1_Gyro_X_threshold.setObjectName("RPDO1_Gyro_X_threshold")
         self.horizontalLayout_14.addWidget(self.RPDO1_Gyro_X_threshold)
         self.gridLayout_6.addLayout(self.horizontalLayout_14, 1, 0, 1, 1)
@@ -2021,9 +1913,7 @@ class Ui_MainWindow(object):
         self.spinBox_RPDO2 = QtWidgets.QSpinBox(parent=self.layoutWidget_5)
         self.spinBox_RPDO2.setMaximum(255)
         self.spinBox_RPDO2.setObjectName("spinBox_RPDO2")
-        self.formLayout_8.setWidget(
-            1, QtWidgets.QFormLayout.ItemRole.FieldRole, self.spinBox_RPDO2
-        )
+        self.formLayout_8.setWidget(1, QtWidgets.QFormLayout.ItemRole.FieldRole, self.spinBox_RPDO2)
         self.Inhibit_time_label_12 = QtWidgets.QLabel(parent=self.layoutWidget_5)
         self.Inhibit_time_label_12.setObjectName("Inhibit_time_label_12")
         self.formLayout_8.setWidget(
@@ -2183,18 +2073,14 @@ class Ui_MainWindow(object):
         self.comboBox_RPDO2_GYROZ.addItem("")
         self.comboBox_RPDO2_GYROZ.addItem("")
         self.gridLayout_8.addWidget(self.comboBox_RPDO2_GYROZ, 3, 1, 1, 1)
-        self.comboBox_RPDO2_ACCELY = QtWidgets.QComboBox(
-            parent=self.gridLayoutWidget_16
-        )
+        self.comboBox_RPDO2_ACCELY = QtWidgets.QComboBox(parent=self.gridLayoutWidget_16)
         self.comboBox_RPDO2_ACCELY.setObjectName("comboBox_RPDO2_ACCELY")
         self.comboBox_RPDO2_ACCELY.addItem("")
         self.comboBox_RPDO2_ACCELY.addItem("")
         self.comboBox_RPDO2_ACCELY.addItem("")
         self.comboBox_RPDO2_ACCELY.addItem("")
         self.gridLayout_8.addWidget(self.comboBox_RPDO2_ACCELY, 5, 1, 1, 1)
-        self.comboBox_RPDO2_ACCELZ = QtWidgets.QComboBox(
-            parent=self.gridLayoutWidget_16
-        )
+        self.comboBox_RPDO2_ACCELZ = QtWidgets.QComboBox(parent=self.gridLayoutWidget_16)
         self.comboBox_RPDO2_ACCELZ.setObjectName("comboBox_RPDO2_ACCELZ")
         self.comboBox_RPDO2_ACCELZ.addItem("")
         self.comboBox_RPDO2_ACCELZ.addItem("")
@@ -2206,9 +2092,7 @@ class Ui_MainWindow(object):
         self.label_49 = QtWidgets.QLabel(parent=self.gridLayoutWidget_16)
         self.label_49.setObjectName("label_49")
         self.horizontalLayout_26.addWidget(self.label_49)
-        self.RPDO2_Accel_X_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_16
-        )
+        self.RPDO2_Accel_X_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_16)
         self.RPDO2_Accel_X_threshold.setObjectName("RPDO2_Accel_X_threshold")
         self.horizontalLayout_26.addWidget(self.RPDO2_Accel_X_threshold)
         self.gridLayout_8.addLayout(self.horizontalLayout_26, 4, 0, 1, 1)
@@ -2217,9 +2101,7 @@ class Ui_MainWindow(object):
         self.label_50 = QtWidgets.QLabel(parent=self.gridLayoutWidget_16)
         self.label_50.setObjectName("label_50")
         self.horizontalLayout_27.addWidget(self.label_50)
-        self.RPDO2_Accel_Y_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_16
-        )
+        self.RPDO2_Accel_Y_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_16)
         self.RPDO2_Accel_Y_threshold.setObjectName("RPDO2_Accel_Y_threshold")
         self.horizontalLayout_27.addWidget(self.RPDO2_Accel_Y_threshold)
         self.gridLayout_8.addLayout(self.horizontalLayout_27, 5, 0, 1, 1)
@@ -2228,15 +2110,11 @@ class Ui_MainWindow(object):
         self.label_51 = QtWidgets.QLabel(parent=self.gridLayoutWidget_16)
         self.label_51.setObjectName("label_51")
         self.horizontalLayout_28.addWidget(self.label_51)
-        self.RPDO2_Gyro_Y_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_16
-        )
+        self.RPDO2_Gyro_Y_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_16)
         self.RPDO2_Gyro_Y_threshold.setObjectName("RPDO2_Gyro_Y_threshold")
         self.horizontalLayout_28.addWidget(self.RPDO2_Gyro_Y_threshold)
         self.gridLayout_8.addLayout(self.horizontalLayout_28, 2, 0, 1, 1)
-        self.comboBox_RPDO2_ACCELX = QtWidgets.QComboBox(
-            parent=self.gridLayoutWidget_16
-        )
+        self.comboBox_RPDO2_ACCELX = QtWidgets.QComboBox(parent=self.gridLayoutWidget_16)
         self.comboBox_RPDO2_ACCELX.setObjectName("comboBox_RPDO2_ACCELX")
         self.comboBox_RPDO2_ACCELX.addItem("")
         self.comboBox_RPDO2_ACCELX.addItem("")
@@ -2248,9 +2126,7 @@ class Ui_MainWindow(object):
         self.label_52 = QtWidgets.QLabel(parent=self.gridLayoutWidget_16)
         self.label_52.setObjectName("label_52")
         self.horizontalLayout_29.addWidget(self.label_52)
-        self.RPDO2_Gyro_Z_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_16
-        )
+        self.RPDO2_Gyro_Z_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_16)
         self.RPDO2_Gyro_Z_threshold.setObjectName("RPDO2_Gyro_Z_threshold")
         self.horizontalLayout_29.addWidget(self.RPDO2_Gyro_Z_threshold)
         self.gridLayout_8.addLayout(self.horizontalLayout_29, 3, 0, 1, 1)
@@ -2259,9 +2135,7 @@ class Ui_MainWindow(object):
         self.label_53 = QtWidgets.QLabel(parent=self.gridLayoutWidget_16)
         self.label_53.setObjectName("label_53")
         self.horizontalLayout_30.addWidget(self.label_53)
-        self.RPDO2_Accel_Z_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_16
-        )
+        self.RPDO2_Accel_Z_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_16)
         self.RPDO2_Accel_Z_threshold.setObjectName("RPDO2_Accel_Z_threshold")
         self.horizontalLayout_30.addWidget(self.RPDO2_Accel_Z_threshold)
         self.gridLayout_8.addLayout(self.horizontalLayout_30, 6, 0, 1, 1)
@@ -2270,9 +2144,7 @@ class Ui_MainWindow(object):
         self.label_54 = QtWidgets.QLabel(parent=self.gridLayoutWidget_16)
         self.label_54.setObjectName("label_54")
         self.horizontalLayout_15.addWidget(self.label_54)
-        self.RPDO2_Gyro_X_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_16
-        )
+        self.RPDO2_Gyro_X_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_16)
         self.RPDO2_Gyro_X_threshold.setObjectName("RPDO2_Gyro_X_threshold")
         self.horizontalLayout_15.addWidget(self.RPDO2_Gyro_X_threshold)
         self.gridLayout_8.addLayout(self.horizontalLayout_15, 1, 0, 1, 1)
@@ -2317,9 +2189,7 @@ class Ui_MainWindow(object):
         self.spinBox_RPDO3 = QtWidgets.QSpinBox(parent=self.layoutWidget_6)
         self.spinBox_RPDO3.setMaximum(255)
         self.spinBox_RPDO3.setObjectName("spinBox_RPDO3")
-        self.formLayout_9.setWidget(
-            1, QtWidgets.QFormLayout.ItemRole.FieldRole, self.spinBox_RPDO3
-        )
+        self.formLayout_9.setWidget(1, QtWidgets.QFormLayout.ItemRole.FieldRole, self.spinBox_RPDO3)
         self.Inhibit_time_label_13 = QtWidgets.QLabel(parent=self.layoutWidget_6)
         self.Inhibit_time_label_13.setObjectName("Inhibit_time_label_13")
         self.formLayout_9.setWidget(
@@ -2479,18 +2349,14 @@ class Ui_MainWindow(object):
         self.comboBox_RPDO3_GYROZ.addItem("")
         self.comboBox_RPDO3_GYROZ.addItem("")
         self.gridLayout_16.addWidget(self.comboBox_RPDO3_GYROZ, 3, 1, 1, 1)
-        self.comboBox_RPDO3_ACCELY = QtWidgets.QComboBox(
-            parent=self.gridLayoutWidget_18
-        )
+        self.comboBox_RPDO3_ACCELY = QtWidgets.QComboBox(parent=self.gridLayoutWidget_18)
         self.comboBox_RPDO3_ACCELY.setObjectName("comboBox_RPDO3_ACCELY")
         self.comboBox_RPDO3_ACCELY.addItem("")
         self.comboBox_RPDO3_ACCELY.addItem("")
         self.comboBox_RPDO3_ACCELY.addItem("")
         self.comboBox_RPDO3_ACCELY.addItem("")
         self.gridLayout_16.addWidget(self.comboBox_RPDO3_ACCELY, 5, 1, 1, 1)
-        self.comboBox_RPDO3_ACCELZ = QtWidgets.QComboBox(
-            parent=self.gridLayoutWidget_18
-        )
+        self.comboBox_RPDO3_ACCELZ = QtWidgets.QComboBox(parent=self.gridLayoutWidget_18)
         self.comboBox_RPDO3_ACCELZ.setObjectName("comboBox_RPDO3_ACCELZ")
         self.comboBox_RPDO3_ACCELZ.addItem("")
         self.comboBox_RPDO3_ACCELZ.addItem("")
@@ -2502,9 +2368,7 @@ class Ui_MainWindow(object):
         self.label_65 = QtWidgets.QLabel(parent=self.gridLayoutWidget_18)
         self.label_65.setObjectName("label_65")
         self.horizontalLayout_31.addWidget(self.label_65)
-        self.RPDO3_Accel_X_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_18
-        )
+        self.RPDO3_Accel_X_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_18)
         self.RPDO3_Accel_X_threshold.setObjectName("RPDO3_Accel_X_threshold")
         self.horizontalLayout_31.addWidget(self.RPDO3_Accel_X_threshold)
         self.gridLayout_16.addLayout(self.horizontalLayout_31, 4, 0, 1, 1)
@@ -2513,9 +2377,7 @@ class Ui_MainWindow(object):
         self.label_66 = QtWidgets.QLabel(parent=self.gridLayoutWidget_18)
         self.label_66.setObjectName("label_66")
         self.horizontalLayout_32.addWidget(self.label_66)
-        self.RPDO3_Accel_Y_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_18
-        )
+        self.RPDO3_Accel_Y_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_18)
         self.RPDO3_Accel_Y_threshold.setObjectName("RPDO3_Accel_Y_threshold")
         self.horizontalLayout_32.addWidget(self.RPDO3_Accel_Y_threshold)
         self.gridLayout_16.addLayout(self.horizontalLayout_32, 5, 0, 1, 1)
@@ -2524,15 +2386,11 @@ class Ui_MainWindow(object):
         self.label_67 = QtWidgets.QLabel(parent=self.gridLayoutWidget_18)
         self.label_67.setObjectName("label_67")
         self.horizontalLayout_33.addWidget(self.label_67)
-        self.RPDO3_Gyro_Y_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_18
-        )
+        self.RPDO3_Gyro_Y_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_18)
         self.RPDO3_Gyro_Y_threshold.setObjectName("RPDO3_Gyro_Y_threshold")
         self.horizontalLayout_33.addWidget(self.RPDO3_Gyro_Y_threshold)
         self.gridLayout_16.addLayout(self.horizontalLayout_33, 2, 0, 1, 1)
-        self.comboBox_RPDO3_ACCELX = QtWidgets.QComboBox(
-            parent=self.gridLayoutWidget_18
-        )
+        self.comboBox_RPDO3_ACCELX = QtWidgets.QComboBox(parent=self.gridLayoutWidget_18)
         self.comboBox_RPDO3_ACCELX.setObjectName("comboBox_RPDO3_ACCELX")
         self.comboBox_RPDO3_ACCELX.addItem("")
         self.comboBox_RPDO3_ACCELX.addItem("")
@@ -2544,9 +2402,7 @@ class Ui_MainWindow(object):
         self.label_68 = QtWidgets.QLabel(parent=self.gridLayoutWidget_18)
         self.label_68.setObjectName("label_68")
         self.horizontalLayout_34.addWidget(self.label_68)
-        self.RPDO3_Gyro_Z_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_18
-        )
+        self.RPDO3_Gyro_Z_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_18)
         self.RPDO3_Gyro_Z_threshold.setObjectName("RPDO3_Gyro_Z_threshold")
         self.horizontalLayout_34.addWidget(self.RPDO3_Gyro_Z_threshold)
         self.gridLayout_16.addLayout(self.horizontalLayout_34, 3, 0, 1, 1)
@@ -2555,9 +2411,7 @@ class Ui_MainWindow(object):
         self.label_69 = QtWidgets.QLabel(parent=self.gridLayoutWidget_18)
         self.label_69.setObjectName("label_69")
         self.horizontalLayout_35.addWidget(self.label_69)
-        self.RPDO3_Accel_Z_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_18
-        )
+        self.RPDO3_Accel_Z_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_18)
         self.RPDO3_Accel_Z_threshold.setObjectName("RPDO3_Accel_Z_threshold")
         self.horizontalLayout_35.addWidget(self.RPDO3_Accel_Z_threshold)
         self.gridLayout_16.addLayout(self.horizontalLayout_35, 6, 0, 1, 1)
@@ -2566,9 +2420,7 @@ class Ui_MainWindow(object):
         self.label_70 = QtWidgets.QLabel(parent=self.gridLayoutWidget_18)
         self.label_70.setObjectName("label_70")
         self.horizontalLayout_36.addWidget(self.label_70)
-        self.RPDO3_Gyro_X_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_18
-        )
+        self.RPDO3_Gyro_X_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_18)
         self.RPDO3_Gyro_X_threshold.setObjectName("RPDO3_Gyro_X_threshold")
         self.horizontalLayout_36.addWidget(self.RPDO3_Gyro_X_threshold)
         self.gridLayout_16.addLayout(self.horizontalLayout_36, 1, 0, 1, 1)
@@ -2775,18 +2627,14 @@ class Ui_MainWindow(object):
         self.comboBox_RPDO4_GYROZ.addItem("")
         self.comboBox_RPDO4_GYROZ.addItem("")
         self.gridLayout_18.addWidget(self.comboBox_RPDO4_GYROZ, 3, 1, 1, 1)
-        self.comboBox_RPDO4_ACCELY = QtWidgets.QComboBox(
-            parent=self.gridLayoutWidget_20
-        )
+        self.comboBox_RPDO4_ACCELY = QtWidgets.QComboBox(parent=self.gridLayoutWidget_20)
         self.comboBox_RPDO4_ACCELY.setObjectName("comboBox_RPDO4_ACCELY")
         self.comboBox_RPDO4_ACCELY.addItem("")
         self.comboBox_RPDO4_ACCELY.addItem("")
         self.comboBox_RPDO4_ACCELY.addItem("")
         self.comboBox_RPDO4_ACCELY.addItem("")
         self.gridLayout_18.addWidget(self.comboBox_RPDO4_ACCELY, 5, 1, 1, 1)
-        self.comboBox_RPDO4_ACCELZ = QtWidgets.QComboBox(
-            parent=self.gridLayoutWidget_20
-        )
+        self.comboBox_RPDO4_ACCELZ = QtWidgets.QComboBox(parent=self.gridLayoutWidget_20)
         self.comboBox_RPDO4_ACCELZ.setObjectName("comboBox_RPDO4_ACCELZ")
         self.comboBox_RPDO4_ACCELZ.addItem("")
         self.comboBox_RPDO4_ACCELZ.addItem("")
@@ -2798,9 +2646,7 @@ class Ui_MainWindow(object):
         self.label_136 = QtWidgets.QLabel(parent=self.gridLayoutWidget_20)
         self.label_136.setObjectName("label_136")
         self.horizontalLayout_55.addWidget(self.label_136)
-        self.RPDO4_Accel_X_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_20
-        )
+        self.RPDO4_Accel_X_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_20)
         self.RPDO4_Accel_X_threshold.setObjectName("RPDO4_Accel_X_threshold")
         self.horizontalLayout_55.addWidget(self.RPDO4_Accel_X_threshold)
         self.gridLayout_18.addLayout(self.horizontalLayout_55, 4, 0, 1, 1)
@@ -2809,9 +2655,7 @@ class Ui_MainWindow(object):
         self.label_137 = QtWidgets.QLabel(parent=self.gridLayoutWidget_20)
         self.label_137.setObjectName("label_137")
         self.horizontalLayout_56.addWidget(self.label_137)
-        self.RPDO4_Accel_Y_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_20
-        )
+        self.RPDO4_Accel_Y_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_20)
         self.RPDO4_Accel_Y_threshold.setObjectName("RPDO4_Accel_Y_threshold")
         self.horizontalLayout_56.addWidget(self.RPDO4_Accel_Y_threshold)
         self.gridLayout_18.addLayout(self.horizontalLayout_56, 5, 0, 1, 1)
@@ -2820,15 +2664,11 @@ class Ui_MainWindow(object):
         self.label_138 = QtWidgets.QLabel(parent=self.gridLayoutWidget_20)
         self.label_138.setObjectName("label_138")
         self.horizontalLayout_57.addWidget(self.label_138)
-        self.RPDO4_Gyro_Y_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_20
-        )
+        self.RPDO4_Gyro_Y_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_20)
         self.RPDO4_Gyro_Y_threshold.setObjectName("RPDO4_Gyro_Y_threshold")
         self.horizontalLayout_57.addWidget(self.RPDO4_Gyro_Y_threshold)
         self.gridLayout_18.addLayout(self.horizontalLayout_57, 2, 0, 1, 1)
-        self.comboBox_RPDO4_ACCELX = QtWidgets.QComboBox(
-            parent=self.gridLayoutWidget_20
-        )
+        self.comboBox_RPDO4_ACCELX = QtWidgets.QComboBox(parent=self.gridLayoutWidget_20)
         self.comboBox_RPDO4_ACCELX.setObjectName("comboBox_RPDO4_ACCELX")
         self.comboBox_RPDO4_ACCELX.addItem("")
         self.comboBox_RPDO4_ACCELX.addItem("")
@@ -2840,9 +2680,7 @@ class Ui_MainWindow(object):
         self.label_139 = QtWidgets.QLabel(parent=self.gridLayoutWidget_20)
         self.label_139.setObjectName("label_139")
         self.horizontalLayout_58.addWidget(self.label_139)
-        self.RPDO4_Gyro_Z_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_20
-        )
+        self.RPDO4_Gyro_Z_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_20)
         self.RPDO4_Gyro_Z_threshold.setObjectName("RPDO4_Gyro_Z_threshold")
         self.horizontalLayout_58.addWidget(self.RPDO4_Gyro_Z_threshold)
         self.gridLayout_18.addLayout(self.horizontalLayout_58, 3, 0, 1, 1)
@@ -2851,9 +2689,7 @@ class Ui_MainWindow(object):
         self.label_140 = QtWidgets.QLabel(parent=self.gridLayoutWidget_20)
         self.label_140.setObjectName("label_140")
         self.horizontalLayout_59.addWidget(self.label_140)
-        self.RPDO4_Accel_Z_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_20
-        )
+        self.RPDO4_Accel_Z_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_20)
         self.RPDO4_Accel_Z_threshold.setObjectName("RPDO4_Accel_Z_threshold")
         self.horizontalLayout_59.addWidget(self.RPDO4_Accel_Z_threshold)
         self.gridLayout_18.addLayout(self.horizontalLayout_59, 6, 0, 1, 1)
@@ -2862,9 +2698,7 @@ class Ui_MainWindow(object):
         self.label_141 = QtWidgets.QLabel(parent=self.gridLayoutWidget_20)
         self.label_141.setObjectName("label_141")
         self.horizontalLayout_60.addWidget(self.label_141)
-        self.RPDO4_Gyro_X_threshold = QtWidgets.QLineEdit(
-            parent=self.gridLayoutWidget_20
-        )
+        self.RPDO4_Gyro_X_threshold = QtWidgets.QLineEdit(parent=self.gridLayoutWidget_20)
         self.RPDO4_Gyro_X_threshold.setObjectName("RPDO4_Gyro_X_threshold")
         self.horizontalLayout_60.addWidget(self.RPDO4_Gyro_X_threshold)
         self.gridLayout_18.addLayout(self.horizontalLayout_60, 1, 0, 1, 1)
@@ -2888,9 +2722,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_13 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_12)
         self.horizontalLayout_13.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_13.setObjectName("horizontalLayout_13")
-        self.PDO_apply_button = QtWidgets.QPushButton(
-            parent=self.horizontalLayoutWidget_12
-        )
+        self.PDO_apply_button = QtWidgets.QPushButton(parent=self.horizontalLayoutWidget_12)
         self.PDO_apply_button.setObjectName("PDO_apply_button")
         self.horizontalLayout_13.addWidget(self.PDO_apply_button)
         spacerItem2 = QtWidgets.QSpacerItem(
@@ -2900,9 +2732,7 @@ class Ui_MainWindow(object):
             QtWidgets.QSizePolicy.Policy.Minimum,
         )
         self.horizontalLayout_13.addItem(spacerItem2)
-        self.PDO_burn_button = QtWidgets.QPushButton(
-            parent=self.horizontalLayoutWidget_12
-        )
+        self.PDO_burn_button = QtWidgets.QPushButton(parent=self.horizontalLayoutWidget_12)
         self.PDO_burn_button.setObjectName("PDO_burn_button")
         self.horizontalLayout_13.addWidget(self.PDO_burn_button)
         spacerItem3 = QtWidgets.QSpacerItem(
@@ -2912,9 +2742,7 @@ class Ui_MainWindow(object):
             QtWidgets.QSizePolicy.Policy.Minimum,
         )
         self.horizontalLayout_13.addItem(spacerItem3)
-        self.pushButtonInitStorage = QtWidgets.QPushButton(
-            parent=self.horizontalLayoutWidget_12
-        )
+        self.pushButtonInitStorage = QtWidgets.QPushButton(parent=self.horizontalLayoutWidget_12)
         self.pushButtonInitStorage.setObjectName("pushButtonInitStorage")
         self.horizontalLayout_13.addWidget(self.pushButtonInitStorage)
         self.progressBar_pdo_download = QtWidgets.QProgressBar(parent=self.PDO_Config)
@@ -2937,15 +2765,11 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_3.setText(
-            _translate(
-                "MainWindow", "Burned values only active on reset if switches are 0"
-            )
+            _translate("MainWindow", "Burned values only active on reset if switches are 0")
         )
         self.groupBox_2.setTitle(_translate("MainWindow", "NMT Commands"))
         self.ButtonNMTResetComms.setStatusTip(
-            _translate(
-                "MainWindow", "Send start command to device to re-init comms (Init)"
-            )
+            _translate("MainWindow", "Send start command to device to re-init comms (Init)")
         )
         self.ButtonNMTResetComms.setText(_translate("MainWindow", "Reset Comms"))
         self.ButtonNMTStart.setStatusTip(
@@ -3026,9 +2850,7 @@ class Ui_MainWindow(object):
         self.labelOutputs_11.setText(_translate("MainWindow", "Inputs"))
         self.DI6_LED_label.setText(_translate("MainWindow", "6"))
         self.DI8_LED_label.setText(_translate("MainWindow", "8"))
-        self.ButtonConnect.setStatusTip(
-            _translate("MainWindow", "Connects to the CAN analyzer")
-        )
+        self.ButtonConnect.setStatusTip(_translate("MainWindow", "Connects to the CAN analyzer"))
         self.ButtonConnect.setText(_translate("MainWindow", "Connect"))
         self.label.setText(_translate("MainWindow", "Devices"))
         self.label_17.setText(_translate("MainWindow", "Sync Tx Period"))
@@ -3068,9 +2890,7 @@ class Ui_MainWindow(object):
             _translate("MainWindow", "sets the minimum time between PDO sends (ms)")
         )
         self.Inhibit_time_box_TPDO1.setText(_translate("MainWindow", "50"))
-        self.Transmit_period_label_2.setText(
-            _translate("MainWindow", "Transmit Period (ms)")
-        )
+        self.Transmit_period_label_2.setText(_translate("MainWindow", "Transmit Period (ms)"))
         self.Transmit_period_box_TPDO1.setStatusTip(
             _translate("MainWindow", "Sets the send time (ms) in async mode")
         )
@@ -3284,9 +3104,7 @@ class Ui_MainWindow(object):
             _translate("MainWindow", "sets the minimum time between PDO sends (ms)")
         )
         self.Inhibit_time_box_TPDO2.setText(_translate("MainWindow", "50"))
-        self.Transmit_period_label_6.setText(
-            _translate("MainWindow", "Transmit Period (ms)")
-        )
+        self.Transmit_period_label_6.setText(_translate("MainWindow", "Transmit Period (ms)"))
         self.Transmit_period_box_TPDO2.setStatusTip(
             _translate("MainWindow", "Sets the send time (ms) in async mode")
         )
@@ -3457,9 +3275,7 @@ class Ui_MainWindow(object):
             _translate("MainWindow", "sets the minimum time between PDO sends (ms)")
         )
         self.Inhibit_time_box_TPDO3.setText(_translate("MainWindow", "10"))
-        self.Transmit_period_label_7.setText(
-            _translate("MainWindow", "Transmit Period (ms)")
-        )
+        self.Transmit_period_label_7.setText(_translate("MainWindow", "Transmit Period (ms)"))
         self.Transmit_period_box_TPDO3.setStatusTip(
             _translate("MainWindow", "Sets the send time (ms) in async mode")
         )
@@ -3650,9 +3466,7 @@ class Ui_MainWindow(object):
         self.Inhibit_time_box_TPDO4.setStatusTip(
             _translate("MainWindow", "sets the minimum time between PDO sends (ms)")
         )
-        self.Transmit_period_label_8.setText(
-            _translate("MainWindow", "Transmit Period (ms)")
-        )
+        self.Transmit_period_label_8.setText(_translate("MainWindow", "Transmit Period (ms)"))
         self.Transmit_period_box_TPDO4.setStatusTip(
             _translate("MainWindow", "Sets the send time (ms) in async mode")
         )
@@ -3788,15 +3602,11 @@ class Ui_MainWindow(object):
                 "Min of 0 and Max of 255. 0 = every sync, 255 = Sync Mode off",
             )
         )
-        self.Inhibit_time_label_11.setText(
-            _translate("MainWindow", "Inhibit Time (ms)")
-        )
+        self.Inhibit_time_label_11.setText(_translate("MainWindow", "Inhibit Time (ms)"))
         self.Inhibit_time_box_RPDO1.setStatusTip(
             _translate("MainWindow", "sets the minimum time between PDO sends (ms)")
         )
-        self.Transmit_period_label_11.setText(
-            _translate("MainWindow", "Transmit Period (ms)")
-        )
+        self.Transmit_period_label_11.setText(_translate("MainWindow", "Transmit Period (ms)"))
         self.Transmit_period_box_RPDO1.setStatusTip(
             _translate("MainWindow", "Sets the send time (ms) in async mode")
         )
@@ -3955,15 +3765,11 @@ class Ui_MainWindow(object):
                 "Min of 0 and Max of 255. 0 = every sync, 255 = Sync Mode off",
             )
         )
-        self.Inhibit_time_label_12.setText(
-            _translate("MainWindow", "Inhibit Time (ms)")
-        )
+        self.Inhibit_time_label_12.setText(_translate("MainWindow", "Inhibit Time (ms)"))
         self.Inhibit_time_box_RPDO2.setStatusTip(
             _translate("MainWindow", "sets the minimum time between PDO sends (ms)")
         )
-        self.Transmit_period_label_12.setText(
-            _translate("MainWindow", "Transmit Period (ms)")
-        )
+        self.Transmit_period_label_12.setText(_translate("MainWindow", "Transmit Period (ms)"))
         self.Transmit_period_box_RPDO2.setStatusTip(
             _translate("MainWindow", "Sets the send time (ms) in async mode")
         )
@@ -4119,15 +3925,11 @@ class Ui_MainWindow(object):
                 "Min of 0 and Max of 255. 0 = every sync, 255 = Sync Mode off",
             )
         )
-        self.Inhibit_time_label_13.setText(
-            _translate("MainWindow", "Inhibit Time (ms)")
-        )
+        self.Inhibit_time_label_13.setText(_translate("MainWindow", "Inhibit Time (ms)"))
         self.Inhibit_time_box_RPDO3.setStatusTip(
             _translate("MainWindow", "sets the minimum time between PDO sends (ms)")
         )
-        self.Transmit_period_label_13.setText(
-            _translate("MainWindow", "Transmit Period (ms)")
-        )
+        self.Transmit_period_label_13.setText(_translate("MainWindow", "Transmit Period (ms)"))
         self.Transmit_period_box_RPDO3.setStatusTip(
             _translate("MainWindow", "Sets the send time (ms) in async mode")
         )
@@ -4283,15 +4085,11 @@ class Ui_MainWindow(object):
                 "Min of 0 and Max of 255. 0 = every sync, 255 = Sync Mode off",
             )
         )
-        self.Inhibit_time_label_14.setText(
-            _translate("MainWindow", "Inhibit Time (ms)")
-        )
+        self.Inhibit_time_label_14.setText(_translate("MainWindow", "Inhibit Time (ms)"))
         self.Inhibit_time_box_RPDO4.setStatusTip(
             _translate("MainWindow", "sets the minimum time between PDO sends (ms)")
         )
-        self.Transmit_period_label_14.setText(
-            _translate("MainWindow", "Transmit Period (ms)")
-        )
+        self.Transmit_period_label_14.setText(_translate("MainWindow", "Transmit Period (ms)"))
         self.Transmit_period_box_RPDO4.setStatusTip(
             _translate("MainWindow", "Sets the send time (ms) in async mode")
         )
@@ -4432,9 +4230,7 @@ class Ui_MainWindow(object):
             _translate("MainWindow", "RPDO4"),
         )
         self.PDO_apply_button.setStatusTip(
-            _translate(
-                "MainWindow", "This button will send the current PDO configuration"
-            )
+            _translate("MainWindow", "This button will send the current PDO configuration")
         )
         self.PDO_apply_button.setText(_translate("MainWindow", "Apply"))
         self.PDO_burn_button.setStatusTip(
