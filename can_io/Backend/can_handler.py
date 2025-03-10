@@ -262,35 +262,20 @@ class CANBusHandler:
         print(f"{tmp_val:X} {self.little_endian_to_big_endian(tmp_val, 2):X}")
         x_accel = self.to_int16(self.little_endian_to_big_endian(tmp_val, 2)) / 100
         time.sleep(0.01)
-        y_accel = (
-            self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6003][0x02].raw, 2))
-            / 100
-        )
+        y_accel = self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6003][0x02].raw, 2)) / 100
         time.sleep(0.01)
-        z_accel = (
-            self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6003][0x03].raw, 2))
-            / 100
-        )
+        z_accel = self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6003][0x03].raw, 2)) / 100
         time.sleep(0.01)
         return [x_accel, y_accel, z_accel]
 
     def sdo_read_gyro_data(self) -> list[float]:
         if self.node is None:
             return None
-        x_gyro = (
-            self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6004][0x01].raw, 2))
-            / 100
-        )
+        x_gyro = self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6004][0x01].raw, 2)) / 100
         time.sleep(0.01)
-        y_gyro = (
-            self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6004][0x02].raw, 2))
-            / 100
-        )
+        y_gyro = self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6004][0x02].raw, 2)) / 100
         time.sleep(0.01)
-        z_gyro = (
-            self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6004][0x03].raw, 2))
-            / 100
-        )
+        z_gyro = self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6004][0x03].raw, 2)) / 100
         time.sleep(0.01)
         return [x_gyro, y_gyro, z_gyro]
 
@@ -301,15 +286,9 @@ class CANBusHandler:
         print(f"{tmp_val:X} {self.little_endian_to_big_endian(tmp_val, 2):X}")
         x_accel = self.to_int16(self.little_endian_to_big_endian(tmp_val, 2)) / 100
         time.sleep(0.01)
-        y_accel = (
-            self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6003][0x02].raw, 2))
-            / 100
-        )
+        y_accel = self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6003][0x02].raw, 2)) / 100
         time.sleep(0.01)
-        z_accel = (
-            self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6003][0x03].raw, 2))
-            / 100
-        )
+        z_accel = self.to_int16(self.little_endian_to_big_endian(self.node.sdo[0x6003][0x03].raw, 2)) / 100
         time.sleep(0.01)
         return [x_accel, y_accel, z_accel]
 
@@ -347,9 +326,7 @@ class CANBusHandler:
         )
 
         time.sleep(0.04)
-        pdo.transmission_type_value = self.node.sdo[index][
-            self.__PDO_COMM_PARAM_TRANS_TYPE_SUBINDEX_OD
-        ].raw
+        pdo.transmission_type_value = self.node.sdo[index][self.__PDO_COMM_PARAM_TRANS_TYPE_SUBINDEX_OD].raw
         time.sleep(0.04)
         pdo.inhibit_time = self.little_endian_to_big_endian(
             self.node.sdo[index][self.__PDO_COMM_PARAM_INHIBIT_TIME_SUBINDEX_OD].raw, 4
@@ -387,9 +364,7 @@ class CANBusHandler:
         else:
             print("PDO type not correct: ", pdo.pdo_type)
         for offset in range(len(pdo.mapped_indices)):
-            print(
-                f"{pdo.pdo_type} - {pdo.pdo_num} - {index:X} {(self.__PDO_MAPPING_SUBINDEX_ENTRY_1_OD+offset):X}"
-            )
+            print(f"{pdo.pdo_type} - {pdo.pdo_num} - {index:X} {(self.__PDO_MAPPING_SUBINDEX_ENTRY_1_OD + offset):X}")
             mapped_index = self.little_endian_to_big_endian(
                 self.node.sdo[index][(self.__PDO_MAPPING_SUBINDEX_ENTRY_1_OD + offset)].raw,
                 4,
@@ -430,12 +405,8 @@ class CANBusHandler:
             print("PDO type not correct: ", pdo.pdo_type)
 
         for offset in range(len(pdo.triggers)):
-            print(
-                f"{pdo.pdo_type} - {pdo.pdo_num} - {index:X} {(self.__TRIGGER_IN_1_SUBINDEX_OD+offset):X}"
-            )
-            pdo.triggers[offset] = self.node.sdo[index][
-                (self.__TRIGGER_IN_1_SUBINDEX_OD + offset)
-            ].raw
+            print(f"{pdo.pdo_type} - {pdo.pdo_num} - {index:X} {(self.__TRIGGER_IN_1_SUBINDEX_OD + offset):X}")
+            pdo.triggers[offset] = self.node.sdo[index][(self.__TRIGGER_IN_1_SUBINDEX_OD + offset)].raw
             time.sleep(0.04)
 
         if pdo.pdo_type == "T":
@@ -466,9 +437,7 @@ class CANBusHandler:
             print("PDO type not correct: ", pdo.pdo_type)
 
         for offset in range(len(pdo.analog_thresholds)):
-            print(
-                f"{pdo.pdo_type} - {pdo.pdo_num} - {index:X} {(self.__ANALOG_INPUT_1_SUBINDEX_OD+offset):X}"
-            )
+            print(f"{pdo.pdo_type} - {pdo.pdo_num} - {index:X} {(self.__ANALOG_INPUT_1_SUBINDEX_OD + offset):X}")
             pdo.analog_thresholds[offset] = self.little_endian_to_big_endian(
                 self.node.sdo[index][(self.__ANALOG_INPUT_1_SUBINDEX_OD + offset)].raw,
                 2,
@@ -645,9 +614,7 @@ class CANBusHandler:
                 # print (f"Data being Sent: {data} {index:X} {sub_index}",data)
                 self.node.sdo[index][sub_index].raw = data
         except Exception as e:
-            print(
-                f"Send was not completed: index: {index} sub-index: {sub_index}, data: {data}, {e}"
-            )
+            print(f"Send was not completed: index: {index} sub-index: {sub_index}, data: {data}, {e}")
 
     def to_int16(self, value):
         # Ensure the value is within the 16-bit signed integer range
@@ -675,9 +642,7 @@ class CANBusHandler:
             big_endian_value = ((value & 0x0000FF) << 16) | ((value & 0xFF0000) >> 16)
         elif byte_len == 4:
             big_endian_value = (
-                ((value & 0x000000FF) << 24)
-                | ((value & 0xFF000000) >> 24)
-                | (value & 0x0000FF00) << 8
+                ((value & 0x000000FF) << 24) | ((value & 0xFF000000) >> 24) | (value & 0x0000FF00) << 8
             ) | ((value & 0x00FF0000) >> 8)
         else:
             big_endian_value = -100000000

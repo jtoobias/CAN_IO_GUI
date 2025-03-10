@@ -118,9 +118,7 @@ class MainWindow(QMainWindow):
             number_bytes = int((mapped_index & 0xFF) / 8)
             # print (f"{mapped_index:X}, {data_offset}, {number_bytes}, {index}, {sub_index}")
             # Retrieve the correct amount of bytes
-            tmp_val = struct.unpack("<h", message.data[data_offset : (data_offset + number_bytes)])[
-                0
-            ]
+            tmp_val = struct.unpack("<h", message.data[data_offset : (data_offset + number_bytes)])[0]
             # Increment the data offset for correct data collection next time
             data_offset += number_bytes
 
@@ -170,9 +168,7 @@ class MainWindow(QMainWindow):
                     tmp_str = "STOPPED"
                 self.ui.lineEditCurrentDeviceState.setText(tmp_str)
             else:
-                print(
-                    f"Mapped index doesn't align with what is usable for TPDO: {mapped_index} {k}"
-                )
+                print(f"Mapped index doesn't align with what is usable for TPDO: {mapped_index} {k}")
 
     def tpdo1_cb(self, message):
         # Handle Acceleration data
@@ -198,60 +194,26 @@ class MainWindow(QMainWindow):
         self.tpdo_cb(message, self.tpdo3)
 
     def update_input_indicators(self, input_status: int):
-        self.change_io_indicator_background(
-            self.ui.DI_LED_widget_1, input_status, self.known_input_state, 0x01
-        )
-        self.change_io_indicator_background(
-            self.ui.DI_LED_widget_2, input_status, self.known_input_state, 0x02
-        )
-        self.change_io_indicator_background(
-            self.ui.DI_LED_widget_3, input_status, self.known_input_state, 0x04
-        )
-        self.change_io_indicator_background(
-            self.ui.DI_LED_widget_4, input_status, self.known_input_state, 0x08
-        )
-        self.change_io_indicator_background(
-            self.ui.DI_LED_widget_5, input_status, self.known_input_state, 0x10
-        )
-        self.change_io_indicator_background(
-            self.ui.DI_LED_widget_6, input_status, self.known_input_state, 0x20
-        )
-        self.change_io_indicator_background(
-            self.ui.DI_LED_widget_7, input_status, self.known_input_state, 0x40
-        )
-        self.change_io_indicator_background(
-            self.ui.DI_LED_widget_8, input_status, self.known_input_state, 0x80
-        )
+        self.change_io_indicator_background(self.ui.DI_LED_widget_1, input_status, self.known_input_state, 0x01)
+        self.change_io_indicator_background(self.ui.DI_LED_widget_2, input_status, self.known_input_state, 0x02)
+        self.change_io_indicator_background(self.ui.DI_LED_widget_3, input_status, self.known_input_state, 0x04)
+        self.change_io_indicator_background(self.ui.DI_LED_widget_4, input_status, self.known_input_state, 0x08)
+        self.change_io_indicator_background(self.ui.DI_LED_widget_5, input_status, self.known_input_state, 0x10)
+        self.change_io_indicator_background(self.ui.DI_LED_widget_6, input_status, self.known_input_state, 0x20)
+        self.change_io_indicator_background(self.ui.DI_LED_widget_7, input_status, self.known_input_state, 0x40)
+        self.change_io_indicator_background(self.ui.DI_LED_widget_8, input_status, self.known_input_state, 0x80)
 
     def update_output_indicators(self, output_status: int):
-        self.change_io_indicator_background(
-            self.ui.D0_LED_widget_1, output_status, self.known_output_state, 0x01
-        )
-        self.change_io_indicator_background(
-            self.ui.D0_LED_widget_2, output_status, self.known_output_state, 0x02
-        )
-        self.change_io_indicator_background(
-            self.ui.D0_LED_widget_3, output_status, self.known_output_state, 0x04
-        )
-        self.change_io_indicator_background(
-            self.ui.D0_LED_widget_4, output_status, self.known_output_state, 0x08
-        )
-        self.change_io_indicator_background(
-            self.ui.D0_LED_widget_5, output_status, self.known_output_state, 0x10
-        )
-        self.change_io_indicator_background(
-            self.ui.D0_LED_widget_6, output_status, self.known_output_state, 0x20
-        )
-        self.change_io_indicator_background(
-            self.ui.D0_LED_widget_7, output_status, self.known_output_state, 0x40
-        )
-        self.change_io_indicator_background(
-            self.ui.D0_LED_widget_8, output_status, self.known_output_state, 0x80
-        )
+        self.change_io_indicator_background(self.ui.D0_LED_widget_1, output_status, self.known_output_state, 0x01)
+        self.change_io_indicator_background(self.ui.D0_LED_widget_2, output_status, self.known_output_state, 0x02)
+        self.change_io_indicator_background(self.ui.D0_LED_widget_3, output_status, self.known_output_state, 0x04)
+        self.change_io_indicator_background(self.ui.D0_LED_widget_4, output_status, self.known_output_state, 0x08)
+        self.change_io_indicator_background(self.ui.D0_LED_widget_5, output_status, self.known_output_state, 0x10)
+        self.change_io_indicator_background(self.ui.D0_LED_widget_6, output_status, self.known_output_state, 0x20)
+        self.change_io_indicator_background(self.ui.D0_LED_widget_7, output_status, self.known_output_state, 0x40)
+        self.change_io_indicator_background(self.ui.D0_LED_widget_8, output_status, self.known_output_state, 0x80)
 
-    def change_io_indicator_background(
-        self, widget: QWidget, io_state: int, known_io_state: int, bit_mask: int
-    ):
+    def change_io_indicator_background(self, widget: QWidget, io_state: int, known_io_state: int, bit_mask: int):
         # Is there a Change on that bit?
         if (io_state & bit_mask) != (known_io_state & bit_mask):
             if io_state & bit_mask:
@@ -291,9 +253,7 @@ class MainWindow(QMainWindow):
             else:
                 self.check_boxes_states &= 0xFF ^ (1 << position)
 
-            print(
-                f"{checkbox.text()} changed to {state} {'Checked' if state == 2 else 'Unchecked'}"
-            )
+            print(f"{checkbox.text()} changed to {state} {'Checked' if state == 2 else 'Unchecked'}")
 
     def on_temperature_offset_button_clicked(self):
         temperature_offset = get_value_from_text_box(self.ui.lineEdit_TempOffset.text())
@@ -337,18 +297,10 @@ class MainWindow(QMainWindow):
         self.ui.lineEdit_sync_period.returnPressed.connect(self.sync_on_enter_pressed)
         self.ui.checkBox_sync_enable.stateChanged.connect(self.sync_checkbox_toggled)
 
-        self.ui.ButtonRPDO1Send.clicked.connect(
-            partial(self.handle_rpdo_button_click, self.rpdo1, 1)
-        )
-        self.ui.ButtonRPDO2Send.clicked.connect(
-            partial(self.handle_rpdo_button_click, self.rpdo2, 2)
-        )
-        self.ui.ButtonRPDO3Send.clicked.connect(
-            partial(self.handle_rpdo_button_click, self.rpdo3, 3)
-        )
-        self.ui.ButtonRPDO4Send.clicked.connect(
-            partial(self.handle_rpdo_button_click, self.rpdo4, 4)
-        )
+        self.ui.ButtonRPDO1Send.clicked.connect(partial(self.handle_rpdo_button_click, self.rpdo1, 1))
+        self.ui.ButtonRPDO2Send.clicked.connect(partial(self.handle_rpdo_button_click, self.rpdo2, 2))
+        self.ui.ButtonRPDO3Send.clicked.connect(partial(self.handle_rpdo_button_click, self.rpdo3, 3))
+        self.ui.ButtonRPDO4Send.clicked.connect(partial(self.handle_rpdo_button_click, self.rpdo4, 4))
 
         self.ui.ButtonIMUOffset.clicked.connect(self.on_imu_offset_button_clicked)
         self.ui.ButtonIMU_TempOffset.clicked.connect(self.on_temperature_offset_button_clicked)
@@ -445,9 +397,7 @@ class MainWindow(QMainWindow):
                 data.append(self.check_boxes_states)
                 data_set = True
             else:
-                print(
-                    f"Mapped index doesn't align with what is usable for RPDO: {mapped_index} {k}"
-                )
+                print(f"Mapped index doesn't align with what is usable for RPDO: {mapped_index} {k}")
         if data_set:
             self.can_handler.send_rpdo_message(rpdo.cob_id, num_bits, data)
 

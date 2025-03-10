@@ -82,9 +82,7 @@ class PDOconfig:
 
     def update_pdo_mapped_indices_ui(self):
         try:
-            tableWidget = self.tab.findChild(
-                QTableWidget, f"tableWidget_{self.pdo_type}PDO{self.pdo_num}"
-            )
+            tableWidget = self.tab.findChild(QTableWidget, f"tableWidget_{self.pdo_type}PDO{self.pdo_num}")
             row_count = tableWidget.rowCount()
             for row in range(row_count):
                 if self.mapped_indices[row] > 0:
@@ -98,13 +96,9 @@ class PDOconfig:
         try:
             value = self.tab.findChild(QLineEdit, f"COB_ID_box_{self.pdo_type}PDO{self.pdo_num}")
             value.setText(f"0x{self.cob_id:X}")
-            value = self.tab.findChild(
-                QLineEdit, f"Inhibit_time_box_{self.pdo_type}PDO{self.pdo_num}"
-            )
+            value = self.tab.findChild(QLineEdit, f"Inhibit_time_box_{self.pdo_type}PDO{self.pdo_num}")
             value.setText(f"{self.inhibit_time}")
-            value = self.tab.findChild(
-                QLineEdit, f"Transmit_period_box_{self.pdo_type}PDO{self.pdo_num}"
-            )
+            value = self.tab.findChild(QLineEdit, f"Transmit_period_box_{self.pdo_type}PDO{self.pdo_num}")
             value.setText(f"{self.transmit_period}")
             value = self.tab.findChild(QSpinBox, f"spinBox_{self.pdo_type}PDO{self.pdo_num}")
             value.setValue(self.transmission_type_value)
@@ -113,9 +107,7 @@ class PDOconfig:
 
     def update_pdo_mapped_indices(self):
         try:
-            tableWidget = self.tab.findChild(
-                QTableWidget, f"tableWidget_{self.pdo_type}PDO{self.pdo_num}"
-            )
+            tableWidget = self.tab.findChild(QTableWidget, f"tableWidget_{self.pdo_type}PDO{self.pdo_num}")
             row_count = tableWidget.rowCount()
             for row in range(row_count):
                 if (value := self.get_table_widget_item(tableWidget, row, 0)) is None:
@@ -136,18 +128,14 @@ class PDOconfig:
             else:
                 self.cob_id = self.__PDO_DISABLED_ID
             value = get_value_from_text_box(
-                self.tab.findChild(
-                    QLineEdit, f"Inhibit_time_box_{self.pdo_type}PDO{self.pdo_num}"
-                ).text()
+                self.tab.findChild(QLineEdit, f"Inhibit_time_box_{self.pdo_type}PDO{self.pdo_num}").text()
             )
             if value is not None:
                 self.inhibit_time = int(value)
             else:
                 self.inhibit_time = -1
             value = get_value_from_text_box(
-                self.tab.findChild(
-                    QLineEdit, f"Transmit_period_box_{self.pdo_type}PDO{self.pdo_num}"
-                ).text()
+                self.tab.findChild(QLineEdit, f"Transmit_period_box_{self.pdo_type}PDO{self.pdo_num}").text()
             )
             if value is not None:
                 self.transmit_period = int(value)
@@ -161,37 +149,21 @@ class PDOconfig:
 
     def update_pdo_digital_config(self):
         try:
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN1"
-            ).currentText()
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN1").currentText()
             self.triggers[self.__TRIGGER_MODE_DIN_1] = self.trigger_dict[combo_box]
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN2"
-            ).currentText()
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN2").currentText()
             self.triggers[self.__TRIGGER_MODE_DIN_2] = self.trigger_dict[combo_box]
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN3"
-            ).currentText()
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN3").currentText()
             self.triggers[self.__TRIGGER_MODE_DIN_3] = self.trigger_dict[combo_box]
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN4"
-            ).currentText()
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN4").currentText()
             self.triggers[self.__TRIGGER_MODE_DIN_4] = self.trigger_dict[combo_box]
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN5"
-            ).currentText()
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN5").currentText()
             self.triggers[self.__TRIGGER_MODE_DIN_5] = self.trigger_dict[combo_box]
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN6"
-            ).currentText()
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN6").currentText()
             self.triggers[self.__TRIGGER_MODE_DIN_6] = self.trigger_dict[combo_box]
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN7"
-            ).currentText()
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN7").currentText()
             self.triggers[self.__TRIGGER_MODE_DIN_7] = self.trigger_dict[combo_box]
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN8"
-            ).currentText()
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN8").currentText()
             self.triggers[self.__TRIGGER_MODE_DIN_8] = self.trigger_dict[combo_box]
 
             print(f"{self.pdo_type}PDO{self.pdo_num} Triggers: {self.triggers}")
@@ -202,66 +174,42 @@ class PDOconfig:
     def update_pdo_analog_config(self):
         try:
             # Modes
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_GYROX"
-            ).currentText()
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_GYROX").currentText()
             self.triggers[self.__TRIGGER_MODE_GYRO_X] = self.trigger_dict[combo_box]
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_GYROY"
-            ).currentText()
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_GYROY").currentText()
             self.triggers[self.__TRIGGER_MODE_GYRO_Y] = self.trigger_dict[combo_box]
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_GYROZ"
-            ).currentText()
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_GYROZ").currentText()
             self.triggers[self.__TRIGGER_MODE_GYRO_Z] = self.trigger_dict[combo_box]
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_ACCELX"
-            ).currentText()
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_ACCELX").currentText()
             self.triggers[self.__TRIGGER_MODE_ACCEL_X] = self.trigger_dict[combo_box]
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_ACCELY"
-            ).currentText()
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_ACCELY").currentText()
             self.triggers[self.__TRIGGER_MODE_ACCEL_Y] = self.trigger_dict[combo_box]
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_ACCELZ"
-            ).currentText()
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_ACCELZ").currentText()
             self.triggers[self.__TRIGGER_MODE_ACCEL_Z] = self.trigger_dict[combo_box]
 
             # Read all PDO data into the correct objects (thresholds)
             line_edit = get_value_from_text_box(
-                self.tab.findChild(
-                    QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Gyro_X_threshold"
-                ).text()
+                self.tab.findChild(QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Gyro_X_threshold").text()
             )
             self.analog_thresholds[self.__ANALOG_THRESHOLD_GYRO_X] = line_edit
             line_edit = get_value_from_text_box(
-                self.tab.findChild(
-                    QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Gyro_Y_threshold"
-                ).text()
+                self.tab.findChild(QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Gyro_Y_threshold").text()
             )
             self.analog_thresholds[self.__ANALOG_THRESHOLD_GYRO_Y] = line_edit
             line_edit = get_value_from_text_box(
-                self.tab.findChild(
-                    QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Gyro_Z_threshold"
-                ).text()
+                self.tab.findChild(QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Gyro_Z_threshold").text()
             )
             self.analog_thresholds[self.__ANALOG_THRESHOLD_GYRO_Z] = line_edit
             line_edit = get_value_from_text_box(
-                self.tab.findChild(
-                    QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Accel_X_threshold"
-                ).text()
+                self.tab.findChild(QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Accel_X_threshold").text()
             )
             self.analog_thresholds[self.__ANALOG_THRESHOLD_ACCEL_X] = line_edit
             line_edit = get_value_from_text_box(
-                self.tab.findChild(
-                    QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Accel_Y_threshold"
-                ).text()
+                self.tab.findChild(QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Accel_Y_threshold").text()
             )
             self.analog_thresholds[self.__ANALOG_THRESHOLD_ACCEL_Y] = line_edit
             line_edit = get_value_from_text_box(
-                self.tab.findChild(
-                    QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Accel_Z_threshold"
-                ).text()
+                self.tab.findChild(QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Accel_Z_threshold").text()
             )
             self.analog_thresholds[self.__ANALOG_THRESHOLD_ACCEL_Z] = line_edit
 
@@ -270,45 +218,29 @@ class PDOconfig:
 
     def update_pdo_digital_config_ui(self):
         try:
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN1"
-            )
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN1")
             if 3 >= self.triggers[self.__TRIGGER_MODE_DIN_1] >= 0:
                 combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_DIN_1])
 
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN2"
-            )
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN2")
             if 3 >= self.triggers[self.__TRIGGER_MODE_DIN_2] >= 0:
                 combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_DIN_2])
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN3"
-            )
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN3")
             if 3 >= self.triggers[self.__TRIGGER_MODE_DIN_3] >= 0:
                 combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_DIN_3])
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN4"
-            )
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN4")
             if 3 >= self.triggers[self.__TRIGGER_MODE_DIN_4] >= 0:
                 combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_DIN_4])
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN5"
-            )
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN5")
             if 3 >= self.triggers[self.__TRIGGER_MODE_DIN_5] >= 0:
                 combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_DIN_5])
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN6"
-            )
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN6")
             if 3 >= self.triggers[self.__TRIGGER_MODE_DIN_6] >= 0:
                 combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_DIN_6])
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN7"
-            )
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN7")
             if 3 >= self.triggers[self.__TRIGGER_MODE_DIN_7] >= 0:
                 combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_DIN_7])
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN8"
-            )
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_IN8")
             if 3 >= self.triggers[self.__TRIGGER_MODE_DIN_8] >= 0:
                 combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_DIN_8])
 
@@ -320,62 +252,38 @@ class PDOconfig:
     def update_pdo_analog_config_ui(self):
         try:
             # Modes
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_GYROX"
-            )
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_GYROX")
             if 3 >= self.triggers[self.__TRIGGER_MODE_GYRO_X] >= 0:
                 combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_GYRO_X])
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_GYROY"
-            )
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_GYROY")
             if 3 >= self.triggers[self.__TRIGGER_MODE_GYRO_Y] >= 0:
                 combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_GYRO_Y])
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_GYROZ"
-            )
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_GYROZ")
             if 3 >= self.triggers[self.__TRIGGER_MODE_GYRO_Z] >= 0:
                 combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_GYRO_Z])
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_ACCELX"
-            )
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_ACCELX")
             if 3 >= self.triggers[self.__TRIGGER_MODE_ACCEL_X] >= 0:
                 combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_ACCEL_X])
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_ACCELY"
-            )
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_ACCELY")
             if 3 >= self.triggers[self.__TRIGGER_MODE_ACCEL_Y] >= 0:
                 combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_ACCEL_Y])
-            combo_box = self.tab.findChild(
-                QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_ACCELZ"
-            )
+            combo_box = self.tab.findChild(QComboBox, f"comboBox_{self.pdo_type}PDO{self.pdo_num}_ACCELZ")
             if 3 >= self.triggers[self.__TRIGGER_MODE_ACCEL_Z] >= 0:
                 combo_box.setCurrentIndex(self.triggers[self.__TRIGGER_MODE_ACCEL_Z])
 
             # Read all PDO data into the correct objects (thresholds)
 
-            line_edit = self.tab.findChild(
-                QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Gyro_X_threshold"
-            )
+            line_edit = self.tab.findChild(QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Gyro_X_threshold")
             line_edit.setText(f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_GYRO_X]}")
-            line_edit = self.tab.findChild(
-                QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Gyro_Y_threshold"
-            )
+            line_edit = self.tab.findChild(QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Gyro_Y_threshold")
             line_edit.setText(f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_GYRO_Y]}")
-            line_edit = self.tab.findChild(
-                QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Gyro_Z_threshold"
-            )
+            line_edit = self.tab.findChild(QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Gyro_Z_threshold")
             line_edit.setText(f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_GYRO_Z]}")
-            line_edit = self.tab.findChild(
-                QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Accel_X_threshold"
-            )
+            line_edit = self.tab.findChild(QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Accel_X_threshold")
             line_edit.setText(f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_ACCEL_X]}")
-            line_edit = self.tab.findChild(
-                QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Accel_Y_threshold"
-            )
+            line_edit = self.tab.findChild(QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Accel_Y_threshold")
             line_edit.setText(f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_ACCEL_Y]}")
-            line_edit = self.tab.findChild(
-                QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Accel_Z_threshold"
-            )
+            line_edit = self.tab.findChild(QLineEdit, f"{self.pdo_type}PDO{self.pdo_num}_Accel_Z_threshold")
             line_edit.setText(f"{self.analog_thresholds[self.__ANALOG_THRESHOLD_ACCEL_Z]}")
 
         except Exception as e:

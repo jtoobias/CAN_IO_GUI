@@ -18,7 +18,7 @@ packages = [{ include = "can_io" }]
 
 
 [tool.black]
-line-length = 100
+line-length = 120
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
