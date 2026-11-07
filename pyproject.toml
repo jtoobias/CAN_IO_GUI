@@ -10,7 +10,8 @@ requires-python = ">=3.10"
 dependencies = [
     "pyqt6 (>=6.8.1,<7.0.0)",
     "canopen (>=2.3.0,<3.0.0)",
-    "numpy (>=2.2.3,<3.0.0)"
+    "numpy (>=2.2.3,<3.0.0)",
+    "pyserial>=3.5",
 ]
 
 [tool.poetry]

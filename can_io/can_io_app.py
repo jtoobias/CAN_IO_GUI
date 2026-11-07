@@ -407,7 +407,7 @@ class MainWindow(QMainWindow):
         # need to handle only numbers
         self.can_handler.node_id = int(self.ui.spinBox_CAN_ID.value())
 
-        self.can_handler.baud_rate = float(self.ui.comboBoxBaudRates.currentText()) * 1000
+        self.can_handler.baud_rate = int(float(self.ui.comboBoxBaudRates.currentText()) * 1000)
         print("Connect to ", device)
         print(self.can_handler.connect_device(device, self.can_handler.baud_rate))
 
